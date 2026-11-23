@@ -1,55 +1,138 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#F3F5F7] text-[#1F2937] pt-10 pb-24 lg:py-14 border-t border-gray-200">
+    <footer className="bg-[#071B15] text-[#E8E2D8] pt-14 pb-24 lg:pb-16 border-t border-[#185241]/50">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Brand */}
-          <Link href="/" className="flex items-center gap-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A059] rounded-md group">
-            <div className="relative w-10 h-10 rounded-md overflow-hidden shrink-0 border border-gray-200 group-hover:border-[#C5A059] transition-colors bg-[#0A3626]">
-              <Image src="/logo.png" alt="Udaipur Gateways Logo" fill className="object-contain" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-wider font-serif text-[#111827] leading-none mb-1 group-hover:text-[#C5A059] transition-colors">UDAIPUR GATEWAYS</span>
-              <span className="text-xs text-[#6B7280] font-medium tracking-wide">Independent travel network partners</span>
-            </div>
-          </Link>
+        {/* Top Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-12 border-b border-[#185241]/40">
+          {/* Brand & Mission Column */}
+          <div className="md:col-span-5 flex flex-col justify-between">
+            <div>
+              <Link
+                href="/"
+                className="flex items-center gap-3.5 group focus-visible:outline-none rounded-xs"
+              >
+                <div className="relative w-11 h-11 rounded-xs overflow-hidden shrink-0 border border-[#B8934E]/40 group-hover:border-[#B8934E] transition-colors bg-[#0D2E24]">
+                  <Image
+                    src="/logo.png"
+                    alt="Udaipur Gateways Logo"
+                    fill
+                    className="object-contain p-1"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xl font-bold tracking-[0.12em] font-serif text-white leading-none mb-1 group-hover:text-[#D4AF67] transition-colors">
+                    UDAIPUR GATEWAYS
+                  </span>
+                  <span className="text-[10px] text-[#D4AF67] font-mono uppercase tracking-[0.2em]">
+                    Independent travel network partners
+                  </span>
+                </div>
+              </Link>
 
-          {/* Links */}
-          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 text-sm text-[#4B5563]">
-            <Link href="/about" className="hover:text-[#C5A059] transition-colors">About Us</Link>
-            <Link href="/privacy" className="hover:text-[#C5A059] transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-[#C5A059] transition-colors">Terms & Conditions</Link>
-            <Link href="/disclaimer" className="hover:text-[#C5A059] transition-colors">Disclaimer</Link>
-            <Link href="/contact" className="hover:text-[#C5A059] transition-colors">Contact</Link>
+              <p className="text-xs text-[#E8E2D8]/70 leading-relaxed mt-4 max-w-sm font-light">
+                An independent travel discovery platform offering curated insights, accommodation options, and local guides for The Ananta Udaipur and Rajasthan’s lake city.
+              </p>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-[#185241]/40 text-xs text-[#E8E2D8]/60">
+              <p>
+                Operated by <strong className="text-white">Nothing Like Travel LLP</strong>
+                <br />
+                <span className="font-mono text-[#D4AF67]">GSTIN: 09AAZFN6228N1Z7</span>
+              </p>
+            </div>
+          </div>
+
+          {/* Quick Navigation Links */}
+          <div className="md:col-span-3">
+            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#D4AF67] block mb-4">
+              Explore Platform
+            </span>
+            <ul className="space-y-2.5 text-xs text-[#E8E2D8]/80">
+              <li>
+                <Link href="/" className="hover:text-[#D4AF67] transition-colors">
+                  Home / Residences
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-[#D4AF67] transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="hover:text-[#D4AF67] transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-[#D4AF67] transition-colors">
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link href="/disclaimer" className="hover:text-[#D4AF67] transition-colors">
+                  Disclaimer
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-[#D4AF67] transition-colors">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Details */}
+          <div className="md:col-span-4">
+            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#D4AF67] block mb-4">
+              Concierge Contact
+            </span>
+            <div className="space-y-3.5 text-xs text-[#E8E2D8]/80">
+              <a
+                href="tel:+919279022649"
+                className="flex items-center gap-2.5 hover:text-[#D4AF67] transition-colors"
+              >
+                <div className="w-7 h-7 rounded-xs bg-[#0D2E24] border border-[#185241] flex items-center justify-center text-[#D4AF67] shrink-0">
+                  <Phone className="w-3.5 h-3.5 animate-phone-ring" />
+                </div>
+                <span>+91 92790 22649</span>
+              </a>
+
+              <a
+                href="mailto:info@udaipurgateways.com"
+                className="flex items-center gap-2.5 hover:text-[#D4AF67] transition-colors"
+              >
+                <div className="w-7 h-7 rounded-xs bg-[#0D2E24] border border-[#185241] flex items-center justify-center text-[#D4AF67] shrink-0">
+                  <Mail className="w-3.5 h-3.5" />
+                </div>
+                <span>info@udaipurgateways.com</span>
+              </a>
+
+              <div className="flex items-start gap-2.5 text-[#E8E2D8]/70 pt-1">
+                <div className="w-7 h-7 rounded-xs bg-[#0D2E24] border border-[#185241] flex items-center justify-center text-[#D4AF67] shrink-0 mt-0.5">
+                  <MapPin className="w-3.5 h-3.5" />
+                </div>
+                <span className="leading-relaxed">
+                  Village Bujhda, Tehsil Girwa, Kodiyat Road, Udaipur, Rajasthan 313031
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col gap-4 text-xs text-[#6B7280] text-center">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-6 text-sm font-medium text-[#111827] mb-2">
-            <a href="tel:+919279022649" className="hover:text-[#C5A059] transition-colors flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#C5A059]"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-              +91 92790 22649
-            </a>
-            <span className="hidden md:inline text-gray-300">•</span>
-            <a href="mailto:info@udaipurgateways.com" className="hover:text-[#C5A059] transition-colors flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#C5A059]"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
-              info@udaipurgateways.com
-            </a>
-          </div>
-          <p className="max-w-3xl mx-auto leading-relaxed">
-            Village Bujhda, Tehsil Girwa, Kodiyat Road, Udaipur, Rajasthan 313031
+        {/* Bottom Legal Copyright Bar */}
+        <div className="pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-[11px] text-[#E8E2D8]/60">
+          <p>© {currentYear} Nothing Like Travel LLP. All Rights Reserved.</p>
+          <p className="text-center md:text-right">
+            Independent informational travel and stay discovery platform. Not the official property website.
           </p>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-3 w-full border-t border-gray-200 pt-4 text-[10px] md:text-xs">
-            <p>© {currentYear} Nothing Like Travel LLP. All Rights Reserved. (GSTIN: 09AAZFN6228N1Z7)</p>
-            <p className="text-[#6B7280]">This website is for travel information and enquiry discovery assistance only.</p>
-          </div>
         </div>
       </div>
     </footer>

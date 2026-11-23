@@ -26,7 +26,7 @@ export function SectionHeading({
       <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight font-serif text-[#111827]">
         {title}
       </h2>
-      <div className={cn("h-0.5 w-14 bg-gradient-to-r from-[#C5A059] to-[#D4AF37] mt-1 mb-2 rounded-full", centered ? "mx-auto" : "")} />
+      <div className={cn("h-[1px] w-12 bg-[#B8934E] mt-2 mb-2", centered ? "mx-auto" : "")} />
       {subtitle && (
         <p className="text-base md:text-lg text-[#6B7280] max-w-2xl leading-relaxed">
           {subtitle}

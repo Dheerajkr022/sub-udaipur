@@ -1,6 +1,5 @@
 import React from "react";
-import { CheckCircle2, XCircle } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/Card";
+import { CheckCircle2, XCircle, ShieldCheck } from "lucide-react";
 
 const whatWeDo = [
   "Property information & guidance",
@@ -23,65 +22,77 @@ const whatWeDontDo = [
 
 export function RoleSection() {
   return (
-    <section className="mb-20 bg-white border border-[#E5E7EB] p-6 md:p-10 rounded-3xl shadow-lg">
-      <div className="mb-10 max-w-3xl">
-        <h2 className="text-2xl md:text-3xl font-bold font-serif tracking-tight text-[#111827] mb-4">
-          Our Role & Independence
-        </h2>
-        <div className="text-sm md:text-base text-[#4B5563] space-y-3 leading-relaxed">
-          <p>
-            Udaipur Gateways is operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7), an independent travel discovery and enquiry service.
-          </p>
-          <p>
-            We provide general property information, guidance and enquiry assistance.
-          </p>
-          <p>
-            <strong className="text-[#A38038] font-semibold">We are not the owner, operator, or official representative of The Ananta Udaipur or any other property unless specifically stated.</strong>
-          </p>
-          <p className="text-xs text-[#6B7280]">
-            Property names, trademarks, images and other brand-related intellectual property belong to their respective owners.
-          </p>
+    <section className="mb-20 sm:mb-28">
+      {/* Section Frame */}
+      <div className="bg-white border border-[#E8E2D8] rounded-xs p-6 sm:p-10 shadow-xs">
+        <div className="max-w-3xl mb-10">
+          <div className="flex items-center gap-2.5 mb-3">
+            <span className="w-6 h-[1px] bg-[#B8934E]" />
+            <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
+              GOVERNANCE & TRANSPARENCY
+            </span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#111827] tracking-tight mb-4">
+            Our Role & Independence
+          </h2>
+          <div className="text-sm text-[#52525B] space-y-3 leading-relaxed font-light">
+            <p>
+              Udaipur Gateways is operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7), an independent travel discovery and enquiry service.
+            </p>
+            <p>
+              We provide general property information, guidance and enquiry assistance.
+            </p>
+            <p className="text-[#8F6E2E] font-medium">
+              We are not the owner, operator, or official representative of The Ananta Udaipur or any other property unless specifically stated.
+            </p>
+            <p className="text-xs text-[#71717A]">
+              Property names, trademarks, images and other brand-related intellectual property belong to their respective owners.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card className="border border-[#E5E7EB] bg-[#F8F9FA] shadow-sm h-full rounded-2xl">
-          <CardContent className="p-6 md:p-8">
-            <h3 className="text-lg font-bold font-serif text-[#111827] mb-5 flex items-center gap-3">
-              <span className="bg-white border border-[#C5A059]/40 p-1.5 rounded-full text-[#C5A059] shadow-sm">
-                <CheckCircle2 className="h-5 w-5" />
+        {/* 2 Comparison Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* What We Do */}
+          <div className="border border-[#E8E2D8] bg-[#FAF8F5] rounded-xs p-6 sm:p-7">
+            <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-[#E8E2D8]">
+              <span className="w-6 h-6 rounded-xs bg-[#0D2E24] text-[#D4AF67] flex items-center justify-center">
+                <CheckCircle2 className="h-3.5 w-3.5" />
               </span>
-              What We Do
-            </h3>
+              <h3 className="font-serif font-bold text-base sm:text-lg text-[#111827]">
+                What We Do
+              </h3>
+            </div>
             <ul className="space-y-3">
               {whatWeDo.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-[#C5A059] shrink-0 mt-0.5" />
-                  <span className="text-sm text-[#374151]">{item}</span>
+                <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#3F3F46]">
+                  <CheckCircle2 className="h-4 w-4 text-[#B8934E] shrink-0 mt-0.5" />
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
-          </CardContent>
-        </Card>
+          </div>
 
-        <Card className="border border-[#E5E7EB] bg-[#F8F9FA] shadow-sm h-full rounded-2xl">
-          <CardContent className="p-6 md:p-8">
-            <h3 className="text-lg font-bold font-serif text-[#111827] mb-5 flex items-center gap-3">
-              <span className="bg-red-50 border border-red-200 p-1.5 rounded-full text-red-500 shadow-sm">
-                <XCircle className="h-5 w-5" />
+          {/* What We Don't Do */}
+          <div className="border border-[#E8E2D8] bg-[#FAF8F5] rounded-xs p-6 sm:p-7">
+            <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-[#E8E2D8]">
+              <span className="w-6 h-6 rounded-xs bg-red-100 text-red-700 flex items-center justify-center">
+                <XCircle className="h-3.5 w-3.5" />
               </span>
-              What We Don&apos;t Do
-            </h3>
+              <h3 className="font-serif font-bold text-base sm:text-lg text-[#111827]">
+                What We Don&apos;t Do
+              </h3>
+            </div>
             <ul className="space-y-3">
               {whatWeDontDo.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3">
-                  <XCircle className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
-                  <span className="text-sm text-[#374151]">{item}</span>
+                <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#3F3F46]">
+                  <XCircle className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </section>
   );

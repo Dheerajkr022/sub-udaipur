@@ -2,15 +2,45 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Utensils, Sparkles, Clock, Wine } from "lucide-react";
 
 const allOutlets = [
-  { name: "Oasis Restaurant", image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp" },
-  { name: "Float Poolside Bar", image: "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg" },
-  { name: "Ananta Tara Rooftop", image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp" },
-  { name: "In-Villa Private Dining", image: "/ananta-photos/Udaipur/Executive Suites/Executive_Suite_Bedroom_(Photo-2).jpg" },
-  { name: "Alfresco Garden Dining", image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp" },
-  { name: "Chalet Tea & Coffee Deck", image: "/ananta-photos/Udaipur/Luxury Cottage/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp" },
+  {
+    name: "Oasis Restaurant",
+    tag: "Multi-Cuisine & Regional Rajasthani",
+    timing: "All Day Dining • 7:00 AM - 11:00 PM",
+    image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp",
+  },
+  {
+    name: "Float Poolside Bar",
+    tag: "Cocktails & Sunken Lounge",
+    timing: "Poolside Vistas • 11:00 AM - 11:00 PM",
+    image: "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg",
+  },
+  {
+    name: "Ananta Tara Rooftop",
+    tag: "Starlit Dining & Hillside Panorama",
+    timing: "Evening Starlight • 7:00 PM - Midnight",
+    image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp",
+  },
+  {
+    name: "In-Villa Private Dining",
+    tag: "Bespoke Chef Consultation",
+    timing: "24-Hour In-Residence Service",
+    image: "/ananta-photos/Udaipur/Executive Suites/Executive_Suite_Bedroom_(Photo-2).jpg",
+  },
+  {
+    name: "Alfresco Garden Dining",
+    tag: "Open-Air Terraces & Aravalli Breeze",
+    timing: "Breakfast & Sunset Hours",
+    image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
+  },
+  {
+    name: "Chalet Tea & Coffee Deck",
+    tag: "Artisanal Brews & Pastries",
+    timing: "Morning to Twilight • 8:00 AM - 8:00 PM",
+    image: "/ananta-photos/Udaipur/Luxury Cottage/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp",
+  },
 ];
 
 export function DiningSection() {
@@ -24,100 +54,88 @@ export function DiningSection() {
   );
 
   return (
-    <section id="dining" className="mb-24 scroll-mt-28 relative">
-      {/* Background Container */}
-      <div className="relative rounded-3xl overflow-hidden p-6 sm:p-10 border border-[#E5E7EB] shadow-lg bg-white">
-        {/* Content Container */}
-        <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="mb-8 md:mb-10 text-left">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-              A Culinary <span className="text-[#C5A059] italic font-serif">Journey</span>
-            </h2>
-            <p className="text-[13px] sm:text-[15px] text-[#6B7280] leading-relaxed mt-2.5 max-w-xl">
-              Indulge in authentic Rajasthani delicacies and multi-cuisine favorites at The Ananta Udaipur, accompanied by panoramic hill views.
-            </p>
-          </div>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {displayedOutlets.map((outlet, idx) => (
-              <div
-                key={idx}
-                className="group relative rounded-2xl overflow-hidden border border-[#E5E7EB] hover:border-[#C5A059]/60 transition-all duration-300 shadow-md hover:shadow-xl block bg-white"
-              >
-                {/* Image */}
-                <div className="relative h-60 sm:h-64 w-full overflow-hidden">
-                  <Image
-                    src={outlet.image}
-                    alt={outlet.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                </div>
-
-                {/* Card Bottom Bar */}
-                <div className="p-4 sm:p-5 flex items-center justify-between gap-3 bg-white border-t border-gray-100">
-                  <h3 className="text-[15px] sm:text-[16px] font-semibold text-[#111827] group-hover:text-[#C5A059] transition-colors tracking-wide truncate">
-                    {outlet.name}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Carousel Pagination Controls */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-3 mt-8">
-              <button
-                type="button"
-                onClick={() => setPage((prev) => (prev > 0 ? prev - 1 : totalPages - 1))}
-                aria-label="Previous page"
-                className="w-10 h-10 rounded-full bg-white border border-gray-200 hover:border-[#C5A059] active:bg-gray-50 text-[#111827] flex items-center justify-center transition-all cursor-pointer shadow-sm"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-
-              <div className="flex items-center gap-1">
-                {Array.from({ length: totalPages }).map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setPage(i)}
-                    aria-label={`Go to page ${i + 1}`}
-                    className="p-2 cursor-pointer flex items-center justify-center"
-                  >
-                    <span
-                      className={`block transition-all duration-300 rounded-full ${
-                        page === i
-                          ? "w-6 h-2 bg-[#C5A059]"
-                          : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
-                      }`}
-                    />
-                  </button>
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setPage((prev) => (prev < totalPages - 1 ? prev + 1 : 0))}
-                aria-label="Next page"
-                className="w-10 h-10 rounded-full bg-white border border-gray-200 hover:border-[#C5A059] active:bg-gray-50 text-[#111827] flex items-center justify-center transition-all cursor-pointer shadow-sm"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          )}
-
-          {/* Footnote Disclaimer */}
-          <div className="flex items-center justify-center gap-2 mt-6 text-[12px] text-gray-500 text-center">
-            <span className="w-4 h-4 rounded-full bg-[#C5A059] text-white flex items-center justify-center text-[10px] font-bold shrink-0">
-              i
+    <section id="dining" className="mb-20 sm:mb-28 scroll-mt-28">
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-12 pb-4 border-b border-[#E8E2D8]">
+        <div>
+          <div className="flex items-center gap-2.5 mb-2.5">
+            <span className="w-6 h-[1px] bg-[#B8934E]" />
+            <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
+              GASTRONOMY & RESTAURANTS
             </span>
-            <span>Dining information is for reference only. Timings, availability and charges may vary.</span>
           </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
+            A Culinary <span className="text-[#B8934E] italic font-serif font-normal">Journey</span>
+          </h2>
+          <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
+            Indulge in authentic Rajasthani delicacies and multi-cuisine favorites at The Ananta Udaipur, accompanied by panoramic hill views.
+          </p>
         </div>
+
+        {/* Carousel Pagination Controls */}
+        <div className="flex items-center gap-2 self-start md:self-end">
+          <button
+            type="button"
+            onClick={() => setPage((prev) => (prev > 0 ? prev - 1 : totalPages - 1))}
+            aria-label="Previous culinary page"
+            className="w-9 h-9 rounded-xs bg-white border border-[#E8E2D8] hover:border-[#B8934E] text-[#111827] flex items-center justify-center transition-all cursor-pointer shadow-xs"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <span className="text-xs font-mono text-[#71717A] px-2">
+            {page + 1} / {totalPages}
+          </span>
+          <button
+            type="button"
+            onClick={() => setPage((prev) => (prev < totalPages - 1 ? prev + 1 : 0))}
+            aria-label="Next culinary page"
+            className="w-9 h-9 rounded-xs bg-white border border-[#E8E2D8] hover:border-[#B8934E] text-[#111827] flex items-center justify-center transition-all cursor-pointer shadow-xs"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        {displayedOutlets.map((outlet, idx) => (
+          <div
+            key={idx}
+            className="group relative bg-white border border-[#E8E2D8] hover:border-[#B8934E]/70 rounded-xs overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
+          >
+            {/* Image */}
+            <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#FAF8F5]">
+              <Image
+                src={outlet.image}
+                alt={outlet.name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+
+              <div className="absolute top-3 left-3">
+                <span className="px-2.5 py-1 rounded-xs bg-[#0D2E24]/85 text-[#D4AF67] text-[10px] font-mono uppercase tracking-wider backdrop-blur-xs">
+                  {outlet.tag}
+                </span>
+              </div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="p-4 sm:p-5 flex flex-col justify-between">
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <h3 className="text-base sm:text-lg font-serif font-bold text-[#111827] group-hover:text-[#B8934E] transition-colors leading-snug">
+                  {outlet.name}
+                </h3>
+                <Wine className="w-4 h-4 text-[#B8934E] shrink-0" />
+              </div>
+              <div className="flex items-center gap-1.5 text-xs text-[#71717A] pt-2 border-t border-[#E8E2D8]/60">
+                <Clock className="w-3.5 h-3.5 text-[#B8934E]" />
+                <span>{outlet.timing}</span>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

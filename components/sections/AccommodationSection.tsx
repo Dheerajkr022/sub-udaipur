@@ -11,13 +11,15 @@ import {
   ChevronLeft,
   ChevronRight,
   ArrowRight,
-  Phone
+  Phone,
+  Sparkles,
 } from "lucide-react";
 
 export const accommodations = [
   {
     name: "Luxury Cottage",
     badge: "Balinese Style",
+    category: "cottages",
     images: [
       "/ananta-photos/Udaipur/Luxury Cottage/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp",
       "/ananta-photos/Udaipur/Luxury Cottage/Luxury_Villa_Bed_Room_(Photo-2).webp",
@@ -32,6 +34,7 @@ export const accommodations = [
   {
     name: "Premium Wooden Cottage with Bathtub",
     badge: "Wooden Chalet",
+    category: "cottages",
     images: [
       "/ananta-photos/Udaipur/Premium Wooden Cottage with Bathtub/Room1_9_51c23ea1.webp",
       "/ananta-photos/Udaipur/Premium Wooden Cottage with Bathtub/Room_9_1cb899d2.webp",
@@ -46,6 +49,7 @@ export const accommodations = [
   {
     name: "Executive Suite",
     badge: "Luxury Suite",
+    category: "suites",
     images: [
       "/ananta-photos/Udaipur/Executive Suites/Executive_Suite_Bedroom_(Photo-2).jpg",
       "/ananta-photos/Udaipur/Executive Suites/Executive_suite4_qolqtm.jpg",
@@ -60,6 +64,7 @@ export const accommodations = [
   {
     name: "Grand Suites",
     badge: "Family Suite",
+    category: "suites",
     images: [
       "/ananta-photos/Udaipur/Grand Suites/Grand_Suite_Bedroom_(Photo-4).jpg",
       "/ananta-photos/Udaipur/Grand Suites/Grand_Suite_Bedroom_(Photo-2)_2.jpg",
@@ -74,6 +79,7 @@ export const accommodations = [
   {
     name: "Presidential Villa",
     badge: "Private Pool",
+    category: "villas",
     images: [
       "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg",
       "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_bedroom_at_ananta_udaipur_suites_in_Udaipur_1_rclkoa_nkzn4b.jpg",
@@ -88,6 +94,7 @@ export const accommodations = [
   {
     name: "Ananta Villa",
     badge: "Signature Estate",
+    category: "villas",
     images: [
       "/ananta-photos/Udaipur/Ananta Villa/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0315-HDR-Edit_hi2yh2.jpg",
       "/ananta-photos/Udaipur/Ananta Villa/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0345-HDR_dngzyn.jpg",
@@ -102,6 +109,7 @@ export const accommodations = [
   {
     name: "Chairman Villa",
     badge: "Pinnacle Estate",
+    category: "villas",
     images: [
       "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp",
       "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0315-HDR-Edit_hi2yh2.jpg",
@@ -115,7 +123,6 @@ export const accommodations = [
   },
 ];
 
-
 function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
   const [currentImg, setCurrentImg] = useState(0);
 
@@ -123,7 +130,7 @@ function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
     if (acc.images.length <= 1) return;
     const interval = setInterval(() => {
       setCurrentImg((prev) => (prev === acc.images.length - 1 ? 0 : prev + 1));
-    }, 3500);
+    }, 4500);
     return () => clearInterval(interval);
   }, [acc.images.length]);
 
@@ -139,34 +146,60 @@ function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
     setCurrentImg((prev) => (prev === acc.images.length - 1 ? 0 : prev + 1));
   };
 
+  const handleSelectRoom = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const params = new URLSearchParams(window.location.search);
+    params.set("room", acc.name);
+    window.history.replaceState(null, "", `${window.location.pathname}?${params.toString()}#enquiry`);
+
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("select-stay", {
+          detail: {
+            room: acc.name,
+          },
+        })
+      );
+    }
+
+    setTimeout(() => {
+      const isDesktop = window.innerWidth >= 1024;
+      const targetId = isDesktop ? "enquiry-desktop" : "enquiry";
+      const target = document.getElementById(targetId) || document.getElementById("enquiry");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
+
   return (
-    <div className="bg-white border border-[#E5E7EB] hover:border-[#C5A059]/60 rounded-2xl sm:rounded-3xl p-3 sm:p-4 flex flex-col justify-between transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1 group">
+    <div className="bg-white border border-[#E8E2D8] hover:border-[#B8934E]/70 rounded-xs overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-xs hover:shadow-md group">
       {/* Top Image Slider */}
-      <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full rounded-xl sm:rounded-2xl overflow-hidden bg-gray-100 group/slider">
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#FAF8F5] group/slider">
         <Image
           src={acc.images[currentImg]}
           alt={`${acc.name} - Photo ${currentImg + 1}`}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
 
-        {/* Top-Left Category Badge */}
-        <div className="absolute top-2.5 left-2.5 z-10">
-          <span className="px-2.5 sm:px-3 py-1 rounded-full bg-white/95 border border-[#C5A059]/50 text-[#A38038] text-[10px] sm:text-[11px] font-semibold tracking-wide backdrop-blur-sm shadow-sm">
+        {/* Category Badge */}
+        <div className="absolute top-3 left-3 z-10">
+          <span className="px-2.5 py-1 rounded-xs bg-[#0D2E24]/90 border border-[#B8934E]/50 text-[#D4AF67] text-[10px] font-mono tracking-widest uppercase backdrop-blur-xs">
             {acc.badge}
           </span>
         </div>
 
-        {/* Slider Navigation Arrows (visible on mobile, hover on desktop) */}
+        {/* Navigation Arrows */}
         {acc.images.length > 1 && (
           <>
             <button
               type="button"
               onClick={prevImage}
               aria-label="Previous image"
-              className="w-8 h-8 rounded-full bg-white/80 hover:bg-[#C5A059] text-[#111827] hover:text-white flex items-center justify-center backdrop-blur-sm transition-all absolute left-2 top-1/2 -translate-y-1/2 z-10 opacity-90 sm:opacity-0 sm:group-hover/slider:opacity-100 cursor-pointer shadow-md active:scale-95"
+              className="w-7 h-7 rounded-xs bg-black/40 hover:bg-[#0D2E24] text-white flex items-center justify-center backdrop-blur-xs transition-all absolute left-2 top-1/2 -translate-y-1/2 z-10 opacity-80 sm:opacity-0 sm:group-hover/slider:opacity-100 cursor-pointer"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -174,13 +207,13 @@ function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
               type="button"
               onClick={nextImage}
               aria-label="Next image"
-              className="w-8 h-8 rounded-full bg-white/80 hover:bg-[#C5A059] text-[#111827] hover:text-white flex items-center justify-center backdrop-blur-sm transition-all absolute right-2 top-1/2 -translate-y-1/2 z-10 opacity-90 sm:opacity-0 sm:group-hover/slider:opacity-100 cursor-pointer shadow-md active:scale-95"
+              className="w-7 h-7 rounded-xs bg-black/40 hover:bg-[#0D2E24] text-white flex items-center justify-center backdrop-blur-xs transition-all absolute right-2 top-1/2 -translate-y-1/2 z-10 opacity-80 sm:opacity-0 sm:group-hover/slider:opacity-100 cursor-pointer"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
 
             {/* Pagination Dots */}
-            <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5">
+            <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1">
               {acc.images.map((_, i) => (
                 <button
                   key={i}
@@ -191,79 +224,87 @@ function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
                     setCurrentImg(i);
                   }}
                   aria-label={`Photo ${i + 1}`}
-                  className="p-1 cursor-pointer flex items-center justify-center"
+                  className="p-1 cursor-pointer"
                 >
                   <span
                     className={`block transition-all duration-300 rounded-full ${
-                      i === currentImg
-                        ? "w-3.5 h-1.5 bg-[#C5A059]"
-                        : "w-1.5 h-1.5 bg-white/60 hover:bg-white"
+                      i === currentImg ? "w-3 h-1 bg-[#D4AF67]" : "w-1 h-1 bg-white/60 hover:bg-white"
                     }`}
                   />
                 </button>
               ))}
             </div>
 
-            {/* Photo count indicator */}
-            <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-sm text-[10px] text-white/90 font-medium z-10">
+            {/* Photo Counter */}
+            <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-xs bg-black/60 backdrop-blur-xs text-[10px] font-mono text-white/90 z-10">
               {currentImg + 1}/{acc.images.length}
             </div>
           </>
         )}
       </div>
 
-      {/* Card Content Details */}
-      <div className="pt-3 sm:pt-4 flex flex-col flex-1 justify-between">
+      {/* Card Content */}
+      <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between">
         <div>
-          {/* Title */}
-          <h3 className="font-serif text-[18px] sm:text-[20px] font-bold text-[#111827] group-hover:text-[#C5A059] transition-colors leading-tight">
+          <div className="flex items-baseline justify-between mb-1.5">
+            <span className="text-[10px] font-mono text-[#71717A] uppercase tracking-wider">
+              {acc.floor}
+            </span>
+            <span className="text-xs text-[#8F6E2E] font-medium font-mono">{acc.guests}</span>
+          </div>
+
+          <h3 className="font-serif text-lg sm:text-xl font-bold text-[#111827] group-hover:text-[#B8934E] transition-colors leading-snug">
             {acc.name}
           </h3>
 
-          {/* Description Bullets */}
-          <p className="text-[12px] sm:text-[13px] text-[#4B5563] leading-snug mt-1.5 mb-3 line-clamp-2">
+          <p className="text-xs text-[#52525B] leading-relaxed mt-2 line-clamp-2">
             {acc.features}
           </p>
 
           {/* 3 Key Spec Chips Row */}
-          <div className="grid grid-cols-3 gap-1.5 py-2.5 my-3 border-y border-gray-200">
+          <div className="grid grid-cols-3 gap-2 py-3 my-3 border-y border-[#E8E2D8] text-[11px] text-[#3F3F46]">
             {/* View */}
             <div className="flex items-center gap-1.5 min-w-0">
-              {acc.viewIcon === "waves" && <Waves className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C5A059] shrink-0" />}
-              {acc.viewIcon === "mountain" && <Mountain className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C5A059] shrink-0" />}
-              {acc.viewIcon !== "waves" && acc.viewIcon !== "mountain" && <Leaf className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C5A059] shrink-0" />}
-              <span className="text-[11px] text-[#374151] font-medium truncate">
-                {acc.view}
-              </span>
+              {acc.viewIcon === "waves" ? (
+                <Waves className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+              ) : acc.viewIcon === "mountain" ? (
+                <Mountain className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+              ) : (
+                <Leaf className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+              )}
+              <span className="truncate font-medium">{acc.view}</span>
             </div>
 
             {/* Occupancy */}
             <div className="flex items-center gap-1.5 min-w-0">
-              <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C5A059] shrink-0" />
-              <span className="text-[11px] text-[#374151] font-medium truncate">
-                {acc.guests}
-              </span>
+              <User className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+              <span className="truncate font-medium">{acc.guests}</span>
             </div>
 
-            {/* Floor / Structure */}
+            {/* Floor / Category */}
             <div className="flex items-center gap-1.5 min-w-0">
-              <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C5A059] shrink-0" />
-              <span className="text-[11px] text-[#374151] font-medium truncate">
-                {acc.floor}
-              </span>
+              <Layers className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+              <span className="truncate font-medium">{acc.floor}</span>
             </div>
           </div>
         </div>
 
-        {/* Action Button */}
-        <div className="pt-1">
+        {/* Actions Row */}
+        <div className="pt-2 flex items-center gap-2">
+          <button
+            type="button"
+            onClick={handleSelectRoom}
+            className="flex-1 py-2.5 px-3 rounded-xs bg-[#0D2E24] hover:bg-[#185241] text-white text-xs font-semibold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs group/btn"
+          >
+            <span>Enquire Stay</span>
+            <ArrowRight className="w-3 h-3 text-[#D4AF67] group-hover/btn:translate-x-0.5 transition-transform" />
+          </button>
           <a
             href="tel:+919279022649"
-            className="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-full border border-[#C5A059] bg-[#FAF8F5] hover:bg-[#C5A059] text-[#A38038] hover:text-white font-semibold text-[12px] sm:text-[13px] flex items-center justify-center gap-2 transition-all duration-300 shadow-sm group/btn cursor-pointer active:scale-[0.98]"
+            className="py-2.5 px-3 rounded-xs border border-[#B8934E] bg-[#FAF8F5] hover:bg-[#B8934E] text-[#8F6E2E] hover:text-white transition-colors flex items-center justify-center text-xs font-semibold"
+            aria-label={`Call to enquire about ${acc.name}`}
           >
-            <Phone className="w-3.5 h-3.5 text-[#C5A059] group-hover/btn:text-white animate-phone-ring shrink-0" />
-            <span>Request Stay Details</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#C5A059] group-hover/btn:text-white group-hover/btn:translate-x-1 transition-transform shrink-0" />
+            <Phone className="w-3.5 h-3.5 animate-phone-ring" />
           </a>
         </div>
       </div>
@@ -272,27 +313,84 @@ function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
 }
 
 export function AccommodationSection() {
+  const [activeTab, setActiveTab] = useState<"all" | "cottages" | "suites" | "villas">("all");
+
+  const filteredAccommodations =
+    activeTab === "all"
+      ? accommodations
+      : accommodations.filter((a) => a.category === activeTab);
+
   return (
-    <section id="rooms" className="mb-24 scroll-mt-28">
-      {/* Header */}
-      <div className="mb-8 md:mb-12 text-left">
-        <div className="flex items-center gap-2.5 mb-2.5">
-          <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.2em] text-[#C5A059] uppercase">
-            EXPLORE & DISCOVER
-          </span>
-          <span className="w-8 h-[1px] bg-[#C5A059]/60"></span>
+    <section id="rooms" className="mb-20 sm:mb-28 scroll-mt-28">
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-12 pb-4 border-b border-[#E8E2D8]">
+        <div>
+          <div className="flex items-center gap-2.5 mb-2.5">
+            <span className="w-6 h-[1px] bg-[#B8934E]" />
+            <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
+              EXPLORE & DISCOVER • THE COLLECTION
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
+            Accommodation <span className="text-[#B8934E] italic font-serif font-normal">Options</span>
+          </h2>
+          <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
+            Explore a range of exquisite stay options at The Ananta Udaipur designed for comfort, privacy and a luxurious hillside retreat.
+          </p>
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-          Accommodation <span className="text-[#C5A059] italic font-serif">Options</span>
-        </h2>
-        <p className="text-[13px] sm:text-[15px] text-[#6B7280] leading-relaxed mt-2.5 max-w-xl">
-          Explore a range of exquisite stay options at The Ananta Udaipur designed for comfort, privacy and a luxurious hillside retreat.
-        </p>
+
+        {/* Tab Filters */}
+        <div className="flex items-center gap-1.5 p-1 bg-white border border-[#E8E2D8] rounded-xs self-start md:self-end">
+          <button
+            type="button"
+            onClick={() => setActiveTab("all")}
+            className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-xs transition-colors cursor-pointer ${
+              activeTab === "all"
+                ? "bg-[#0D2E24] text-white"
+                : "text-[#71717A] hover:text-[#111827]"
+            }`}
+          >
+            All ({accommodations.length})
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("cottages")}
+            className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-xs transition-colors cursor-pointer ${
+              activeTab === "cottages"
+                ? "bg-[#0D2E24] text-white"
+                : "text-[#71717A] hover:text-[#111827]"
+            }`}
+          >
+            Cottages
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("suites")}
+            className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-xs transition-colors cursor-pointer ${
+              activeTab === "suites"
+                ? "bg-[#0D2E24] text-white"
+                : "text-[#71717A] hover:text-[#111827]"
+            }`}
+          >
+            Suites
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("villas")}
+            className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-xs transition-colors cursor-pointer ${
+              activeTab === "villas"
+                ? "bg-[#0D2E24] text-white"
+                : "text-[#71717A] hover:text-[#111827]"
+            }`}
+          >
+            Villas & Estates
+          </button>
+        </div>
       </div>
 
       {/* Property Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
-        {accommodations.map((acc, index) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        {filteredAccommodations.map((acc, index) => (
           <PropertyCard key={index} acc={acc} />
         ))}
       </div>

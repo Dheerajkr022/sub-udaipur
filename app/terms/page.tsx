@@ -17,8 +17,8 @@ export default function TermsConditions() {
   return (
     <div className="container mx-auto px-4 lg:px-8 py-12 max-w-4xl min-h-[60vh]">
       <SectionHeading title="Terms & Conditions" />
-      <div className="max-w-none text-[#4B5563] space-y-6 mt-8 leading-relaxed">
-        <p className="italic text-[#6B7280]">Last updated: {new Date().toLocaleDateString()}</p>
+      <div className="max-w-none text-[#52525B] space-y-6 mt-8 leading-relaxed font-light">
+        <p className="italic text-[#71717A]">Last updated: {new Date().toLocaleDateString()}</p>
 
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">1. Acceptance of Terms</h3>
         <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>

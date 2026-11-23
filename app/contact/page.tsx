@@ -27,36 +27,36 @@ export default function ContactPage() {
             Ready to plan your Udaipur getaway? Reach out to us for stay information on villas, cottages, amenities, and local experiences. Our team is here to assist you.
           </p>
 
-          <div className="space-y-6">
-            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm">
-              <div className="bg-[#F8F9FA] p-3.5 rounded-xl border border-[#E5E7EB] text-[#C5A059]">
-                <Phone className="w-6 h-6 animate-phone-ring" />
+          <div className="space-y-4">
+            <div className="flex items-start gap-4 p-4 rounded-xs bg-white border border-[#E8E2D8] shadow-xs">
+              <div className="bg-[#FAF8F5] p-3 rounded-xs border border-[#E8E2D8] text-[#B8934E]">
+                <Phone className="w-5 h-5 animate-phone-ring" />
               </div>
               <div>
-                <h4 className="font-bold font-serif text-[#111827] text-lg">Phone</h4>
-                <a href="tel:+919279022649" className="text-[#C5A059] hover:text-[#B38F48] transition-colors block mt-1 font-semibold">+91 92790 22649</a>
+                <h4 className="font-bold font-serif text-[#111827] text-base">Phone</h4>
+                <a href="tel:+919279022649" className="text-[#8F6E2E] hover:underline transition-colors block mt-1 font-semibold text-sm">+91 92790 22649</a>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm">
-              <div className="bg-[#F8F9FA] p-3.5 rounded-xl border border-[#E5E7EB] text-[#C5A059]">
-                <Mail className="w-6 h-6" />
+            <div className="flex items-start gap-4 p-4 rounded-xs bg-white border border-[#E8E2D8] shadow-xs">
+              <div className="bg-[#FAF8F5] p-3 rounded-xs border border-[#E8E2D8] text-[#B8934E]">
+                <Mail className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold font-serif text-[#111827] text-lg">Email</h4>
-                <p className="text-[#4B5563] mt-1">info@udaipurgateways.com</p>
+                <h4 className="font-bold font-serif text-[#111827] text-base">Email</h4>
+                <p className="text-[#52525B] mt-1 text-sm font-light">info@udaipurgateways.com</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm">
-              <div className="bg-[#F8F9FA] p-3.5 rounded-xl border border-[#E5E7EB] text-[#C5A059]">
-                <MapPin className="w-6 h-6" />
+            <div className="flex items-start gap-4 p-4 rounded-xs bg-white border border-[#E8E2D8] shadow-xs">
+              <div className="bg-[#FAF8F5] p-3 rounded-xs border border-[#E8E2D8] text-[#B8934E]">
+                <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold font-serif text-[#111827] text-lg">Company Details</h4>
-                <p className="text-[#4B5563] mt-1 leading-relaxed">
+                <h4 className="font-bold font-serif text-[#111827] text-base">Company Details</h4>
+                <p className="text-[#52525B] mt-1 leading-relaxed text-sm font-light">
                   Nothing Like Travel LLP<br />
-                  <span className="font-medium text-[#111827]">GSTIN:</span> 09AAZFN6228N1Z7<br />
+                  <span className="font-mono text-[#8F6E2E] font-medium">GSTIN: 09AAZFN6228N1Z7</span><br />
                   Village Bujhda, Tehsil Girwa,<br />
                   Kodiyat Road, Udaipur,<br />
                   Rajasthan 313031

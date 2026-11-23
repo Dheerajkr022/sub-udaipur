@@ -2,128 +2,161 @@
 
 import React from "react";
 import Image from "next/image";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight, Compass, Phone } from "lucide-react";
 
 const nearbyDestinations = [
   {
     name: "City Palace Udaipur",
+    distance: "12 km from resort",
+    description: "Centuries-old royal Mewar complex overlooking Lake Pichola with ornate courtyards and museums.",
     image: "/destinations/city-palace.jpg",
   },
   {
     name: "Lake Pichola",
+    distance: "11 km from resort",
+    description: "Historic freshwater lake featuring iconic boat rides, Jag Mandir island palace and sunset reflections.",
     image: "/destinations/lake-pichola.jpg",
   },
   {
     name: "Fateh Sagar Lake",
+    distance: "13 km from resort",
+    description: "Scenic artificial lake framed by hills, offering lakeside promenades, boating and Nehru Park island.",
     image: "/destinations/fateh-sagar.jpg",
   },
   {
     name: "Sajjangarh Palace",
+    distance: "9 km from resort",
+    description: "Monsoon palace perched atop Bansdara peak providing breathtaking 360-degree sunset panoramas.",
     image: "/destinations/sajjangarh.jpg",
   },
   {
     name: "Kumbhalgarh Fort",
+    distance: "Day excursion",
+    description: "Legendary Mewar stronghold renowned for the second longest continuous wall in the world.",
     image: "/destinations/kumbhalgarh.jpg",
   },
   {
     name: "Ranakpur Temple",
+    distance: "Scenic drive",
+    description: "Architectural masterpiece with 1,444 uniquely carved marble pillars nestled in the Aravalli woods.",
     image: "/destinations/ranakpur.jpg",
   },
 ];
 
 export function LocationSection() {
   return (
-    <section id="location" className="mb-24 scroll-mt-28 relative">
-      {/* Background Container */}
-      <div className="relative rounded-3xl overflow-hidden p-6 sm:p-10 border border-[#E5E7EB] shadow-lg bg-white">
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Eyebrow */}
-          <div className="flex items-center gap-2.5 mb-4">
-            <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.2em] text-[#C5A059] uppercase">
+    <section id="location" className="mb-20 sm:mb-28 scroll-mt-28">
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-12 pb-4 border-b border-[#E8E2D8]">
+        <div>
+          <div className="flex items-center gap-2.5 mb-2.5">
+            <span className="w-6 h-[1px] bg-[#B8934E]" />
+            <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
               LOCATION & NEARBY ATTRACTIONS
             </span>
-            <span className="w-8 h-[1px] bg-[#C5A059]/60"></span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
+            Explore <span className="text-[#B8934E] italic font-serif font-normal">Nearby Destinations</span>
+          </h2>
+          <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
+            Discover iconic heritage palaces, tranquil lakes and cultural landmarks across Udaipur.
+          </p>
+        </div>
+
+        <a
+          href="tel:+919279022649"
+          className="px-4 py-2 rounded-xs border border-[#B8934E] text-[#8F6E2E] hover:bg-[#0D2E24] hover:text-white hover:border-[#0D2E24] text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-all self-start md:self-end"
+        >
+          <Phone className="w-3.5 h-3.5 animate-phone-ring" />
+          <span>Sightseeing Guidance</span>
+        </a>
+      </div>
+
+      {/* Grid: Map & Attractions */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        {/* Left Column: Interactive Map Dossier */}
+        <div className="lg:col-span-5 bg-white border border-[#E8E2D8] rounded-xs overflow-hidden shadow-xs">
+          <div className="relative w-full h-64 sm:h-80 bg-[#FAF8F5]">
+            <iframe
+              src="https://maps.google.com/maps?q=The+Ananta+Udaipur,+Bujhda,+Rajasthan&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="The Ananta Udaipur Location Map"
+              className="w-full h-full grayscale-[25%] contrast-[1.05]"
+            />
           </div>
 
-          {/* Heading & Subtitle */}
-          <div className="mb-8 md:mb-10 text-left">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-              Explore <span className="text-[#C5A059] italic font-serif">Nearby Destinations</span>
-            </h2>
-            <p className="text-[13px] sm:text-[15px] text-[#6B7280] leading-relaxed mt-2.5 max-w-xl">
-              Discover iconic heritage palaces, tranquil lakes and cultural landmarks across Udaipur.
-            </p>
+          <div className="p-5 border-t border-[#E8E2D8]">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 rounded-xs bg-[#FAF8F5] border border-[#B8934E]/30 flex items-center justify-center text-[#B8934E] shrink-0 mt-0.5">
+                <MapPin className="w-4 h-4" />
+              </div>
+              <div>
+                <h4 className="font-serif font-bold text-sm sm:text-base text-[#111827]">
+                  The Ananta, Bujhda, Udaipur
+                </h4>
+                <p className="text-xs text-[#52525B] mt-1 leading-relaxed">
+                  Village Bujhda, Tehsil Girwa, Kodiyat Road, Udaipur, Rajasthan 313031
+                </p>
+                <div className="mt-3 pt-3 border-t border-[#E8E2D8]/60 flex items-center justify-between text-[11px] text-[#71717A]">
+                  <span>Approx. 30 km from Maharana Pratap Airport</span>
+                  <a
+                    href="https://maps.google.com/?q=The+Ananta+Udaipur"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#B8934E] font-medium hover:underline flex items-center gap-1"
+                  >
+                    <span>View Full Map</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
 
-          {/* Grid: Google Map on Left, 6 Attractions on Right */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            {/* Left: Google Map Card */}
-            <div className="lg:col-span-5 bg-[#F8F9FA] border border-[#E5E7EB] rounded-2xl overflow-hidden flex flex-col shadow-sm">
-              {/* Map Iframe */}
-              <div className="relative w-full h-56 sm:h-64 lg:h-72 bg-gray-100 overflow-hidden">
-                <iframe
-                  src="https://maps.google.com/maps?q=The+Ananta+Udaipur,+Bujhda,+Rajasthan&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="The Ananta Udaipur Location Map"
-                  className="w-full h-full"
+        {/* Right Column: 6 Nearby Destinations */}
+        <div id="nearby" className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {nearbyDestinations.map((dest, idx) => (
+            <div
+              key={idx}
+              className="group bg-white border border-[#E8E2D8] hover:border-[#B8934E]/70 rounded-xs overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
+            >
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#FAF8F5]">
+                <Image
+                  src={dest.image}
+                  alt={dest.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
-              {/* Map Card Footer */}
-              <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border-t border-gray-200">
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#C5A059]/40 flex items-center justify-center text-[#C5A059] shrink-0">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="text-[13px] sm:text-[14px] font-semibold text-[#111827] truncate">
-                      The Ananta, Bujhda, Udaipur
-                    </h4>
-                  </div>
-                </div>
-
-                <a
-                  href="https://maps.google.com/?q=The+Ananta+Udaipur"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-50 text-[#111827] text-[12px] font-medium flex items-center justify-center gap-1.5 transition-colors shrink-0 shadow-sm"
-                >
-                  <span>View on Google Maps</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#C5A059]" />
-                </a>
-              </div>
-            </div>
-
-            {/* Right: 6 Attractions (3x2 Grid) */}
-            <div id="nearby" className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-4 scroll-mt-28 md:scroll-mt-40">
-              {nearbyDestinations.map((dest, idx) => (
-                <div
-                  key={idx}
-                  className="group flex flex-col bg-white border border-[#E5E7EB] hover:border-[#C5A059]/60 rounded-2xl p-2.5 transition-all duration-300 shadow-sm hover:shadow-md"
-                >
-                  <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden border border-gray-100">
-                    <Image
-                      src={dest.image}
-                      alt={dest.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  </div>
-                  <span className="text-[12px] sm:text-[13px] font-semibold text-[#111827] group-hover:text-[#C5A059] transition-colors text-center mt-2.5 truncate block px-1">
-                    {dest.name}
+                <div className="absolute bottom-2.5 left-3 right-3 text-white">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#D4AF67] block">
+                    {dest.distance}
                   </span>
+                  <h4 className="font-serif font-bold text-sm sm:text-base leading-snug">
+                    {dest.name}
+                  </h4>
                 </div>
-              ))}
+              </div>
+
+              <div className="p-3.5 flex flex-col justify-between flex-grow">
+                <p className="text-xs text-[#52525B] leading-relaxed line-clamp-2">
+                  {dest.description}
+                </p>
+                <div className="mt-2 pt-2 border-t border-[#E8E2D8]/60 flex items-center justify-between text-[11px] text-[#8F6E2E] font-medium">
+                  <span>Explore Heritage</span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

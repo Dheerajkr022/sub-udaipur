@@ -7,10 +7,25 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { enquiryFormSchema } from "@/lib/validations/enquiry";
 import {
-  Loader2, CheckCircle2, AlertCircle, Calendar, BedDouble, Users,
-  User, Smile, Send, Clock, Headset, ShieldCheck,
-  ChevronDown, Plus, Minus, Building2, Mail, Phone,
-  ArrowRight
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
+  Calendar,
+  BedDouble,
+  User,
+  Smile,
+  Send,
+  Clock,
+  Headset,
+  ShieldCheck,
+  ChevronDown,
+  Plus,
+  Minus,
+  Building2,
+  Mail,
+  Phone,
+  ArrowRight,
+  Sparkles,
 } from "lucide-react";
 import { accommodations } from "@/components/sections/AccommodationSection";
 
@@ -140,20 +155,20 @@ function EnquiryFormContent({ sourcePage = "/", className, hideHeader = false }:
 
   if (submitStatus === "success") {
     return (
-      <div className={`bg-white border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 text-center max-w-xl mx-auto text-[#111827] shadow-xl ${className}`}>
-        <div className="w-14 h-14 rounded-full bg-[#F5F1E8] border border-[#C5A059]/30 flex items-center justify-center mx-auto mb-4 text-[#C5A059] shadow-sm">
-          <CheckCircle2 className="h-7 w-7 text-[#C5A059]" />
+      <div className={`bg-white border border-[#E8E2D8] rounded-xs p-6 sm:p-8 text-center max-w-xl mx-auto text-[#18181B] shadow-sm ${className}`}>
+        <div className="w-12 h-12 rounded-full bg-[#0D2E24] text-[#D4AF67] flex items-center justify-center mx-auto mb-4 border border-[#B8934E]/30">
+          <CheckCircle2 className="h-6 w-6 text-[#D4AF67]" />
         </div>
-        <h3 className="text-2xl sm:text-3xl font-serif text-[#111827] mb-2">Thank You!</h3>
-        <p className="text-[13px] sm:text-[14px] text-[#4B5563] leading-relaxed mb-5">
+        <h3 className="text-2xl font-serif font-bold text-[#111827] mb-2">Enquiry Received</h3>
+        <p className="text-xs sm:text-sm text-[#52525B] leading-relaxed mb-6 font-light">
           Your stay details request has been received.<br />
           Our concierge team will get in touch with you shortly with available options and rates.
         </p>
         <button
           onClick={() => setSubmitStatus("idle")}
-          className="px-6 py-3 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-white text-xs font-bold tracking-wider hover:opacity-90 transition-all cursor-pointer shadow-md"
+          className="px-6 py-2.5 rounded-xs bg-[#0D2E24] hover:bg-[#185241] text-white text-xs font-mono uppercase tracking-widest transition-colors cursor-pointer"
         >
-          SUBMIT ANOTHER REQUEST
+          Submit Another Request
         </button>
       </div>
     );
@@ -163,386 +178,419 @@ function EnquiryFormContent({ sourcePage = "/", className, hideHeader = false }:
 
   return (
     <div className={`w-full max-w-xl mx-auto ${className}`}>
-      {/* Eyebrow & Header Section */}
-      {!hideHeader && (
-        <div className="mb-2 sm:mb-4 text-left">
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.25em] text-[#C5A059] uppercase">
-              PLAN YOUR STAY
+      {/* Outer Luxury Card */}
+      <div className="bg-white border border-[#E8E2D8] rounded-xs shadow-sm overflow-hidden">
+        {/* Card Luxury Header */}
+        <div className="bg-[#0D2E24] p-4 sm:p-5 text-white border-b border-[#185241]">
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#D4AF67] flex items-center gap-1.5">
+              <Sparkles className="w-2.5 h-2.5" />
+              CONCIERGE DESK
             </span>
-            <span className="w-6 sm:w-8 h-[1px] bg-[#C5A059]/60"></span>
+            <span className="text-[10px] font-mono text-white/60">
+              The Ananta Udaipur
+            </span>
           </div>
-          <h2 className="text-xl sm:text-3xl font-serif text-[#111827] tracking-tight">
-            Get Stay <span className="text-[#C5A059] italic font-serif">Details</span>
+          <h2 className="text-lg sm:text-xl font-serif font-bold text-white">
+            Plan Your Stay & Inclusions
           </h2>
-          <p className="hidden sm:block text-[12px] text-[#6B7280] leading-relaxed mt-1 max-w-md">
-            Share your travel dates and preferences. Our team will assist you with the best options and enquiry support.
+          <p className="text-xs text-white/70 mt-1 font-light leading-relaxed">
+            Submit your preferences for personalised villa options, seasonal rates and amenities guidance.
           </p>
         </div>
-      )}
 
-      {/* Main Glassmorphic Card */}
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-white border border-[#E5E7EB] rounded-2xl sm:rounded-3xl p-3 sm:p-5 shadow-xl space-y-2 sm:space-y-3 relative overflow-hidden"
-      >
-        {submitStatus === "error" && (
-          <div className="p-2.5 bg-red-50 border border-red-200 rounded-xl flex items-start gap-2">
-            <AlertCircle className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />
-            <p className="text-[11px] text-red-700 font-medium">{errorMessage}</p>
-          </div>
-        )}
-
-        {/* 1. Stay Dates (Check-in & Check-out) */}
-        <div className="grid grid-cols-2 gap-2">
-          {/* Check-in Date */}
-          <div className="relative">
-            <div
-              onClick={(e) => {
-                try {
-                  (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
-                } catch { }
-              }}
-              className={`relative bg-[#F8F9FA] hover:bg-gray-100/80 border ${errors.checkInDate ? 'border-red-400' : 'border-[#E5E7EB] hover:border-gray-300'} rounded-xl p-2 sm:p-2.5 flex items-center justify-between transition-all cursor-pointer group`}
-            >
-              <div className="flex items-center gap-1.5 min-w-0 pointer-events-none">
-                <Calendar className="w-3.5 h-3.5 text-gray-400 shrink-0 group-hover:text-[#C5A059] transition-colors" />
-                <div className="min-w-0">
-                  <div className="text-[9px] sm:text-[10px] font-medium text-gray-500 leading-tight">
-                    Check-in Date <span className="text-red-500">*</span>
-                  </div>
-                  <div className="text-[11px] sm:text-[12px] font-semibold text-[#111827] truncate mt-0.5">
-                    {formatDisplayDate(checkInDate)}
-                  </div>
-                </div>
-              </div>
-              <ChevronDown className="w-3 h-3 text-gray-400 shrink-0 pointer-events-none ml-1" />
-              <input
-                type="date"
-                min={today}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                {...register("checkInDate")}
-              />
+        {/* Main Form Fields */}
+        <form onSubmit={handleSubmit(onSubmit)} className="p-4 sm:p-5 space-y-3 bg-[#FAF8F5]">
+          {submitStatus === "error" && (
+            <div className="p-2.5 bg-red-50 border border-red-200 rounded-xs flex items-start gap-2">
+              <AlertCircle className="h-4 w-4 text-red-600 shrink-0 mt-0.5" />
+              <p className="text-xs text-red-700 font-medium">{errorMessage}</p>
             </div>
-            {errors.checkInDate && (
-              <p className="text-[9px] text-red-500 mt-0.5 pl-1">{errors.checkInDate.message}</p>
-            )}
-          </div>
-
-          {/* Check-out Date */}
-          <div className="relative">
-            <div
-              onClick={(e) => {
-                try {
-                  (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
-                } catch { }
-              }}
-              className={`relative bg-[#F8F9FA] hover:bg-gray-100/80 border ${errors.checkOutDate ? 'border-red-400' : 'border-[#E5E7EB] hover:border-gray-300'} rounded-xl p-2 sm:p-2.5 flex items-center justify-between transition-all cursor-pointer group`}
-            >
-              <div className="flex items-center gap-1.5 min-w-0 pointer-events-none">
-                <Calendar className="w-3.5 h-3.5 text-gray-400 shrink-0 group-hover:text-[#C5A059] transition-colors" />
-                <div className="min-w-0">
-                  <div className="text-[9px] sm:text-[10px] font-medium text-gray-500 leading-tight">
-                    Check-out Date <span className="text-red-500">*</span>
-                  </div>
-                  <div className="text-[11px] sm:text-[12px] font-semibold text-[#111827] truncate mt-0.5">
-                    {formatDisplayDate(checkOutDate)}
-                  </div>
-                </div>
-              </div>
-              <ChevronDown className="w-3 h-3 text-gray-400 shrink-0 pointer-events-none ml-1" />
-              <input
-                type="date"
-                min={checkInDate || today}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                {...register("checkOutDate")}
-              />
-            </div>
-            {errors.checkOutDate && (
-              <p className="text-[9px] text-red-500 mt-0.5 pl-1">{errors.checkOutDate.message}</p>
-            )}
-          </div>
-        </div>
-
-        {/* 2. Room Preference */}
-        <div className="relative">
-          <div className={`relative bg-[#F8F9FA] hover:bg-gray-100/80 border ${errors.accommodationPreference ? 'border-red-400' : 'border-[#E5E7EB] hover:border-gray-300'} rounded-xl p-2 sm:p-2.5 flex items-center justify-between transition-all cursor-pointer group`}>
-            <div className="flex items-center gap-2 min-w-0 pointer-events-none">
-              <Building2 className="w-3.5 h-3.5 text-gray-400 shrink-0 group-hover:text-[#C5A059] transition-colors" />
-              <div className="min-w-0">
-                <div className="text-[9px] sm:text-[10px] font-medium text-gray-500 leading-tight">
-                  Room Preference <span className="text-red-500">*</span>
-                </div>
-                <div className="text-[11px] sm:text-[12px] font-semibold text-[#111827] truncate mt-0.5">
-                  {accommodationPreference || "Select Room Type"}
-                </div>
-              </div>
-            </div>
-            <ChevronDown className="w-3 h-3 text-gray-400 shrink-0 pointer-events-none ml-1" />
-            <select
-              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer bg-white text-[#111827]"
-              {...register("accommodationPreference")}
-            >
-              <option value="" disabled>Select Room Type</option>
-              {accommodations.map((a) => (
-                <option key={a.name} value={a.name} className="bg-white text-[#111827]">
-                  {a.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          {errors.accommodationPreference && (
-            <p className="text-[9px] text-red-500 mt-0.5 pl-1">{errors.accommodationPreference.message}</p>
           )}
-        </div>
 
-        {/* 3. Guests & Rooms */}
-        <div className="bg-[#F8F9FA] border border-[#E5E7EB] rounded-xl grid grid-cols-3 divide-x divide-gray-200 p-1">
-          {/* Adults */}
-          <div className="flex flex-col items-center justify-center px-1 py-0.5">
-            <div className="flex items-center gap-1 mb-0.5">
-              <User className="w-3 h-3 text-gray-400" />
-              <span className="text-[10px] font-medium text-gray-600">
-                Adults <span className="text-red-500">*</span>
-              </span>
-            </div>
-            <div className="flex items-center justify-center gap-1.5 w-full">
-              <button
-                type="button"
-                onClick={() => setValue("adults", Math.max(1, adults - 1))}
-                className="w-5 h-5 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Decrease adults"
+          {/* 1. Stay Dates (Check-in & Check-out) */}
+          <div className="grid grid-cols-2 gap-2">
+            {/* Check-in */}
+            <div className="relative">
+              <div
+                onClick={(e) => {
+                  try {
+                    (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
+                  } catch {}
+                }}
+                className={`relative bg-white border ${
+                  errors.checkInDate ? "border-red-400" : "border-[#E8E2D8] hover:border-[#B8934E]/60"
+                } rounded-xs p-2.5 flex items-center justify-between transition-colors cursor-pointer group`}
               >
-                <Minus className="w-2.5 h-2.5" />
-              </button>
-              <span className="w-3.5 text-center font-bold text-[#111827] text-[12px]">
-                {adults}
-              </span>
-              <button
-                type="button"
-                onClick={() => setValue("adults", Math.min(50, adults + 1))}
-                className="w-5 h-5 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-white flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Increase adults"
-              >
-                <Plus className="w-2.5 h-2.5" />
-              </button>
-            </div>
-          </div>
-
-          {/* Children */}
-          <div className="flex flex-col items-center justify-center px-1 py-0.5">
-            <div className="flex items-center gap-1 mb-0.5">
-              <Smile className="w-3 h-3 text-gray-400" />
-              <span className="text-[10px] font-medium text-gray-600">Children</span>
-            </div>
-            <div className="flex items-center justify-center gap-1.5 w-full">
-              <button
-                type="button"
-                onClick={() => setValue("children", Math.max(0, children - 1))}
-                className="w-5 h-5 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Decrease children"
-              >
-                <Minus className="w-2.5 h-2.5" />
-              </button>
-              <span className="w-3.5 text-center font-bold text-[#111827] text-[12px]">
-                {children}
-              </span>
-              <button
-                type="button"
-                onClick={() => setValue("children", Math.min(50, children + 1))}
-                className="w-5 h-5 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-white flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Increase children"
-              >
-                <Plus className="w-2.5 h-2.5" />
-              </button>
-            </div>
-          </div>
-
-          {/* Rooms */}
-          <div className="flex flex-col items-center justify-center px-1 py-0.5">
-            <div className="flex items-center gap-1 mb-0.5">
-              <BedDouble className="w-3 h-3 text-gray-400" />
-              <span className="text-[10px] font-medium text-gray-600">
-                Rooms <span className="text-red-500">*</span>
-              </span>
-            </div>
-            <div className="flex items-center justify-center gap-1.5 w-full">
-              <button
-                type="button"
-                onClick={() => setValue("rooms", Math.max(1, rooms - 1))}
-                className="w-5 h-5 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Decrease rooms"
-              >
-                <Minus className="w-2.5 h-2.5" />
-              </button>
-              <span className="w-3.5 text-center font-bold text-[#111827] text-[12px]">
-                {rooms}
-              </span>
-              <button
-                type="button"
-                onClick={() => setValue("rooms", Math.min(50, rooms + 1))}
-                className="w-5 h-5 rounded-full bg-[#C5A059] hover:bg-[#B38F48] text-white flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Increase rooms"
-              >
-                <Plus className="w-2.5 h-2.5" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* 4. Full Name & Mobile Number (Side-by-side) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          {/* Full Name */}
-          <div>
-            <div className={`relative bg-[#F8F9FA] hover:bg-gray-100/80 border ${errors.fullName ? 'border-red-400' : 'border-[#E5E7EB] focus-within:border-[#C5A059]'} rounded-xl p-2 sm:p-2.5 flex items-center gap-2 transition-all`}>
-              <User className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-              <div className="flex-1 min-w-0">
-                <div className="text-[9px] sm:text-[10px] font-medium text-gray-500 leading-tight">
-                  Full Name <span className="text-red-500">*</span>
+                <div className="flex items-center gap-2 min-w-0 pointer-events-none">
+                  <Calendar className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+                  <div className="min-w-0">
+                    <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
+                      Check-in <span className="text-red-500">*</span>
+                    </div>
+                    <div className="text-xs font-semibold text-[#111827] truncate mt-0.5">
+                      {formatDisplayDate(checkInDate)}
+                    </div>
+                  </div>
                 </div>
+                <ChevronDown className="w-3 h-3 text-gray-400 shrink-0 pointer-events-none ml-1" />
                 <input
-                  type="text"
-                  placeholder="Enter name"
-                  className="w-full bg-transparent border-none text-[12px] text-[#111827] placeholder:text-gray-400 focus:outline-none mt-0.5"
-                  {...register("fullName")}
+                  type="date"
+                  min={today}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  {...register("checkInDate")}
                 />
               </div>
+              {errors.checkInDate && (
+                <p className="text-[10px] text-red-600 mt-0.5 pl-1">{errors.checkInDate.message}</p>
+              )}
             </div>
-            {errors.fullName && (
-              <p className="text-[9px] text-red-500 mt-0.5 pl-1">{errors.fullName.message}</p>
+
+            {/* Check-out */}
+            <div className="relative">
+              <div
+                onClick={(e) => {
+                  try {
+                    (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
+                  } catch {}
+                }}
+                className={`relative bg-white border ${
+                  errors.checkOutDate ? "border-red-400" : "border-[#E8E2D8] hover:border-[#B8934E]/60"
+                } rounded-xs p-2.5 flex items-center justify-between transition-colors cursor-pointer group`}
+              >
+                <div className="flex items-center gap-2 min-w-0 pointer-events-none">
+                  <Calendar className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+                  <div className="min-w-0">
+                    <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
+                      Check-out <span className="text-red-500">*</span>
+                    </div>
+                    <div className="text-xs font-semibold text-[#111827] truncate mt-0.5">
+                      {formatDisplayDate(checkOutDate)}
+                    </div>
+                  </div>
+                </div>
+                <ChevronDown className="w-3 h-3 text-gray-400 shrink-0 pointer-events-none ml-1" />
+                <input
+                  type="date"
+                  min={checkInDate || today}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  {...register("checkOutDate")}
+                />
+              </div>
+              {errors.checkOutDate && (
+                <p className="text-[10px] text-red-600 mt-0.5 pl-1">{errors.checkOutDate.message}</p>
+              )}
+            </div>
+          </div>
+
+          {/* 2. Room Preference */}
+          <div className="relative">
+            <div
+              className={`relative bg-white border ${
+                errors.accommodationPreference
+                  ? "border-red-400"
+                  : "border-[#E8E2D8] hover:border-[#B8934E]/60"
+              } rounded-xs p-2.5 flex items-center justify-between transition-colors cursor-pointer group`}
+            >
+              <div className="flex items-center gap-2 min-w-0 pointer-events-none">
+                <Building2 className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+                <div className="min-w-0">
+                  <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
+                    Residence Preference <span className="text-red-500">*</span>
+                  </div>
+                  <div className="text-xs font-semibold text-[#111827] truncate mt-0.5">
+                    {accommodationPreference || "Select Villa or Cottage"}
+                  </div>
+                </div>
+              </div>
+              <ChevronDown className="w-3 h-3 text-gray-400 shrink-0 pointer-events-none ml-1" />
+              <select
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer bg-white text-[#111827]"
+                {...register("accommodationPreference")}
+              >
+                <option value="" disabled>
+                  Select Villa or Cottage
+                </option>
+                {accommodations.map((a) => (
+                  <option key={a.name} value={a.name} className="bg-white text-[#111827]">
+                    {a.name} ({a.badge})
+                  </option>
+                ))}
+              </select>
+            </div>
+            {errors.accommodationPreference && (
+              <p className="text-[10px] text-red-600 mt-0.5 pl-1">
+                {errors.accommodationPreference.message}
+              </p>
             )}
           </div>
 
-          {/* Mobile Number */}
-          <div>
-            <div className={`relative bg-[#F8F9FA] hover:bg-gray-100/80 border ${errors.mobile ? 'border-red-400' : 'border-[#E5E7EB] focus-within:border-[#C5A059]'} rounded-xl p-2 sm:p-2.5 flex items-center gap-2 transition-all`}>
-              <Phone className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-              <div className="flex-1 min-w-0">
-                <div className="text-[9px] sm:text-[10px] font-medium text-gray-500 leading-tight">
-                  Mobile Number <span className="text-red-500">*</span>
-                </div>
-                <div className="flex items-center gap-1.5 mt-0.5">
-                  <span className="text-[10px] font-bold text-[#C5A059] shrink-0 border-r border-gray-300 pr-1.5">+91</span>
+          {/* 3. Guests & Rooms */}
+          <div className="bg-white border border-[#E8E2D8] rounded-xs grid grid-cols-3 divide-x divide-[#E8E2D8] p-1.5">
+            {/* Adults */}
+            <div className="flex flex-col items-center justify-center p-1">
+              <div className="flex items-center gap-1 mb-1">
+                <User className="w-3 h-3 text-[#B8934E]" />
+                <span className="text-[10px] font-mono uppercase text-[#71717A]">
+                  Adults <span className="text-red-500">*</span>
+                </span>
+              </div>
+              <div className="flex items-center justify-center gap-2 w-full">
+                <button
+                  type="button"
+                  onClick={() => setValue("adults", Math.max(1, adults - 1))}
+                  className="w-5 h-5 rounded-xs bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E] text-[#111827] flex items-center justify-center cursor-pointer text-xs"
+                  aria-label="Decrease adults"
+                >
+                  <Minus className="w-2.5 h-2.5" />
+                </button>
+                <span className="w-4 text-center font-bold text-xs text-[#111827]">
+                  {adults}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setValue("adults", Math.min(50, adults + 1))}
+                  className="w-5 h-5 rounded-xs bg-[#0D2E24] text-white flex items-center justify-center cursor-pointer text-xs"
+                  aria-label="Increase adults"
+                >
+                  <Plus className="w-2.5 h-2.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Children */}
+            <div className="flex flex-col items-center justify-center p-1">
+              <div className="flex items-center gap-1 mb-1">
+                <Smile className="w-3 h-3 text-[#B8934E]" />
+                <span className="text-[10px] font-mono uppercase text-[#71717A]">Children</span>
+              </div>
+              <div className="flex items-center justify-center gap-2 w-full">
+                <button
+                  type="button"
+                  onClick={() => setValue("children", Math.max(0, children - 1))}
+                  className="w-5 h-5 rounded-xs bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E] text-[#111827] flex items-center justify-center cursor-pointer text-xs"
+                  aria-label="Decrease children"
+                >
+                  <Minus className="w-2.5 h-2.5" />
+                </button>
+                <span className="w-4 text-center font-bold text-xs text-[#111827]">
+                  {children}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setValue("children", Math.min(50, children + 1))}
+                  className="w-5 h-5 rounded-xs bg-[#0D2E24] text-white flex items-center justify-center cursor-pointer text-xs"
+                  aria-label="Increase children"
+                >
+                  <Plus className="w-2.5 h-2.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Rooms */}
+            <div className="flex flex-col items-center justify-center p-1">
+              <div className="flex items-center gap-1 mb-1">
+                <BedDouble className="w-3 h-3 text-[#B8934E]" />
+                <span className="text-[10px] font-mono uppercase text-[#71717A]">
+                  Rooms <span className="text-red-500">*</span>
+                </span>
+              </div>
+              <div className="flex items-center justify-center gap-2 w-full">
+                <button
+                  type="button"
+                  onClick={() => setValue("rooms", Math.max(1, rooms - 1))}
+                  className="w-5 h-5 rounded-xs bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E] text-[#111827] flex items-center justify-center cursor-pointer text-xs"
+                  aria-label="Decrease rooms"
+                >
+                  <Minus className="w-2.5 h-2.5" />
+                </button>
+                <span className="w-4 text-center font-bold text-xs text-[#111827]">
+                  {rooms}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setValue("rooms", Math.min(50, rooms + 1))}
+                  className="w-5 h-5 rounded-xs bg-[#0D2E24] text-white flex items-center justify-center cursor-pointer text-xs"
+                  aria-label="Increase rooms"
+                >
+                  <Plus className="w-2.5 h-2.5" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* 4. Full Name & Mobile Number */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div>
+              <div
+                className={`relative bg-white border ${
+                  errors.fullName ? "border-red-400" : "border-[#E8E2D8] focus-within:border-[#B8934E]"
+                } rounded-xs p-2 flex items-center gap-2`}
+              >
+                <User className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
+                    Full Name <span className="text-red-500">*</span>
+                  </div>
                   <input
-                    type="tel"
-                    placeholder="10-digit number"
-                    className="w-full bg-transparent border-none text-[12px] text-[#111827] placeholder:text-gray-400 focus:outline-none"
-                    {...register("mobile")}
+                    type="text"
+                    placeholder="Guest name"
+                    className="w-full bg-transparent border-none text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none mt-0.5"
+                    {...register("fullName")}
                   />
                 </div>
               </div>
+              {errors.fullName && (
+                <p className="text-[10px] text-red-600 mt-0.5 pl-1">{errors.fullName.message}</p>
+              )}
             </div>
-            {errors.mobile && (
-              <p className="text-[9px] text-red-500 mt-0.5 pl-1">{errors.mobile.message}</p>
-            )}
-          </div>
-        </div>
 
-        {/* 5. Email Address */}
-        <div>
-          <div className={`relative bg-[#F8F9FA] hover:bg-gray-100/80 border ${errors.email ? 'border-red-400' : 'border-[#E5E7EB] focus-within:border-[#C5A059]'} rounded-xl p-2 sm:p-2.5 flex items-center gap-2 transition-all`}>
-            <Mail className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-            <div className="flex-1 min-w-0">
-              <div className="text-[9px] sm:text-[10px] font-medium text-gray-500 leading-tight">
-                Email Address <span className="text-red-500">*</span>
+            <div>
+              <div
+                className={`relative bg-white border ${
+                  errors.mobile ? "border-red-400" : "border-[#E8E2D8] focus-within:border-[#B8934E]"
+                } rounded-xs p-2 flex items-center gap-2`}
+              >
+                <Phone className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
+                    Mobile Number <span className="text-red-500">*</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 mt-0.5">
+                    <span className="text-[10px] font-mono font-bold text-[#B8934E] border-r border-gray-200 pr-1.5">
+                      +91
+                    </span>
+                    <input
+                      type="tel"
+                      placeholder="10-digit mobile"
+                      className="w-full bg-transparent border-none text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none"
+                      {...register("mobile")}
+                    />
+                  </div>
+                </div>
               </div>
-              <input
-                type="email"
-                placeholder="Enter email address"
-                className="w-full bg-transparent border-none text-[12px] text-[#111827] placeholder:text-gray-400 focus:outline-none mt-0.5"
-                {...register("email")}
-              />
+              {errors.mobile && (
+                <p className="text-[10px] text-red-600 mt-0.5 pl-1">{errors.mobile.message}</p>
+              )}
             </div>
           </div>
-          {errors.email && (
-            <p className="text-[9px] text-red-500 mt-0.5 pl-1">{errors.email.message}</p>
-          )}
-        </div>
 
-        {/* 6. Optional Special Request Toggle */}
-        <div>
-          {!showNotes ? (
-            <button
-              type="button"
-              onClick={() => setShowNotes(true)}
-              className="text-[10px] sm:text-[11px] text-[#C5A059] hover:text-[#B38F48] hover:underline flex items-center gap-1 cursor-pointer py-0.5 font-medium"
+          {/* 5. Email Address */}
+          <div>
+            <div
+              className={`relative bg-white border ${
+                errors.email ? "border-red-400" : "border-[#E8E2D8] focus-within:border-[#B8934E]"
+              } rounded-xs p-2 flex items-center gap-2`}
             >
-              <Plus className="w-3 h-3" /> Add special request or meal plan (optional)
-            </button>
-          ) : (
-            <div className="bg-[#F8F9FA] border border-[#E5E7EB] focus-within:border-[#C5A059] rounded-xl p-2 transition-all">
-              <textarea
-                rows={2}
-                maxLength={300}
-                placeholder="Special requests, meal plans, or occasions..."
-                className="w-full bg-transparent border-none text-[12px] text-[#111827] placeholder:text-gray-400 focus:outline-none resize-none leading-relaxed"
-                {...register("requirement")}
-              />
+              <Mail className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+              <div className="flex-1 min-w-0">
+                <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
+                  Email Address <span className="text-red-500">*</span>
+                </div>
+                <input
+                  type="email"
+                  placeholder="contact@example.com"
+                  className="w-full bg-transparent border-none text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none mt-0.5"
+                  {...register("email")}
+                />
+              </div>
             </div>
-          )}
-        </div>
-
-        {/* 7. Action CTA Button */}
-        <div className="pt-0.5">
-          <button
-            type="submit"
-            disabled={submitStatus === "submitting"}
-            className="w-full py-2.5 sm:py-3.5 px-4 rounded-full bg-[#C5A059] hover:bg-[#B38F48] disabled:opacity-50 text-white font-bold text-[12px] sm:text-[14px] tracking-wider flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer group"
-          >
-            {submitStatus === "submitting" ? (
-              <Loader2 className="h-4 w-4 animate-spin text-white" />
-            ) : (
-              <Send className="w-3.5 h-3.5 -rotate-45 group-hover:translate-x-0.5 transition-transform" />
+            {errors.email && (
+              <p className="text-[10px] text-red-600 mt-0.5 pl-1">{errors.email.message}</p>
             )}
-            <span>{submitStatus === "submitting" ? "SENDING DETAILS..." : "Check availability"}</span>
-            {submitStatus !== "submitting" && <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />}
-          </button>
-        </div>
+          </div>
 
-        {/* Footnote */}
-        <div className="flex items-center justify-center gap-1.5 pt-0.5 text-[9px] sm:text-[11px] text-gray-500 text-center">
-          <div className="w-3.5 h-3.5 rounded-full bg-[#C5A059] text-white flex items-center justify-center text-[9px] font-bold shrink-0">
-            i
+          {/* 6. Special Request */}
+          <div>
+            {!showNotes ? (
+              <button
+                type="button"
+                onClick={() => setShowNotes(true)}
+                className="text-xs text-[#B8934E] hover:underline flex items-center gap-1 cursor-pointer py-1 font-mono tracking-wider uppercase"
+              >
+                <Plus className="w-3 h-3" /> Add special request or meal plan (optional)
+              </button>
+            ) : (
+              <div className="bg-white border border-[#E8E2D8] focus-within:border-[#B8934E] rounded-xs p-2">
+                <textarea
+                  rows={2}
+                  maxLength={300}
+                  placeholder="Special requests, anniversary celebrations, meal plans..."
+                  className="w-full bg-transparent border-none text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none resize-none leading-relaxed"
+                  {...register("requirement")}
+                />
+              </div>
+            )}
           </div>
-          <span>Request for details • Availability & rates confirmed on enquiry.</span>
-        </div>
 
-        {/* 3 Trust Badges (Desktop Only) */}
-        <div className="hidden sm:grid grid-cols-3 gap-2 pt-3 border-t border-gray-100">
-          <div className="flex items-center gap-1.5">
-            <Clock className="w-4 h-4 text-[#C5A059] shrink-0" />
-            <div className="text-left min-w-0">
-              <div className="text-[11px] font-semibold text-[#111827] leading-tight truncate">Quick Response</div>
-              <div className="text-[9px] text-[#6B7280] truncate">Within 24 Hours</div>
+          {/* 7. Action CTA Button */}
+          <div className="pt-2">
+            <button
+              type="submit"
+              disabled={submitStatus === "submitting"}
+              className="w-full py-3.5 px-5 rounded-xs bg-[#0D2E24] hover:bg-[#185241] disabled:opacity-50 text-white font-medium text-xs sm:text-[13px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 transition-all duration-300 shadow-xs cursor-pointer group"
+            >
+              {submitStatus === "submitting" ? (
+                <Loader2 className="h-4 w-4 animate-spin text-[#D4AF67]" />
+              ) : (
+                <Send className="w-3.5 h-3.5 text-[#D4AF67] group-hover:translate-x-0.5 transition-transform" />
+              )}
+              <span>{submitStatus === "submitting" ? "TRANSMITTING ENQUIRY..." : "REQUEST STAY DETAILS"}</span>
+              {submitStatus !== "submitting" && (
+                <ArrowRight className="w-3.5 h-3.5 text-[#D4AF67] group-hover:translate-x-1 transition-transform" />
+              )}
+            </button>
+          </div>
+
+          {/* Footnote */}
+          <div className="flex items-center justify-center gap-1.5 pt-1 text-[10px] text-[#71717A] text-center">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B8934E]" />
+            <span>Independent travel assistance • Inclusions & availability confirmed on enquiry</span>
+          </div>
+
+          {/* 3 Trust Badges */}
+          <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#E8E2D8]">
+            <div className="flex items-center gap-2">
+              <Clock className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+              <div className="text-left min-w-0">
+                <div className="text-[10px] font-bold text-[#111827] truncate">Quick Response</div>
+                <div className="text-[9px] text-[#71717A] truncate">Within 24 Hours</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <Headset className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+              <div className="text-left min-w-0">
+                <div className="text-[10px] font-bold text-[#111827] truncate">Concierge Care</div>
+                <div className="text-[9px] text-[#71717A] truncate">Dedicated Support</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
+              <div className="text-left min-w-0">
+                <div className="text-[10px] font-bold text-[#111827] truncate">Secure & Private</div>
+                <div className="text-[9px] text-[#71717A] truncate">Your data is safe</div>
+              </div>
             </div>
           </div>
-          <div className="flex items-center gap-1.5">
-            <Headset className="w-4 h-4 text-[#C5A059] shrink-0" />
-            <div className="text-left min-w-0">
-              <div className="text-[11px] font-semibold text-[#111827] leading-tight truncate">Personal Concierge</div>
-              <div className="text-[9px] text-[#6B7280] truncate">Dedicated Support</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
-            <div className="text-left min-w-0">
-              <div className="text-[11px] font-semibold text-[#111827] leading-tight truncate">Secure & Private</div>
-              <div className="text-[9px] text-[#6B7280] truncate">Your data is safe</div>
-            </div>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }
 
 export function EnquiryForm(props: EnquiryFormProps) {
   return (
-    <Suspense fallback={
-      <div className={`bg-white border border-[#E5E7EB] rounded-[28px] p-8 max-w-xl mx-auto w-full min-h-[400px] flex items-center justify-center shadow-lg ${props.className || ''}`}>
-        <Loader2 className="w-10 h-10 animate-spin text-[#C5A059]" />
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div
+          className={`bg-white border border-[#E8E2D8] rounded-xs p-8 max-w-xl mx-auto w-full min-h-[400px] flex items-center justify-center shadow-xs ${
+            props.className || ""
+          }`}
+        >
+          <Loader2 className="w-8 h-8 animate-spin text-[#B8934E]" />
+        </div>
+      }
+    >
       <EnquiryFormContent {...props} />
     </Suspense>
   );

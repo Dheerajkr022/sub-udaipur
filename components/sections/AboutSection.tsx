@@ -1,30 +1,35 @@
 import React from "react";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ShieldCheck, Info } from "lucide-react";
 
 export function AboutSection() {
   return (
-    <section id="about" className="mb-20 scroll-mt-32 md:scroll-mt-40 bg-white border border-[#E5E7EB] rounded-3xl p-6 md:p-10 shadow-lg">
-      <SectionHeading title="Property Information" />
-      <div className="max-w-4xl text-[#4B5563] space-y-6 text-base md:text-lg leading-relaxed">
-        <div>
-          <p className="mb-4">
-            The Ananta Udaipur is a sprawling hillside sanctuary nestled against the scenic backdrop of the Aravalli Hills in Rajasthan&apos;s historic City of Lakes. Designed to harmonize with nature, the retreat features standalone and clustered contemporary villas with expansive balconies, signature open-to-sky showers, and lush landscaped surroundings.
-          </p>
-          <p className="mb-4">
-            This platform is dedicated to providing comprehensive property discovery, room category overviews, resort amenities information, and travel enquiry assistance for independent travellers exploring Udaipur.
-          </p>
-        </div>
+    <section id="about" className="mb-20 sm:mb-28 scroll-mt-28">
+      <div className="bg-white border border-[#E8E2D8] rounded-xs p-6 sm:p-10 shadow-xs relative overflow-hidden">
+        <div className="max-w-3xl">
+          {/* Eyebrow */}
+          <div className="flex items-center gap-2.5 mb-3">
+            <span className="w-6 h-[1px] bg-[#B8934E]" />
+            <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
+              PLATFORM INFORMATION & MISSION
+            </span>
+          </div>
 
-        <div>
-          <h3 className="text-xl font-bold font-serif text-[#111827] mb-3 mt-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#111827] tracking-tight mb-4">
             Independent Information & Enquiry Service
-          </h3>
-          <p className="mb-4">
-            Udaipur Gateways is operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7), an independent travel discovery and enquiry platform. We provide curated hotel overviews, accommodation details, and local destination insights. We are not the owner, operator, or official representative of The Ananta Udaipur unless specifically stated.
-          </p>
-          <p className="hidden md:block mb-4 text-sm font-medium text-[#374151] p-5 bg-[#FAF8F5] rounded-2xl border-l-4 border-[#C5A059] border-y border-r border-[#E5E7EB] shadow-sm">
-            <strong className="text-[#A38038]">Enquiry Notice:</strong> Submitting an enquiry does not confirm a booking. Availability, seasonal rates, stay inclusions, and final reservations must be confirmed directly with the property.
-          </p>
+          </h2>
+
+          <div className="text-sm text-[#52525B] space-y-4 leading-relaxed font-light">
+            <p>
+              Udaipur Gateways is operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7), an independent travel discovery and enquiry platform. We provide curated hotel overviews, accommodation details, and local destination insights. We are not the owner, operator, or official representative of The Ananta Udaipur unless specifically stated.
+            </p>
+          </div>
+
+          <div className="mt-6 p-4 sm:p-5 bg-[#FAF8F5] border-l-2 border-[#B8934E] border-y border-r border-[#E8E2D8] rounded-xs flex items-start gap-3 text-xs sm:text-sm text-[#3F3F46]">
+            <Info className="w-4 h-4 text-[#B8934E] shrink-0 mt-0.5" />
+            <p className="leading-relaxed m-0">
+              <strong className="text-[#111827] font-semibold">Enquiry Notice:</strong> Submitting an enquiry does not confirm a booking. Availability, seasonal rates, stay inclusions, and final reservations must be confirmed directly with the property.
+            </p>
+          </div>
         </div>
       </div>
     </section>

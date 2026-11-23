@@ -2,13 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { 
-  BedDouble, 
-  Utensils, 
-  Flower2, 
-  Dumbbell, 
-  Mountain 
-} from "lucide-react";
+import { BedDouble, Utensils, Flower2, Dumbbell, Mountain, Sparkles, Smile } from "lucide-react";
 
 function SwimmerIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -21,25 +15,12 @@ function SwimmerIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
-function GolfIcon({ className = "w-5 h-5" }: { className?: string }) {
+function LawnIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M5 21h14" />
-      <path d="M8 21V4" />
-      <path d="M8 4l8 4-8 4" />
-      <circle cx="15" cy="18" r="1.5" />
-    </svg>
-  );
-}
-
-function TennisIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="9.5" cy="9.5" r="5.5" />
-      <path d="M13.5 13.5L19 19" />
-      <path d="M7 7l5 5" />
-      <path d="M12 7l-5 5" />
-      <circle cx="17" cy="8" r="1.5" />
+      <path d="M12 2L2 7l10 5 10-5-10-5z" />
+      <path d="M2 17l10 5 10-5" />
+      <path d="M2 12l10 5 10-5" />
     </svg>
   );
 }
@@ -47,112 +28,137 @@ function TennisIcon({ className = "w-5 h-5" }: { className?: string }) {
 const amenitiesList = [
   {
     title: "Infinity Swimming Pool",
+    category: "Aquatics & Leisure",
     image: "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg",
     icon: SwimmerIcon,
     href: "#enquiry",
   },
   {
     title: "Mudra Spa & Wellness",
+    category: "Ayurveda & Healing",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
     icon: Flower2,
     href: "#enquiry",
   },
   {
     title: "Fine Dining Outlets",
+    category: "Gastronomy",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp",
     icon: Utensils,
     href: "#dining",
   },
   {
     title: "Open-Air Garden Showers",
+    category: "Signature Architecture",
     image: "/ananta-photos/Udaipur/Luxury Cottage/Luxury_Villa_Bed_Room_(Photo-2).webp",
     icon: BedDouble,
     href: "#enquiry",
   },
   {
     title: "Fitness Centre",
+    category: "Health & Vitality",
     image: "/images/amenities/fitness-centre.jpg",
     icon: Dumbbell,
     href: "#enquiry",
   },
   {
     title: "Grand Banquet Lawns",
+    category: "Events & Celebrations",
     image: "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp",
-    icon: TennisIcon,
+    icon: LawnIcon,
     href: "#enquiry",
   },
   {
     title: "Walking & Nature Trails",
+    category: "Hillside Exploration",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp",
     icon: Mountain,
     href: "#enquiry",
   },
   {
-    title: "Scenic Aravalli Surroundings",
-    image: "/ananta-photos/Udaipur/Ananta Villa/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0315-HDR-Edit_hi2yh2.jpg",
-    icon: Mountain,
+    title: "Kids Activity Zone",
+    category: "Family Recreation",
+    image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp",
+    icon: Smile,
     href: "#enquiry",
   },
 ];
 
 export function AmenitiesSection() {
   return (
-    <section id="amenities" className="mb-24 scroll-mt-28 relative">
-      {/* Background Container */}
-      <div className="relative rounded-3xl overflow-hidden p-6 sm:p-10 border border-[#E5E7EB] shadow-lg bg-white">
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="mb-8 md:mb-10 text-left">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-              <span className="text-[#C5A059] font-serif">Amenities</span> at The Ananta Udaipur
-            </h2>
-            <p className="text-[13px] sm:text-[15px] text-[#6B7280] leading-relaxed mt-2.5 max-w-xl">
-              Explore a wide range of world-class amenities and leisure facilities available at The Ananta Udaipur.
-            </p>
+    <section id="amenities" className="mb-20 sm:mb-28 scroll-mt-28">
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 md:mb-12 pb-4 border-b border-[#E8E2D8]">
+        <div>
+          <div className="flex items-center gap-2.5 mb-2.5">
+            <span className="w-6 h-[1px] bg-[#B8934E]" />
+            <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
+              RESORT AMENITIES & LEISURE
+            </span>
           </div>
-
-          {/* 8 Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-            {amenitiesList.map((amenity, idx) => {
-              const Icon = amenity.icon;
-              return (
-                <div
-                  key={idx}
-                  className="group relative rounded-2xl overflow-hidden border border-[#E5E7EB] hover:border-[#C5A059]/60 h-52 sm:h-56 lg:h-60 flex flex-col justify-end transition-all duration-300 shadow-md hover:shadow-xl bg-gray-100"
-                >
-                  {/* Background Image */}
-                  <Image
-                    src={amenity.image}
-                    alt={amenity.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                  {/* Dark Vignette Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity group-hover:opacity-90" />
-
-                  {/* Card Bottom Row */}
-                  <div className="p-4 sm:p-5 flex items-center gap-3 relative z-10 w-full">
-                    {/* Circular Gold Outline Badge */}
-                    <div className="w-10 h-10 rounded-full border border-[#C5A059] bg-black/50 backdrop-blur-sm flex items-center justify-center text-[#C5A059] shadow-md group-hover:bg-[#C5A059]/20 transition-all shrink-0">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    {/* Title */}
-                    <h3 className="text-[14px] sm:text-[15px] font-semibold text-white group-hover:text-[#E8D19F] transition-colors leading-tight truncate">
-                      {amenity.title}
-                    </h3>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Footnote */}
-          <div className="mt-8 pt-4 border-t border-gray-200 text-[12px] sm:text-[13px] text-[#6B7280] text-center">
-            * Amenities shown are for reference only. Availability, access, timings and inclusions may vary.
-          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
+            World-Class <span className="text-[#B8934E] italic font-serif font-normal">Facilities</span>
+          </h2>
+          <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
+            Experience an array of premium amenities designed for relaxation, recreation and wellness amidst the Aravalli hills.
+          </p>
         </div>
+
+        <a
+          href="#enquiry"
+          className="text-xs font-mono uppercase tracking-widest text-[#B8934E] hover:text-[#0D2E24] font-semibold flex items-center gap-1.5 self-start md:self-end"
+        >
+          <span>Enquire for Facilities</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      {/* Editorial Facilities Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        {amenitiesList.map((amenity, idx) => {
+          const Icon = amenity.icon;
+          return (
+            <a
+              key={idx}
+              href={amenity.href}
+              className="group relative bg-white border border-[#E8E2D8] hover:border-[#B8934E]/70 rounded-xs overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
+            >
+              {/* Photo Frame */}
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#FAF8F5]">
+                <Image
+                  src={amenity.image}
+                  alt={amenity.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+
+                {/* Corner Category Tag */}
+                <div className="absolute top-2.5 left-2.5">
+                  <span className="px-2 py-0.5 rounded-xs bg-[#0D2E24]/85 text-[#D4AF67] text-[9px] font-mono uppercase tracking-wider backdrop-blur-xs">
+                    {amenity.category}
+                  </span>
+                </div>
+
+                {/* Floating Icon */}
+                <div className="absolute bottom-2.5 right-2.5 w-8 h-8 rounded-xs bg-white/90 backdrop-blur-xs text-[#0D2E24] flex items-center justify-center shadow-xs">
+                  <Icon className="w-4 h-4 text-[#B8934E]" />
+                </div>
+              </div>
+
+              {/* Title & Micro Information */}
+              <div className="p-4 flex items-center justify-between">
+                <h3 className="font-serif font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#B8934E] transition-colors leading-snug">
+                  {amenity.title}
+                </h3>
+                <span className="text-xs text-[#71717A] group-hover:text-[#B8934E] group-hover:translate-x-0.5 transition-all">
+                  →
+                </span>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </section>
   );
