@@ -6,28 +6,28 @@ import { MapPin, ArrowRight } from "lucide-react";
 
 const nearbyDestinations = [
   {
-    name: "Aamby Valley City",
-    image: "/images/hero/hero-1.jpg",
+    name: "City Palace Udaipur",
+    image: "/destinations/city-palace.jpg",
   },
   {
-    name: "Lonavala View Points",
-    image: "/images/experiences/experiences-bg.jpg",
+    name: "Lake Pichola",
+    image: "/destinations/lake-pichola.jpg",
   },
   {
-    name: "Karla Caves",
-    image: "/images/about/media_1786862605939.jpg",
+    name: "Fateh Sagar Lake",
+    image: "/destinations/fateh-sagar.jpg",
   },
   {
-    name: "Bhushi Dam",
-    image: "/images/experiences/water-sports.jpg",
+    name: "Sajjangarh Palace",
+    image: "/destinations/sajjangarh.jpg",
   },
   {
-    name: "Tiger's Point",
-    image: "/images/experiences/adventure-sports.jpg",
+    name: "Kumbhalgarh Fort",
+    image: "/destinations/kumbhalgarh.jpg",
   },
   {
-    name: "Rajmachi Fort",
-    image: "/images/experiences/nearby-attractions.jpg",
+    name: "Ranakpur Temple",
+    image: "/destinations/ranakpur.jpg",
   },
 ];
 
@@ -52,7 +52,7 @@ export function LocationSection() {
               Explore <span className="text-[#C5A059] italic font-serif">Nearby Destinations</span>
             </h2>
             <p className="text-[13px] sm:text-[15px] text-[#6B7280] leading-relaxed mt-2.5 max-w-xl">
-              Discover the iconic destinations and attractions near Aamby Valley City.
+              Discover iconic heritage palaces, tranquil lakes and cultural landmarks across Udaipur.
             </p>
           </div>
 
@@ -63,14 +63,14 @@ export function LocationSection() {
               {/* Map Iframe */}
               <div className="relative w-full h-56 sm:h-64 lg:h-72 bg-gray-100 overflow-hidden">
                 <iframe
-                  src="https://maps.google.com/maps?q=Aamby+Valley+City,+Lonavala,+Maharashtra&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=The+Ananta+Udaipur,+Bujhda,+Rajasthan&t=&z=13&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Aamby Valley City Location Map"
+                  title="The Ananta Udaipur Location Map"
                   className="w-full h-full"
                 />
               </div>
@@ -83,13 +83,13 @@ export function LocationSection() {
                   </div>
                   <div className="min-w-0">
                     <h4 className="text-[13px] sm:text-[14px] font-semibold text-[#111827] truncate">
-                      Aamby Valley City, Lonavala
+                      The Ananta, Bujhda, Udaipur
                     </h4>
                   </div>
                 </div>
 
                 <a
-                  href="https://maps.google.com/?q=Aamby+Valley+City+Lonavala"
+                  href="https://maps.google.com/?q=The+Ananta+Udaipur"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 rounded-full border border-gray-300 bg-white hover:bg-gray-50 text-[#111827] text-[12px] font-medium flex items-center justify-center gap-1.5 transition-colors shrink-0 shadow-sm"

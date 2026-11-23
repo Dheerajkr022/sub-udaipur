@@ -4,20 +4,20 @@ import { Button } from "@/components/ui/Button";
 import { Compass } from "lucide-react";
 
 const attractions = [
-  "Tiger Point",
-  "Lion's Point",
-  "Bhushi Dam",
-  "Lonavala Lake",
-  "Pawna Lake",
-  "Rajmachi",
-  "Karla Caves",
-  "Bhaja Caves",
+  "Lake Pichola",
+  "City Palace",
+  "Fateh Sagar Lake",
+  "Sajjangarh Monsoon Palace",
+  "Jag Mandir",
+  "Saheliyon Ki Bari",
+  "Bagore Ki Haveli",
+  "Karni Mata Ropeway",
 ];
 
 export function NearbyAttractions() {
   return (
     <section id="nearby" className="mb-20 scroll-mt-32 md:scroll-mt-40">
-      <SectionHeading title="Around Lonavala" />
+      <SectionHeading title="Around Udaipur" />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mb-8">
         {attractions.map((place, idx) => (
           <div 
@@ -35,7 +35,7 @@ export function NearbyAttractions() {
       </div>
       <div className="flex justify-center md:justify-start">
         <Button size="lg" className="bg-[#C5A059] hover:bg-[#B88A3B] text-white font-bold shadow-md shadow-[#C5A059]/20 tracking-wider" asChild>
-          <a href="tel:+917042754628">EXPLORE LOCAL TOURS</a>
+          <a href="tel:+917042754628">EXPLORE UDAIPUR SIGHTSEEING</a>
         </Button>
       </div>
     </section>

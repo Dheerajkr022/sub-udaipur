@@ -6,21 +6,21 @@ import { Landmark, IndianRupee, Utensils, Calendar, Plus, Minus } from "lucide-r
 const faqs = [
   {
     icon: Landmark,
-    question: "Is Lonavala Gateway the official Aamby Valley website?",
+    question: "Is Udaipur Gateway the official Ananta Udaipur website?",
     answer:
-      "No. Lonavala Gateway is an independent travel assistance and enquiry support service operated by Vidhi Tour & Travel. We assist travellers in finding the best accommodation options, villas, dining, and recreational activities at Aamby Valley City, but we are not the official website or direct representative of the property.",
+      "No. Udaipur Gateway is an independent travel discovery and enquiry support platform. We assist travellers in finding accommodation options, villas, cottages, dining, and wellness retreats at The Ananta Udaipur and exploring the Udaipur region, but we are not the official website or direct representative of the property.",
   },
   {
     icon: IndianRupee,
     question: "How will I receive availability and rates?",
     answer:
-      "Once you share your dates and preferences through our enquiry form or call us, our dedicated team will check real-time availability and share customized stay packages, room rates, and applicable inclusions via WhatsApp or email.",
+      "Once you share your dates and preferences through our enquiry form or call us, our dedicated team will check current availability and share customized stay details, room categories, and applicable inclusions via WhatsApp or email.",
   },
   {
     icon: Utensils,
-    question: "Can you help with dining, activities and other information?",
+    question: "Can you help with dining, spa, and Udaipur sightseeing information?",
     answer:
-      "Absolutely! We provide complete concierge guidance on world-class dining outlets, water sports, 18-hole golf sessions, spa treatments, adventure park rides, and surrounding Lonavala sightseeing.",
+      "Yes! We provide helpful guidance on fine dining outlets (Oasis, Float, Ananta Tara), Mudra Spa wellness therapies, and iconic Udaipur sightseeing including Lake Pichola, City Palace, Fateh Sagar Lake, and Sajjangarh Monsoon Palace.",
   },
   {
     icon: Calendar,
@@ -54,7 +54,7 @@ export function FaqSection() {
               Frequently Asked Questions <span className="text-[#C5A059] font-serif">──</span>
             </h2>
             <p className="text-[13px] sm:text-[15px] text-[#6B7280] leading-relaxed mt-2.5 max-w-xl">
-              Find answers to common questions about Aamby Valley City and our enquiry assistance service.
+              Find answers to common questions about The Ananta Udaipur and our enquiry assistance service.
             </p>
           </div>
 

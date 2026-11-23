@@ -10,7 +10,7 @@ const processSteps = [
     icon: FileEdit,
     title: "Send Enquiry",
     description: "Fill in your travel details and submit your enquiry.",
-    image: "/images/about/media_1786862592696.jpg",
+    image: "/ananta-photos/Udaipur/Premium Wooden Cottage with Bathtub/Room1_9_51c23ea1.webp",
     href: "#enquiry",
   },
   {
@@ -18,7 +18,7 @@ const processSteps = [
     icon: Search,
     title: "We Review Your Request",
     description: "Our team will check availability and share relevant information.",
-    image: "/images/about/media_1786862587093.jpg",
+    image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
     href: "#enquiry",
   },
   {
@@ -26,7 +26,7 @@ const processSteps = [
     icon: Info,
     title: "Get Information & Next Steps",
     description: "Receive stay options, amenities, rates and details to help you plan your visit.",
-    image: "/images/dining/woodpecker.jpg",
+    image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp",
     href: "#enquiry",
   },
 ];
@@ -51,7 +51,7 @@ export function EnquiryProcess() {
               <span className="text-[#C5A059] italic font-serif">in Simple Steps</span>
             </h2>
             <p className="text-[13px] sm:text-[15px] text-[#6B7280] leading-relaxed mt-2.5 max-w-xl">
-              We make it easy for you to get the information you need for your stay at Aamby Valley City.
+              We make it easy for you to get the information you need for your stay at The Ananta Udaipur.
             </p>
           </div>
 

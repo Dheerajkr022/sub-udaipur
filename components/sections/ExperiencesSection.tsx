@@ -41,38 +41,38 @@ function AtvIcon({ className = "w-5 h-5" }: { className?: string }) {
 
 const activities = [
   {
-    title: "Adventure Sports",
-    image: "/images/experiences/adventure-sports.jpg",
-    icon: AtvIcon,
-    href: "#enquiry",
-  },
-  {
-    title: "Water Sports",
-    image: "/images/experiences/water-sports.jpg",
-    icon: Waves,
-    href: "#enquiry",
-  },
-  {
-    title: "Golf",
-    image: "/images/experiences/golf.jpg",
-    icon: GolfIcon,
-    href: "#enquiry",
-  },
-  {
-    title: "Kids Activities",
-    image: "/images/experiences/kids-activities.jpg",
-    icon: Users,
-    href: "#enquiry",
-  },
-  {
-    title: "Spa & Wellness",
-    image: "/images/experiences/spa-wellness.jpg",
+    title: "Mudra Spa Retreat",
+    image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
     icon: Flower2,
     href: "#enquiry",
   },
   {
-    title: "Nearby Attractions",
-    image: "/images/experiences/nearby-attractions.jpg",
+    title: "Infinity Pool",
+    image: "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg",
+    icon: Waves,
+    href: "#enquiry",
+  },
+  {
+    title: "Hillside Trails",
+    image: "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Fotowalah-36_ucdcjn.webp",
+    icon: AtvIcon,
+    href: "#enquiry",
+  },
+  {
+    title: "Kids Activity Zone",
+    image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp",
+    icon: Users,
+    href: "#enquiry",
+  },
+  {
+    title: "Lake Pichola Cruise",
+    image: "/destinations/lake-pichola.jpg",
+    icon: Waves,
+    href: "#nearby",
+  },
+  {
+    title: "Udaipur Heritage",
+    image: "/destinations/city-palace.jpg",
     icon: MapPin,
     href: "#nearby",
   },
@@ -89,7 +89,7 @@ export function ExperiencesSection() {
           <div className="flex items-center gap-2.5 mb-4">
             <BinocularsIcon className="w-5 h-5 text-[#C5A059]" />
             <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.2em] text-[#C5A059] uppercase">
-              EXPERIENCES & NEARBY ATTRACTIONS
+              EXPERIENCES & UDAIPUR SIGHTSEEING
             </span>
             <span className="w-8 h-[1px] bg-[#C5A059]/60"></span>
           </div>
@@ -100,7 +100,7 @@ export function ExperiencesSection() {
               Activities for <span className="text-[#C5A059] italic font-serif">Every Traveller</span>
             </h2>
             <p className="text-[13px] sm:text-[15px] text-[#6B7280] leading-relaxed mt-2.5 max-w-xl">
-              Create unforgettable memories with a wide range of activities and top attractions for all age groups.
+              Immerse yourself in tranquil hillside rejuvenation, wellness therapies, and iconic Udaipur cultural excursions.
             </p>
           </div>
 

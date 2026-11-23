@@ -5,12 +5,12 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const allOutlets = [
-  { name: "Woodpecker Restaurant", image: "/images/dining/woodpecker.jpg" },
-  { name: "Mabruk Restaurant", image: "/images/dining/mabruk.jpg" },
-  { name: "Lake Front Café", image: "/images/dining/lakefront.jpg" },
-  { name: "Girasole", image: "/images/dining/girasole.jpg" },
-  { name: "Grill Chaska", image: "/images/dining/grillchaska.jpg" },
-  { name: "Tuk Tuk Street Food Corner", image: "/images/dining/tuktuk.jpg" },
+  { name: "Oasis Restaurant", image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp" },
+  { name: "Float Poolside Bar", image: "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg" },
+  { name: "Ananta Tara Rooftop", image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp" },
+  { name: "In-Villa Private Dining", image: "/ananta-photos/Udaipur/Executive Suites/Executive_Suite_Bedroom_(Photo-2).jpg" },
+  { name: "Alfresco Garden Dining", image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp" },
+  { name: "Chalet Tea & Coffee Deck", image: "/ananta-photos/Udaipur/Luxury Cottage/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp" },
 ];
 
 export function DiningSection() {
@@ -35,7 +35,7 @@ export function DiningSection() {
               A Culinary <span className="text-[#C5A059] italic font-serif">Journey</span>
             </h2>
             <p className="text-[13px] sm:text-[15px] text-[#6B7280] leading-relaxed mt-2.5 max-w-xl">
-              Indulge in a variety of cuisines at world-class restaurants, with breathtaking views and unforgettable dining experiences.
+              Indulge in authentic Rajasthani delicacies and multi-cuisine favorites at The Ananta Udaipur, accompanied by panoramic hill views.
             </p>
           </div>
 

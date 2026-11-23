@@ -2,12 +2,12 @@ import React from "react";
 
 export function QuickFacts() {
   const facts = [
-    { label: "Property Type", value: "Resort / Hill City" },
-    { label: "Location", value: "Lonavala, Maharashtra" },
-    { label: "Setting", value: "Hill & Nature Surroundings" },
-    { label: "Accommodation", value: "Multiple Categories" },
-    { label: "Suitable For", value: "Families, Couples, Groups & Corporate" },
-    { label: "Area", value: "Aamby Valley City, Lonavala Region" },
+    { label: "Property Type", value: "Hillside Nature Retreat" },
+    { label: "Location", value: "Udaipur, Rajasthan" },
+    { label: "Setting", value: "Aravalli Hills & Valley Surroundings" },
+    { label: "Accommodation", value: "Villas, Cottages & Suites" },
+    { label: "Suitable For", value: "Families, Couples, Leisure & Wellness" },
+    { label: "Area", value: "Kodiyat Road, Bujhda, Udaipur" },
   ];
 
   return (

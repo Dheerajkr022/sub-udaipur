@@ -2,8 +2,8 @@ import React from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata = {
-  title: "Disclaimer | Lonavala Gateway",
-  description: "Disclaimer for Lonavala Gateway by Vidhi Tour & Travel.",
+  title: "Disclaimer | Udaipur Gateway",
+  description: "Disclaimer for Udaipur Gateway.",
 };
 
 export default function DisclaimerPage() {
@@ -14,7 +14,7 @@ export default function DisclaimerPage() {
         <p className="italic text-[#6B7280]">Last updated: {new Date().toLocaleDateString()}</p>
         
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">1. Non-Affiliation</h3>
-        <p>Lonavala Gateway, operated by Vidhi Tour &amp; Travel, acts solely as an independent travel and enquiry agency. <strong className="text-[#C5A059]">We are not the owner, operator, or official representative of Aamby Valley City or any other property listed on this website unless specifically stated.</strong></p>
+        <p>Udaipur Gateway acts solely as an independent travel and enquiry discovery platform. <strong className="text-[#C5A059]">We are not the owner, operator, or official representative of The Ananta Udaipur or any other property listed on this website unless specifically stated.</strong></p>
         
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">2. Accuracy of Information</h3>
         <p>While we strive to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose.</p>

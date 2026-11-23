@@ -15,7 +15,7 @@ export function CtaBanner() {
 
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight leading-tight">
-            Plan Your Lonavala Getaway?
+            Plan Your Udaipur Getaway?
           </h2>
 
           {/* Subtitle */}

@@ -14,9 +14,9 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title:
-    "Lonavala Gateway | Hotels, Villas, Tours & Travel Assistance in Lonavala",
+    "Udaipur Gateway | The Ananta Udaipur - Luxury Resort & Travel Discovery",
   description:
-    "Explore hotels, resorts, villas, local tours, camping, cabs and things to do in Lonavala. Get travel information and enquiry assistance from Lonavala Gateway.",
+    "Discover The Ananta Udaipur, luxury hillside villas, cottages, amenities, and independent travel guidance for Udaipur, Rajasthan with Udaipur Gateway.",
   robots: {
     index: true,
     follow: true,

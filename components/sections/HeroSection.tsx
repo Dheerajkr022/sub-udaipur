@@ -19,27 +19,24 @@ function formatDisplayDate(dateStr: string) {
 }
 
 const galleryImages = [
-  "/images/hero/hero-1.jpg",
-  "/images/room/aussie.webp",
-  "/images/room/spanish.webp",
-  "/images/room/supreme.png",
-  "/images/room/burmese.webp",
-  "/images/room/aveda.webp",
-  "/images/room/aussie-wooden.webp",
-  "/images/room/kabana.webp",
-  "/images/dining/woodpecker.jpg",
-  "/images/dining/lakefront.jpg",
-  "/images/dining/mabruk.jpg",
+  "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
+  "/ananta-photos/Udaipur/Premium Wooden Cottage with Bathtub/Room1_9_51c23ea1.webp",
+  "/ananta-photos/Udaipur/Executive Suites/Executive_Suite_Bedroom_(Photo-2).jpg",
+  "/ananta-photos/Udaipur/Luxury Cottage/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp",
+  "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg",
+  "/ananta-photos/Udaipur/Grand Suites/Grand_Suite_Bedroom_(Photo-4).jpg",
+  "/ananta-photos/Udaipur/Ananta Villa/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0315-HDR-Edit_hi2yh2.jpg",
+  "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Fotowalah-36_ucdcjn.webp",
 ];
 
 const sliderImages = [
-  "/aamby/IMG_3221.JPG",
-  "/aamby/IMG_3220.JPG",
-  "/aamby/IMG_3222.JPG",
-  "/aamby/IMG_3223.JPG",
-  "/aamby/IMG_3224.JPG",
-  "/aamby/IMG_3225.JPG",
-  "/aamby/whatsapp_img.jpeg"
+  "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
+  "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp",
+  "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp",
+  "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg",
+  "/ananta-photos/Udaipur/Luxury Cottage/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp",
+  "/ananta-photos/Udaipur/Ananta Villa/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0315-HDR-Edit_hi2yh2.jpg",
+  "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Fotowalah-36_ucdcjn.webp",
 ];
 
 export function HeroSection() {
@@ -119,7 +116,7 @@ export function HeroSection() {
           <div
             className="md:col-span-2 bg-gray-100 rounded-2xl md:rounded-l-3xl md:rounded-r-none relative overflow-hidden h-full group border border-gray-200 shadow-md"
           >
-            <Image src={sliderImages[currentSlide] || sliderImages[0]} alt="Aamby Valley City" fill className="object-cover transition-opacity duration-500" sizes="(max-width: 768px) 100vw, 66vw" priority />
+            <Image src={sliderImages[currentSlide] || sliderImages[0]} alt="The Ananta Udaipur" fill className="object-cover transition-opacity duration-500" sizes="(max-width: 768px) 100vw, 66vw" priority />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
 
             {/* Slider Controls */}

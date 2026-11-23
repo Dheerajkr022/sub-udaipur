@@ -2,8 +2,8 @@ import React from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata = {
-  title: "Terms & Conditions | Lonavala Gateway",
-  description: "Terms and Conditions for Lonavala Gateway by Vidhi Tour & Travel.",
+  title: "Terms & Conditions | Udaipur Gateway",
+  description: "Terms and Conditions for Udaipur Gateway.",
 };
 
 export default function TermsConditions() {
@@ -17,16 +17,16 @@ export default function TermsConditions() {
         <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
 
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">2. Services</h3>
-        <p>Lonavala Gateway acts as an independent travel agency providing information and booking assistance for hotels, resorts, and activities in Lonavala. We do not own or operate the properties listed on this site.</p>
+        <p>Udaipur Gateway acts as an independent travel discovery and enquiry assistance platform providing information on accommodations, resorts, and activities in Udaipur. We do not own or operate the properties listed on this site.</p>
 
-        <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">3. Bookings Assistance and Payments</h3>
-        <p>All Stays are subject to availability. Payment terms, cancellation policies, and refund policies are dictated by the respective service providers (hotels, resorts, etc.) and will be communicated to you during the enquiry and booking process.</p>
+        <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">3. Enquiries and Stay Details</h3>
+        <p>All stays and options are subject to property availability. Final rates, cancellation terms, and booking confirmations must be completed directly with the respective property.</p>
 
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">4. Limitation of Liability</h3>
-        <p>Vidhi Tour &amp; Travel shall not be liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use our services or the services of our partners.</p>
+        <p>Udaipur Gateway shall not be liable for any direct, indirect, incidental, or consequential damages resulting from the use of information provided on this platform.</p>
 
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">5. Contact</h3>
-        <p>For any queries regarding these terms, please contact us at <a href="mailto:info@lonavalagateway.com" className="text-[#C5A059] font-medium hover:underline">info@lonavalagateway.com</a>.</p>
+        <p>For any queries regarding these terms, please contact us at <a href="mailto:info@udaipurgateway.com" className="text-[#C5A059] font-medium hover:underline">info@udaipurgateway.com</a>.</p>
       </div>
     </div>
   );

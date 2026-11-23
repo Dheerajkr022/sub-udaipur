@@ -42,11 +42,11 @@ export function Header() {
           {/* Logo Area */}
           <Link href="/" className="flex items-center gap-3.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A059] rounded-md">
             <div className="relative w-10 h-10 rounded-md overflow-hidden shrink-0 border border-gray-200 group-hover:border-[#C5A059] transition-colors bg-[#0A3626]">
-              <Image src="/logo.png" alt="Lonavala Gateway Logo" fill className="object-contain" priority />
+              <Image src="/logo.png" alt="Udaipur Gateway Logo" fill className="object-contain" priority />
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold tracking-wider font-serif text-[#111827] leading-none mb-1 group-hover:text-[#C5A059] transition-colors">
-                LONAVALA GATEWAY
+                UDAIPUR GATEWAY
               </span>
               <span className="text-xs text-[#6B7280] font-medium tracking-wide">
                 Independent travel network partners
@@ -70,7 +70,7 @@ export function Header() {
                 </a>
                 <Button asChild className="gap-2 bg-gradient-to-r from-[#C5A059] to-[#D4AF37] hover:from-[#D4AF37] hover:to-[#B88A3B] text-white font-bold shadow-md shadow-[#C5A059]/20 border border-[#C5A059]/40">
                   <a
-                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi!%20I%E2%80%99d%20like%20to%20explore%20stay%20options%20at%20Aamby%20Valley%20City%2C%20Lonavala.%0A%0A%F0%9F%93%85%20Check-in%3A%20%0A%F0%9F%93%85%20Check-out%3A%20%0A%F0%9F%91%A5%20Guests%3A%20%0A%F0%9F%8F%A0%20Rooms%3A%20%0A%0ARoom%20Type%3A%20%0A%0APlease%20share%20the%20best%20available%20stay%20options%2C%20pricing%20and%20details%20for%20my%20dates.`}
+                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi!%20I%E2%80%99d%20like%20to%20explore%20stay%20options%20at%20The%20Ananta%20Udaipur.%0A%0A%F0%9F%93%85%20Check-in%3A%20%0A%F0%9F%93%85%20Check-out%3A%20%0A%F0%9F%91%A5%20Guests%3A%20%0A%F0%9F%8F%A0%20Rooms%3A%20%0A%0ARoom%20Type%3A%20%0A%0APlease%20share%20the%20best%20available%20stay%20options%2C%20pricing%20and%20details%20for%20my%20dates.`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -125,7 +125,7 @@ export function Header() {
                 {PHONE_NUMBER}
               </a>
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi!%20I%E2%80%99d%20like%20to%20explore%20stay%20options%20at%20Aamby%20Valley%20City%2C%20Lonavala.%0A%0A%F0%9F%93%85%20Check-in%3A%20%0A%F0%9F%93%85%20Check-out%3A%20%0A%F0%9F%91%A5%20Guests%3A%20%0A%F0%9F%8F%A0%20Rooms%3A%20%0A%0ARoom%20Type%3A%20%0A%0APlease%20share%20the%20best%20available%20stay%20options%2C%20pricing%20and%20details%20for%20my%20dates.`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi!%20I%E2%80%99d%20like%20to%20explore%20stay%20options%20at%20The%20Ananta%20Udaipur.%0A%0A%F0%9F%93%85%20Check-in%3A%20%0A%F0%9F%93%85%20Check-out%3A%20%0A%F0%9F%91%A5%20Guests%3A%20%0A%F0%9F%8F%A0%20Rooms%3A%20%0A%0ARoom%20Type%3A%20%0A%0APlease%20share%20the%20best%20available%20stay%20options%2C%20pricing%20and%20details%20for%20my%20dates.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-white bg-gradient-to-r from-[#C5A059] to-[#D4AF37] font-bold p-3 rounded-xl shadow-lg hover:from-[#D4AF37] hover:to-[#B88A3B] transition-all justify-center"

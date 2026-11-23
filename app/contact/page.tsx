@@ -4,8 +4,8 @@ import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 export const metadata = {
-  title: "Contact Us | Lonavala Gateway",
-  description: "Get in touch with Lonavala Gateway by Vidhi Tour & Travel and enquiries.",
+  title: "Contact Us | Udaipur Gateway",
+  description: "Get in touch with Udaipur Gateway for stay options, travel guidance and enquiries for Udaipur.",
 };
 
 export default function ContactPage() {
@@ -17,7 +17,7 @@ export default function ContactPage() {
         <div>
           <h2 className="text-2xl font-bold font-serif text-[#111827] mb-6">Get in Touch</h2>
           <p className="text-[#4B5563] mb-10 leading-relaxed text-lg">
-            Ready to plan your Lonavala getaway? Reach out to us for the best deals on hotels, resorts, villas, and local experiences. Our team is here to assist you 24/7.
+            Ready to plan your Udaipur getaway? Reach out to us for stay information on villas, cottages, amenities, and local experiences. Our team is here to assist you.
           </p>
 
           <div className="space-y-6">
@@ -37,7 +37,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h4 className="font-bold font-serif text-[#111827] text-lg">Email</h4>
-                <p className="text-[#4B5563] mt-1">info@lonavalagateway.com</p>
+                <p className="text-[#4B5563] mt-1">info@udaipurgateway.com</p>
               </div>
             </div>
 
@@ -48,10 +48,9 @@ export default function ContactPage() {
               <div>
                 <h4 className="font-bold font-serif text-[#111827] text-lg">Office Address</h4>
                 <p className="text-[#4B5563] mt-1 leading-relaxed">
-                  Blue Tulip CHS Ltd,<br />
-                  Shop No - 17, Blue Empire Complex, Off Link Road,<br />
-                  Mahavir Nagar, Kandiwali W, Mumbai,<br />
-                  Mumbai Suburban, Maharashtra 400067
+                  Village Bujhda, Tehsil Girwa,<br />
+                  Kodiyat Road, Udaipur,<br />
+                  Rajasthan 313031
                 </p>
               </div>
             </div>

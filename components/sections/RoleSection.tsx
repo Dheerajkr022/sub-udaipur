@@ -30,13 +30,13 @@ export function RoleSection() {
         </h2>
         <div className="text-sm md:text-base text-[#4B5563] space-y-3 leading-relaxed">
           <p>
-            Lonavala Gateway is operated by Vidhi Tour & Travel, an independent travel agency.
+            Udaipur Gateway is an independent travel discovery and enquiry service.
           </p>
           <p>
             We provide general property information, guidance and enquiry assistance.
           </p>
           <p>
-            <strong className="text-[#A38038] font-semibold">We are not the owner, operator or official representative of Aamby Valley City or any other property unless specifically stated.</strong>
+            <strong className="text-[#A38038] font-semibold">We are not the owner, operator, or official representative of The Ananta Udaipur or any other property unless specifically stated.</strong>
           </p>
           <p className="text-xs text-[#6B7280]">
             Property names, trademarks, images and other brand-related intellectual property belong to their respective owners.

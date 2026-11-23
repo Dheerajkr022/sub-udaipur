@@ -46,27 +46,27 @@ function TennisIcon({ className = "w-5 h-5" }: { className?: string }) {
 
 const amenitiesList = [
   {
-    title: "Room Service",
-    image: "/images/amenities/room-service.jpg",
-    icon: BedDouble,
-    href: "#enquiry",
-  },
-  {
-    title: "Dining Options",
-    image: "/images/dining/mabruk.jpg",
-    icon: Utensils,
-    href: "#dining",
-  },
-  {
-    title: "Swimming Pool",
-    image: "/images/amenities/swimming-pool.jpg",
+    title: "Infinity Swimming Pool",
+    image: "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg",
     icon: SwimmerIcon,
     href: "#enquiry",
   },
   {
-    title: "Spa & Wellness",
-    image: "/images/amenities/spa-wellness.jpg",
+    title: "Mudra Spa & Wellness",
+    image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
     icon: Flower2,
+    href: "#enquiry",
+  },
+  {
+    title: "Fine Dining Outlets",
+    image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp",
+    icon: Utensils,
+    href: "#dining",
+  },
+  {
+    title: "Open-Air Garden Showers",
+    image: "/ananta-photos/Udaipur/Luxury Cottage/Luxury_Villa_Bed_Room_(Photo-2).webp",
+    icon: BedDouble,
     href: "#enquiry",
   },
   {
@@ -76,20 +76,20 @@ const amenitiesList = [
     href: "#enquiry",
   },
   {
-    title: "Golf Course",
-    image: "/images/experiences/golf.jpg",
-    icon: GolfIcon,
-    href: "#enquiry",
-  },
-  {
-    title: "Sports Facilities",
-    image: "/images/amenities/sports-facilities.jpg",
+    title: "Grand Banquet Lawns",
+    image: "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp",
     icon: TennisIcon,
     href: "#enquiry",
   },
   {
-    title: "Scenic Surroundings",
-    image: "/images/hero/main-scenic.webp",
+    title: "Walking & Nature Trails",
+    image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp",
+    icon: Mountain,
+    href: "#enquiry",
+  },
+  {
+    title: "Scenic Aravalli Surroundings",
+    image: "/ananta-photos/Udaipur/Ananta Villa/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0315-HDR-Edit_hi2yh2.jpg",
     icon: Mountain,
     href: "#enquiry",
   },
@@ -105,10 +105,10 @@ export function AmenitiesSection() {
           {/* Header */}
           <div className="mb-8 md:mb-10 text-left">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-              <span className="text-[#C5A059] font-serif">Amenities</span> at Aamby Valley City
+              <span className="text-[#C5A059] font-serif">Amenities</span> at The Ananta Udaipur
             </h2>
             <p className="text-[13px] sm:text-[15px] text-[#6B7280] leading-relaxed mt-2.5 max-w-xl">
-              Explore a wide range of world-class amenities and leisure facilities available at Aamby Valley City.
+              Explore a wide range of world-class amenities and leisure facilities available at The Ananta Udaipur.
             </p>
           </div>
 

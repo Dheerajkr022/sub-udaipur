@@ -21,24 +21,24 @@ export function HeroText() {
       {/* Eyebrow */}
       <div className="flex items-center gap-2.5 mb-2.5">
         <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.2em] text-[#C5A059] uppercase">
-          RESORT / HILL CITY DESTINATION
+          THE ANANTA UDAIPUR / HILLSIDE SANCTUARY
         </span>
         <span className="w-8 h-[1px] bg-[#C5A059]/60"></span>
       </div>
 
       {/* Main Title */}
       <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif text-[#111827] tracking-tight mb-2">
-        Aamby Valley City, <span className="text-[#C5A059] italic font-serif">Lonavala</span>
+        The Ananta, <span className="text-[#C5A059] italic font-serif">Udaipur</span>
       </h1>
 
       {/* Sub-headline */}
       <p className="text-[15px] sm:text-lg text-[#1F2937] font-semibold tracking-wide mb-1.5">
-        Info & stay details
+        Stay options & travel details
       </p>
 
       {/* Subtitle Description */}
       <p className="text-[13px] sm:text-[15px] text-[#4B5563] max-w-2xl leading-relaxed mb-4">
-        Check stay options, dinning experiences and nearby attractions.
+        Discover accommodation categories, dining experiences, wellness retreats and nearby Udaipur attractions.
       </p>
 
       {/* 5 Quick Category Navigation Icons */}
@@ -96,7 +96,7 @@ export function HeroText() {
 
       {/* Trust Badge (Desktop Only) */}
       <div className="hidden md:inline-flex items-center text-xs md:text-sm font-semibold text-[#A38038] tracking-wide py-2 px-4 rounded-full bg-[#FAF8F5] border border-[#C5A059]/30 w-fit">
-        Enquiry Based &nbsp;|&nbsp; No Booking &nbsp;|&nbsp; No Payment &nbsp;|&nbsp; Independent Service
+        Enquiry Based &nbsp;|&nbsp; No Direct Booking &nbsp;|&nbsp; No Online Payments &nbsp;|&nbsp; Independent Travel Assistance
       </div>
     </div>
   );
