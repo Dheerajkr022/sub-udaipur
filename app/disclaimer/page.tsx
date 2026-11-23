@@ -1,9 +1,16 @@
 import React from "react";
+import type { Metadata } from "next";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Disclaimer | Udaipur Gateways",
-  description: "Disclaimer for Udaipur Gateways.",
+  description:
+    "Review the legal disclaimer for Udaipur Gateways, an independent travel discovery platform operated by Nothing Like Travel LLP.",
+  openGraph: {
+    title: "Disclaimer | Udaipur Gateways",
+    description:
+      "Review the legal disclaimer for Udaipur Gateways, operated by Nothing Like Travel LLP.",
+  },
 };
 
 export default function DisclaimerPage() {

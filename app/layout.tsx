@@ -13,13 +13,48 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Udaipur Gateways | The Ananta Udaipur - Luxury Resort & Travel Discovery",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://udaipurgateways.com"),
+  title: {
+    default: "Udaipur Gateways | The Ananta Udaipur - Luxury Resort & Travel Discovery",
+    template: "%s | Udaipur Gateways",
+  },
   description:
     "Discover The Ananta Udaipur, luxury hillside villas, cottages, amenities, and independent travel guidance for Udaipur, Rajasthan with Udaipur Gateways.",
+  keywords: [
+    "Udaipur Gateways",
+    "The Ananta Udaipur",
+    "Udaipur resorts",
+    "Udaipur luxury cottages",
+    "Udaipur villas",
+    "Lake Pichola",
+    "Udaipur travel guide",
+    "Rajasthan hospitality",
+  ],
+  authors: [{ name: "Nothing Like Travel LLP" }],
+  creator: "Nothing Like Travel LLP",
+  publisher: "Nothing Like Travel LLP",
+  openGraph: {
+    title: "Udaipur Gateways | The Ananta Udaipur - Luxury Resort & Travel Discovery",
+    description:
+      "Discover The Ananta Udaipur, luxury hillside villas, cottages, amenities, and independent travel guidance for Udaipur, Rajasthan with Udaipur Gateways.",
+    url: "https://udaipurgateways.com",
+    siteName: "Udaipur Gateways",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Udaipur Gateways | The Ananta Udaipur - Luxury Resort & Travel Discovery",
+    description:
+      "Discover The Ananta Udaipur, luxury hillside villas, cottages, amenities, and independent travel guidance for Udaipur, Rajasthan with Udaipur Gateways.",
+  },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 

@@ -1,11 +1,18 @@
 import React from "react";
+import type { Metadata } from "next";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { Phone, Mail, MapPin } from "lucide-react";
 
-export const metadata = {
-  title: "Contact Us | Udaipur Gateways",
-  description: "Get in touch with Udaipur Gateways for stay options, travel guidance and enquiries for Udaipur.",
+export const metadata: Metadata = {
+  title: "Contact Us | Udaipur Gateways - Travel Guidance & Stay Enquiries",
+  description:
+    "Get in touch with Udaipur Gateways for stay enquiries, room details, and independent travel guidance for The Ananta Udaipur and Udaipur attractions. Call +91 92790 22649 or email info@udaipurgateways.com.",
+  openGraph: {
+    title: "Contact Us | Udaipur Gateways",
+    description:
+      "Get in touch with Udaipur Gateways for stay enquiries and independent travel guidance in Udaipur.",
+  },
 };
 
 export default function ContactPage() {

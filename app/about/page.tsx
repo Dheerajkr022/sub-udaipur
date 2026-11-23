@@ -1,7 +1,19 @@
 import React from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
+
+export const metadata: Metadata = {
+  title: "About Us | Udaipur Gateways - Independent Udaipur Travel Discovery",
+  description:
+    "Learn about Udaipur Gateways, operated by Nothing Like Travel LLP. We are an independent travel discovery platform providing comprehensive insights on The Ananta Udaipur and local travel in Rajasthan.",
+  openGraph: {
+    title: "About Us | Udaipur Gateways",
+    description:
+      "Learn about Udaipur Gateways, operated by Nothing Like Travel LLP. Discover luxury hillside retreats and independent travel guidance in Udaipur.",
+  },
+};
 
 export default function AboutPage() {
   return (

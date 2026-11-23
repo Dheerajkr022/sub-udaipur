@@ -1,9 +1,16 @@
 import React from "react";
+import type { Metadata } from "next";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Terms & Conditions | Udaipur Gateways",
-  description: "Terms and Conditions for Udaipur Gateways.",
+  description:
+    "Read the Terms and Conditions for using Udaipur Gateways, an independent travel discovery platform operated by Nothing Like Travel LLP.",
+  openGraph: {
+    title: "Terms & Conditions | Udaipur Gateways",
+    description:
+      "Read the Terms and Conditions for using Udaipur Gateways, operated by Nothing Like Travel LLP.",
+  },
 };
 
 export default function TermsConditions() {

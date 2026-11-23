@@ -1,9 +1,16 @@
 import React from "react";
+import type { Metadata } from "next";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Privacy Policy | Udaipur Gateways",
-  description: "Privacy Policy for Udaipur Gateways.",
+  description:
+    "Review the Privacy Policy for Udaipur Gateways, operated by Nothing Like Travel LLP. Learn how we handle your data and safeguard your privacy.",
+  openGraph: {
+    title: "Privacy Policy | Udaipur Gateways",
+    description:
+      "Review the Privacy Policy for Udaipur Gateways, operated by Nothing Like Travel LLP.",
+  },
 };
 
 export default function PrivacyPolicy() {
