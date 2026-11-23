@@ -16,6 +16,7 @@ import {
   ArrowRight,
   Phone,
   Sparkles,
+  AlertCircle,
 } from "lucide-react";
 import { accommodations } from "@/components/sections/AccommodationSection";
 
@@ -87,6 +88,8 @@ export function HeroSection() {
   const [rooms, setRooms] = useState(1);
   const [adults, setAdults] = useState(2);
   const [kids, setKids] = useState(0);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [hasValidated, setHasValidated] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -105,6 +108,57 @@ export function HeroSection() {
   const prevSlide = (e: React.MouseEvent) => {
     e.stopPropagation();
     setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
+  };
+
+  const handleCheckAvailability = () => {
+    setHasValidated(true);
+
+    if (!checkInDate && !checkOutDate) {
+      setErrorMessage("Please select check-in and check-out dates to check stay availability.");
+      try {
+        (document.getElementById("widget-checkin") as HTMLInputElement)?.showPicker?.();
+      } catch {}
+      return;
+    }
+
+    if (!checkInDate) {
+      setErrorMessage("Please select a check-in date.");
+      try {
+        (document.getElementById("widget-checkin") as HTMLInputElement)?.showPicker?.();
+      } catch {}
+      return;
+    }
+
+    if (!checkOutDate) {
+      setErrorMessage("Please select a check-out date.");
+      try {
+        (document.getElementById("widget-checkout") as HTMLInputElement)?.showPicker?.();
+      } catch {}
+      return;
+    }
+
+    const inDate = new Date(checkInDate);
+    const outDate = new Date(checkOutDate);
+    if (outDate <= inDate) {
+      setErrorMessage("Check-out date must be after check-in date.");
+      try {
+        (document.getElementById("widget-checkout") as HTMLInputElement)?.showPicker?.();
+      } catch {}
+      return;
+    }
+
+    if (!rooms || rooms < 1) {
+      setErrorMessage("Please select at least 1 room.");
+      return;
+    }
+
+    if (!adults || adults < 1) {
+      setErrorMessage("Please select at least 1 guest.");
+      return;
+    }
+
+    setErrorMessage("");
+    setIsAvailabilityPopupOpen(true);
   };
 
   const handleEnquiryNavigation = (e: React.MouseEvent, selectedRoom?: string) => {
@@ -272,15 +326,19 @@ export function HeroSection() {
                   (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
                 } catch {}
               }}
-              className="relative p-3 sm:p-3.5 bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E]/60 rounded-xs flex items-center justify-between transition-colors cursor-pointer group"
+              className={`relative p-3 sm:p-3.5 bg-[#FAF8F5] border rounded-xs flex items-center justify-between transition-colors cursor-pointer group ${
+                hasValidated && !checkInDate
+                  ? "border-red-400 ring-2 ring-red-400/20 bg-red-50/20"
+                  : "border-[#E8E2D8] hover:border-[#B8934E]/60"
+              }`}
             >
               <div className="flex items-center gap-2.5 min-w-0 pointer-events-none">
-                <Calendar className="w-4 h-4 text-[#B8934E] shrink-0" />
+                <Calendar className={`w-4 h-4 shrink-0 ${hasValidated && !checkInDate ? "text-red-500" : "text-[#B8934E]"}`} />
                 <div className="min-w-0">
                   <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A] leading-tight">
                     Check-in Date
                   </div>
-                  <div className="text-xs sm:text-[13px] font-semibold text-[#111827] truncate mt-0.5">
+                  <div className={`text-xs sm:text-[13px] font-semibold truncate mt-0.5 ${!checkInDate ? "text-gray-400" : "text-[#111827]"}`}>
                     {formatDisplayDate(checkInDate)}
                   </div>
                 </div>
@@ -291,7 +349,13 @@ export function HeroSection() {
                 type="date"
                 min={new Date().toISOString().split("T")[0]}
                 value={checkInDate}
-                onChange={(e) => setCheckInDate(e.target.value)}
+                onChange={(e) => {
+                  setCheckInDate(e.target.value);
+                  if (errorMessage) setErrorMessage("");
+                  if (checkOutDate && new Date(checkOutDate) <= new Date(e.target.value)) {
+                    setCheckOutDate("");
+                  }
+                }}
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
               />
             </div>
@@ -303,15 +367,19 @@ export function HeroSection() {
                   (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
                 } catch {}
               }}
-              className="relative p-3 sm:p-3.5 bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E]/60 rounded-xs flex items-center justify-between transition-colors cursor-pointer group"
+              className={`relative p-3 sm:p-3.5 bg-[#FAF8F5] border rounded-xs flex items-center justify-between transition-colors cursor-pointer group ${
+                hasValidated && (!checkOutDate || (checkInDate && new Date(checkOutDate) <= new Date(checkInDate)))
+                  ? "border-red-400 ring-2 ring-red-400/20 bg-red-50/20"
+                  : "border-[#E8E2D8] hover:border-[#B8934E]/60"
+              }`}
             >
               <div className="flex items-center gap-2.5 min-w-0 pointer-events-none">
-                <Calendar className="w-4 h-4 text-[#B8934E] shrink-0" />
+                <Calendar className={`w-4 h-4 shrink-0 ${hasValidated && (!checkOutDate || (checkInDate && new Date(checkOutDate) <= new Date(checkInDate))) ? "text-red-500" : "text-[#B8934E]"}`} />
                 <div className="min-w-0">
                   <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A] leading-tight">
                     Check-out Date
                   </div>
-                  <div className="text-xs sm:text-[13px] font-semibold text-[#111827] truncate mt-0.5">
+                  <div className={`text-xs sm:text-[13px] font-semibold truncate mt-0.5 ${!checkOutDate ? "text-gray-400" : "text-[#111827]"}`}>
                     {formatDisplayDate(checkOutDate)}
                   </div>
                 </div>
@@ -322,7 +390,10 @@ export function HeroSection() {
                 type="date"
                 min={checkInDate || new Date().toISOString().split("T")[0]}
                 value={checkOutDate}
-                onChange={(e) => setCheckOutDate(e.target.value)}
+                onChange={(e) => {
+                  setCheckOutDate(e.target.value);
+                  if (errorMessage) setErrorMessage("");
+                }}
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
               />
             </div>
@@ -386,11 +457,19 @@ export function HeroSection() {
             </div>
           </div>
 
+          {/* Validation Notice */}
+          {errorMessage && (
+            <div className="mb-3 p-3 rounded-xs bg-[#FEF2F2] border border-[#FCA5A5] text-[#991B1B] text-xs flex items-center gap-2 animate-in fade-in slide-in-from-top-1">
+              <AlertCircle className="w-4 h-4 shrink-0 text-[#DC2626]" />
+              <span className="font-medium">{errorMessage}</span>
+            </div>
+          )}
+
           {/* Action Row: Full width on mobile, side-by-side on desktop */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
             <button
               type="button"
-              onClick={() => setIsAvailabilityPopupOpen(true)}
+              onClick={handleCheckAvailability}
               className="flex-1 py-3.5 px-6 rounded-xs bg-[#0D2E24] hover:bg-[#185241] text-white font-medium text-xs sm:text-sm uppercase tracking-[0.16em] flex items-center justify-center gap-2.5 transition-all duration-300 shadow-xs cursor-pointer group"
             >
               <Search className="w-4 h-4 text-[#D4AF67]" />
@@ -442,12 +521,20 @@ export function HeroSection() {
                 <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">
                   Available Residences at The Ananta Udaipur
                 </h3>
-                <p className="text-xs text-white/70 mt-1">
-                  Found {accommodations.length} luxury accommodation categories for your preferences.
+                {/* Stay criteria badge */}
+                <div className="mt-2.5 inline-flex flex-wrap items-center gap-2 text-xs bg-white/10 backdrop-blur-xs px-3 py-1.5 rounded-xs border border-white/15 text-white/90 font-mono">
+                  <span>📅 {formatDisplayDate(checkInDate)} – {formatDisplayDate(checkOutDate)}</span>
+                  <span>•</span>
+                  <span>🛏️ {rooms} {rooms === 1 ? "Room" : "Rooms"}</span>
+                  <span>•</span>
+                  <span>👥 {adults} {adults === 1 ? "Adult" : "Adults"}{kids > 0 ? `, ${kids}K` : ""}</span>
+                </div>
+                <p className="text-xs text-white/70 mt-2">
+                  Found {accommodations.length} luxury accommodation categories matching your selected dates & party.
                 </p>
               </div>
               <button
-                className="p-2 text-white/70 hover:text-white rounded-xs transition-colors"
+                className="p-2 text-white/70 hover:text-white rounded-xs transition-colors cursor-pointer"
                 onClick={() => setIsAvailabilityPopupOpen(false)}
                 aria-label="Close modal"
               >
