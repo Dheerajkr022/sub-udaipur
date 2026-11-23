@@ -13,6 +13,7 @@ import {
   ArrowRight,
   Phone,
   Sparkles,
+  Info,
 } from "lucide-react";
 
 export const accommodations = [
@@ -307,6 +308,11 @@ function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
             <Phone className="w-3.5 h-3.5 animate-phone-ring" />
           </a>
         </div>
+
+        {/* Card Disclaimer Notice */}
+        <p className="text-[10px] text-center text-[#71717A] pt-1.5 font-light m-0">
+          Submitting an enquiry does not confirm a booking
+        </p>
       </div>
     </div>
   );
@@ -393,6 +399,14 @@ export function AccommodationSection() {
         {filteredAccommodations.map((acc, index) => (
           <PropertyCard key={index} acc={acc} />
         ))}
+      </div>
+
+      {/* Important Enquiry Notice */}
+      <div className="mt-8 p-4 sm:p-5 bg-white border border-[#E8E2D8] border-l-2 border-l-[#B8934E] rounded-xs flex items-start gap-3.5 shadow-xs text-xs sm:text-sm text-[#52525B]">
+        <Info className="w-4 h-4 text-[#B8934E] shrink-0 mt-0.5" />
+        <p className="leading-relaxed m-0 font-light">
+          <strong className="text-[#111827] font-semibold">Important Notice:</strong> Submitting an enquiry does not confirm a booking. Availability, seasonal rates, stay inclusions, and final reservations must be confirmed directly with the property.
+        </p>
       </div>
     </section>
   );
