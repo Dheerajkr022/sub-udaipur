@@ -31,21 +31,28 @@ export function Footer() {
                     UDAIPUR GATEWAYS
                   </span>
                   <span className="text-[10px] text-[#D4AF67] font-mono uppercase tracking-[0.2em]">
-                    Independent travel network partners
+                    Independent Travel Information & Enquiry Assistance
                   </span>
                 </div>
               </Link>
 
               <p className="text-xs text-[#E8E2D8]/70 leading-relaxed mt-4 max-w-sm font-light">
-                An independent travel discovery platform offering curated insights, accommodation options, and local guides for The Ananta Udaipur and Rajasthan’s lake city.
+                An independent travel discovery and enquiry assistance service offering curated insights, accommodation options, and local guides for The Ananta Udaipur and Rajasthan’s lake city.
               </p>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-[#185241]/40 text-xs text-[#E8E2D8]/60">
+            <div className="mt-6 pt-4 border-t border-[#185241]/40 text-xs text-[#E8E2D8]/60 space-y-1">
               <p>
-                Operated by <strong className="text-white">Nothing Like Travel LLP</strong>
-                <br />
+                Business: <strong className="text-white">Nothing Like Travel LLP</strong>
+              </p>
+              <p>
+                Brand: <strong className="text-white">Udaipur Gateway</strong>
+              </p>
+              <p>
                 <span className="font-mono text-[#D4AF67]">GSTIN: 09AAZFN6228N1Z7</span>
+              </p>
+              <p className="text-[#E8E2D8]/50 text-[11px]">
+                Service Location: Udaipur, Rajasthan, India
               </p>
             </div>
           </div>
@@ -55,7 +62,7 @@ export function Footer() {
             <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#D4AF67] block mb-4">
               Explore Platform
             </span>
-            <ul className="space-y-2.5 text-xs text-[#E8E2D8]/80">
+            <ul className="space-y-2 text-xs text-[#E8E2D8]/80">
               <li>
                 <Link href="/" className="hover:text-[#D4AF67] transition-colors">
                   Home / Residences
@@ -64,6 +71,16 @@ export function Footer() {
               <li>
                 <Link href="/about" className="hover:text-[#D4AF67] transition-colors">
                   About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/cancellation-policy" className="hover:text-[#D4AF67] transition-colors">
+                  Cancellation Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/refund-policy" className="hover:text-[#D4AF67] transition-colors">
+                  Refund Policy
                 </Link>
               </li>
               <li>
@@ -119,12 +136,38 @@ export function Footer() {
                 <div className="w-7 h-7 rounded-xs bg-[#0D2E24] border border-[#185241] flex items-center justify-center text-[#D4AF67] shrink-0 mt-0.5">
                   <MapPin className="w-3.5 h-3.5" />
                 </div>
-                <span className="leading-relaxed">
-                  Village Bujhda, Tehsil Girwa, Kodiyat Road, Udaipur, Rajasthan 313031
-                </span>
+                <div className="leading-relaxed">
+                  <span className="text-white block font-medium">Service Destination:</span>
+                  <span>Udaipur, Rajasthan, India</span>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Important Business Information: Footer Disclosure (Google Ads Compliance) */}
+        <div className="py-8 text-xs text-[#E8E2D8]/70 leading-relaxed space-y-2.5 font-light border-b border-[#185241]/40">
+          <p className="font-semibold text-[#D4AF67] font-serif text-sm">
+            Important Business Information: Footer Disclosure
+          </p>
+          <p>
+            Udaipur Gateway is an independent travel information and enquiry assistance service operated by Nothing Like Travel LLP.
+          </p>
+          <p>
+            We provide general information about Udaipur destinations, sightseeing attractions, holiday itinerary ideas, accommodation options and local travel services.
+          </p>
+          <p>
+            Udaipur Gateway is not owned, operated, sponsored or officially affiliated with any hotel, resort, palace property, transport provider or government tourism authority mentioned on this website.
+          </p>
+          <p>
+            We do not operate an online booking engine or payment checkout facility. Submitting an enquiry does not constitute a confirmed booking or reservation.
+          </p>
+          <p>
+            All accommodation, transport and other travel services are independently provided by their respective service providers. Prices, availability, reservations and applicable terms must be confirmed directly with the relevant provider.
+          </p>
+          <p>
+            All third-party trademarks, logos and property names belong to their respective owners.
+          </p>
         </div>
 
         {/* Bottom Legal Copyright Bar */}

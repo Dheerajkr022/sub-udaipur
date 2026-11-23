@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Waves, Users, Flower2, MapPin, Compass, ArrowRight } from "lucide-react";
+import { Waves, Users, Flower2, MapPin, Compass, ArrowRight, Info } from "lucide-react";
 
 function TrailIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
@@ -74,14 +74,14 @@ export function ExperiencesSection() {
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-6 h-[1px] bg-[#B8934E]" />
             <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
-              EXPERIENCES & PURSUITS
+              HOLIDAY ITINERARY IDEAS & EXPERIENCES
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-            Curated <span className="text-[#B8934E] italic font-serif font-normal">Activities</span>
+            Holiday Itinerary <span className="text-[#B8934E] italic font-serif font-normal">Ideas</span>
           </h2>
-          <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
-            Immerse yourself in wellness, leisure and curated activities at the resort and across scenic Udaipur.
+          <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-2xl font-light">
+            Explore suggested travel itineraries for Udaipur and the Mewar region. Our guides provide general destination information, sightseeing suggestions and travel planning assistance for couples, families and groups.
           </p>
         </div>
 
@@ -89,7 +89,7 @@ export function ExperiencesSection() {
           href="#enquiry"
           className="text-xs font-mono uppercase tracking-widest text-[#B8934E] hover:text-[#0D2E24] font-semibold flex items-center gap-1.5 self-start md:self-end"
         >
-          <span>Request Activity Details</span>
+          <span>Request Itinerary Information</span>
           <span>→</span>
         </a>
       </div>
@@ -144,6 +144,14 @@ export function ExperiencesSection() {
             </a>
           );
         })}
+      </div>
+
+      {/* Itinerary Informational Notice (Section 3A Compliance) */}
+      <div className="mt-8 p-4 sm:p-5 bg-white border border-[#E8E2D8] border-l-2 border-l-[#B8934E] rounded-xs flex items-start gap-3.5 shadow-xs text-xs sm:text-sm text-[#52525B]">
+        <Info className="w-4 h-4 text-[#B8934E] shrink-0 mt-0.5" />
+        <p className="leading-relaxed m-0 font-light">
+          <strong className="text-[#111827] font-semibold">Informational Itinerary Notice:</strong> The itineraries displayed are informational suggestions and do not represent confirmed travel packages or guaranteed inclusions. Accommodation, transport, activities and other services are independently provided by their respective providers. Submit an enquiry to receive additional travel information and planning assistance.
+        </p>
       </div>
     </section>
   );

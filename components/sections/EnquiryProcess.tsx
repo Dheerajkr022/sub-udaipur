@@ -110,6 +110,28 @@ export function EnquiryProcess() {
           );
         })}
       </div>
+
+      {/* Enquiry Process Disclosure Panel (Google Ads Ready) */}
+      <div className="mt-8 p-5 sm:p-6 bg-white border border-[#E8E2D8] border-l-2 border-l-[#B8934E] rounded-xs shadow-xs text-xs sm:text-sm text-[#52525B] leading-relaxed space-y-2.5">
+        <h4 className="font-serif font-bold text-base text-[#111827]">
+          How Our Enquiry Process Works
+        </h4>
+        <p>
+          Udaipur Gateway provides independent travel information, sightseeing guidance, itinerary suggestions and enquiry assistance.
+        </p>
+        <p>
+          Visitors can submit their travel requirements through our website or contact our team directly. After receiving an enquiry, our team may provide relevant destination information, itinerary suggestions, accommodation details and information about local travel options.
+        </p>
+        <p className="text-[#111827] font-medium">
+          Submitting an enquiry does not confirm a reservation, booking or purchase.
+        </p>
+        <p>
+          Udaipur Gateway does not operate an online booking engine or payment checkout system. Any reservation, service agreement, payment or final confirmation must be completed directly with the respective service provider.
+        </p>
+        <p className="text-[#71717A] text-xs">
+          Prices, availability, service conditions and cancellation terms are determined by the respective providers.
+        </p>
+      </div>
     </section>
   );
 }

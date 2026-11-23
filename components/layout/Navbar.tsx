@@ -20,6 +20,8 @@ const homeNavLinks = [
 const secondaryNavLinks = [
   { label: "HOME", href: "/" },
   { label: "ABOUT US", href: "/about" },
+  { label: "CANCELLATION POLICY", href: "/cancellation-policy" },
+  { label: "REFUND POLICY", href: "/refund-policy" },
   { label: "PRIVACY POLICY", href: "/privacy" },
   { label: "TERMS & CONDITIONS", href: "/terms" },
   { label: "DISCLAIMER", href: "/disclaimer" },

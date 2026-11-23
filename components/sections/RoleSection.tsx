@@ -37,13 +37,13 @@ export function RoleSection() {
           </h2>
           <div className="text-sm text-[#52525B] space-y-3 leading-relaxed font-light">
             <p>
-              Udaipur Gateways is operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7), an independent travel discovery and enquiry service.
+              Udaipur Gateways is operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7), an independent travel information and enquiry assistance service.
             </p>
             <p>
-              We provide general property information, guidance and enquiry assistance.
+              We provide independent travel information, sightseeing guidance, itinerary suggestions and enquiry assistance.
             </p>
             <p className="text-[#8F6E2E] font-medium">
-              We are not the owner, operator, or official representative of The Ananta Udaipur or any other property unless specifically stated.
+              We are not the owner, operator, booking agent or officially appointed representative of The Ananta Udaipur or any other property featured on this website.
             </p>
             <p className="text-xs text-[#71717A]">
               Property names, trademarks, images and other brand-related intellectual property belong to their respective owners.

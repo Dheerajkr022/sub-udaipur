@@ -28,6 +28,21 @@ export default function DisclaimerPage() {
 
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">3. Limitation of Liability</h3>
         <p>In no event will we be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.</p>
+
+        <div className="pt-6 border-t border-[#E8E2D8] flex flex-wrap gap-4 text-xs font-mono">
+          <a href="/cancellation-policy" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
+            Cancellation Policy →
+          </a>
+          <a href="/refund-policy" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
+            Refund Policy →
+          </a>
+          <a href="/terms" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
+            Terms & Conditions →
+          </a>
+          <a href="/privacy" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
+            Privacy Policy →
+          </a>
+        </div>
       </div>
     </div>
   );
