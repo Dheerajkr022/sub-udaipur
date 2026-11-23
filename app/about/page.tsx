@@ -71,7 +71,7 @@ export default function AboutPage() {
             <p><strong>Business Name:</strong> Nothing Like Travel LLP</p>
             <p><strong>Brand Name:</strong> Udaipur Gateway</p>
             <p><strong>GSTIN:</strong> 09AAZFN6228N1Z7</p>
-            <p><strong>Service Location:</strong> Udaipur, Rajasthan, India</p>
+            <p><strong>Contact Address:</strong> Lake Palace Road, Near City Palace Circle, Old City, Udaipur, Rajasthan 313001, India</p>
             <p><strong>Email:</strong> info@udaipurgateway.com | <strong>Phone:</strong> +91 92790 22649</p>
           </div>
         </div>

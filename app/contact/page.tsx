@@ -53,13 +53,18 @@ export default function ContactPage() {
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold font-serif text-[#111827] text-base">Business Information</h4>
+                <h4 className="font-bold font-serif text-[#111827] text-base">Contact Us</h4>
                 <div className="text-[#52525B] mt-1 leading-relaxed text-xs sm:text-sm font-light space-y-1">
-                  <p className="m-0"><strong className="text-[#111827] font-medium">Business:</strong> Nothing Like Travel LLP</p>
-                  <p className="m-0"><strong className="text-[#111827] font-medium">Brand:</strong> Udaipur Gateway</p>
-                  <p className="m-0"><span className="font-mono text-[#8F6E2E] font-medium">GSTIN: 09AAZFN6228N1Z7</span></p>
-                  <p className="m-0"><strong className="text-[#111827] font-medium">Service Location:</strong> Udaipur, Rajasthan 313031</p>
-                  <p className="m-0 text-[11px] text-[#71717A]">Village Bujhda, Tehsil Girwa, Kodiyat Road, Udaipur, Rajasthan</p>
+                  <p className="m-0 font-medium text-[#111827]">
+                    Lake Palace Road, Near City Palace Circle,<br />
+                    Old City, Udaipur,<br />
+                    Rajasthan 313001, India
+                  </p>
+                  <div className="pt-2 mt-2 border-t border-[#E8E2D8]/60 text-xs space-y-0.5">
+                    <p className="m-0"><strong className="text-[#111827] font-medium">Business:</strong> Nothing Like Travel LLP</p>
+                    <p className="m-0"><strong className="text-[#111827] font-medium">Brand:</strong> Udaipur Gateway</p>
+                    <p className="m-0"><span className="font-mono text-[#8F6E2E] font-medium">GSTIN: 09AAZFN6228N1Z7</span></p>
+                  </div>
                 </div>
               </div>
             </div>

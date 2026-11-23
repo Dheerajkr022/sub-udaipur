@@ -51,8 +51,8 @@ export function Footer() {
               <p>
                 <span className="font-mono text-[#D4AF67]">GSTIN: 09AAZFN6228N1Z7</span>
               </p>
-              <p className="text-[#E8E2D8]/50 text-[11px]">
-                Service Location: Udaipur, Rajasthan, India
+              <p className="text-[#E8E2D8]/50 text-[11px] leading-relaxed">
+                Lake Palace Road, Near City Palace Circle, Old City, Udaipur, Rajasthan 313001, India
               </p>
             </div>
           </div>
@@ -137,8 +137,8 @@ export function Footer() {
                   <MapPin className="w-3.5 h-3.5" />
                 </div>
                 <div className="leading-relaxed">
-                  <span className="text-white block font-medium">Service Destination:</span>
-                  <span>Udaipur, Rajasthan, India</span>
+                  <span className="text-white block font-medium">Contact Us:</span>
+                  <span>Lake Palace Road, Near City Palace Circle, Old City, Udaipur, Rajasthan 313001, India</span>
                 </div>
               </div>
             </div>

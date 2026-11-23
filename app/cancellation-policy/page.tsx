@@ -74,7 +74,7 @@ export default function CancellationPolicyPage() {
                 </a>
               </p>
               <p className="m-0 text-xs text-[#71717A]">
-                Service Location: Udaipur, Rajasthan, India
+                Address: Lake Palace Road, Near City Palace Circle, Old City, Udaipur, Rajasthan 313001, India
               </p>
             </div>
           </div>
