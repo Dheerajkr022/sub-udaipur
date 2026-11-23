@@ -157,9 +157,8 @@ export function HeroSection() {
             {sliderImages.map((slide, i) => (
               <div
                 key={i}
-                className={`absolute inset-0 transition-opacity duration-1000 ${
-                  i === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-                }`}
+                className={`absolute inset-0 transition-opacity duration-1000 ${i === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                  }`}
               >
                 <Image
                   src={slide.url}
@@ -255,16 +254,17 @@ export function HeroSection() {
           <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#E8E2D8]/80">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#B8934E]" />
-              <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#18181B]">
-                Stay Enquiry & Rates Consultation
+              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#18181B] font-mono">
+                STAY ENQUIRY & RATES CONSULTATION
               </span>
             </div>
-            <span className="text-[11px] text-[#71717A] hidden sm:inline">
+            <span className="text-xs text-[#71717A] hidden sm:inline font-light">
               Instant assistance via team concierge
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-2">
+          {/* 4 Input Tiles: 2 on mobile, 4 on desktop */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3 mb-3.5">
             {/* Check In */}
             <div
               onClick={(e) => {
@@ -272,15 +272,15 @@ export function HeroSection() {
                   (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
                 } catch {}
               }}
-              className="relative p-3 bg-[#FAF8F5] border border-[#E8E2D8] rounded-xs flex items-center justify-between hover:border-[#B8934E]/60 transition-colors cursor-pointer group"
+              className="relative p-3 sm:p-3.5 bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E]/60 rounded-xs flex items-center justify-between transition-colors cursor-pointer group"
             >
               <div className="flex items-center gap-2.5 min-w-0 pointer-events-none">
                 <Calendar className="w-4 h-4 text-[#B8934E] shrink-0" />
                 <div className="min-w-0">
-                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A]">
+                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A] leading-tight">
                     Check-in Date
                   </div>
-                  <div className="text-xs sm:text-[13px] font-medium text-[#111827] truncate mt-0.5">
+                  <div className="text-xs sm:text-[13px] font-semibold text-[#111827] truncate mt-0.5">
                     {formatDisplayDate(checkInDate)}
                   </div>
                 </div>
@@ -303,15 +303,15 @@ export function HeroSection() {
                   (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
                 } catch {}
               }}
-              className="relative p-3 bg-[#FAF8F5] border border-[#E8E2D8] rounded-xs flex items-center justify-between hover:border-[#B8934E]/60 transition-colors cursor-pointer group"
+              className="relative p-3 sm:p-3.5 bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E]/60 rounded-xs flex items-center justify-between transition-colors cursor-pointer group"
             >
               <div className="flex items-center gap-2.5 min-w-0 pointer-events-none">
                 <Calendar className="w-4 h-4 text-[#B8934E] shrink-0" />
                 <div className="min-w-0">
-                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A]">
+                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A] leading-tight">
                     Check-out Date
                   </div>
-                  <div className="text-xs sm:text-[13px] font-medium text-[#111827] truncate mt-0.5">
+                  <div className="text-xs sm:text-[13px] font-semibold text-[#111827] truncate mt-0.5">
                     {formatDisplayDate(checkOutDate)}
                   </div>
                 </div>
@@ -327,69 +327,97 @@ export function HeroSection() {
               />
             </div>
 
-            {/* Guests & Rooms */}
-            <div className="relative p-3 bg-[#FAF8F5] border border-[#E8E2D8] rounded-xs flex items-center justify-between">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <User className="w-4 h-4 text-[#B8934E] shrink-0" />
+            {/* Rooms Selector */}
+            <div className="relative p-3 sm:p-3.5 bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E]/60 rounded-xs flex items-center justify-between transition-colors cursor-pointer group">
+              <div className="flex items-center gap-2.5 min-w-0 pointer-events-none">
+                <BedDouble className="w-4 h-4 text-[#B8934E] shrink-0" />
                 <div className="min-w-0">
-                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A]">
-                    Rooms & Guests
+                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A] leading-tight">
+                    Rooms
                   </div>
-                  <div className="text-xs sm:text-[13px] font-medium text-[#111827] truncate mt-0.5">
-                    {rooms} Room, {adults + kids} Guests
+                  <div className="text-xs sm:text-[13px] font-semibold text-[#111827] truncate mt-0.5">
+                    {rooms} {rooms === 1 ? "Room" : "Rooms"}
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-1.5 text-xs text-[#71717A]">
-                <select
-                  value={rooms}
-                  onChange={(e) => setRooms(parseInt(e.target.value))}
-                  className="bg-transparent border border-[#E8E2D8] rounded-xs px-1 text-xs text-[#111827] focus:outline-none"
-                  aria-label="Select Rooms"
-                >
-                  {[1, 2, 3, 4, 5, 6].map((n) => (
-                    <option key={n} value={n}>
-                      {n}R
-                    </option>
-                  ))}
-                </select>
-                <select
-                  value={adults}
-                  onChange={(e) => setAdults(parseInt(e.target.value))}
-                  className="bg-transparent border border-[#E8E2D8] rounded-xs px-1 text-xs text-[#111827] focus:outline-none"
-                  aria-label="Select Adults"
-                >
-                  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                    <option key={n} value={n}>
-                      {n}A
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <ChevronDown className="w-3.5 h-3.5 text-gray-400 shrink-0 pointer-events-none" />
+              <select
+                id="widget-rooms"
+                value={rooms}
+                onChange={(e) => setRooms(parseInt(e.target.value))}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer bg-white text-[#111827]"
+                aria-label="Select Rooms"
+              >
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                  <option key={n} value={n} className="bg-white text-[#111827]">
+                    {n} {n === 1 ? "Room" : "Rooms"}
+                  </option>
+                ))}
+              </select>
             </div>
 
-            {/* Submit Action */}
+            {/* Guests (Adults & Kids) */}
+            <div className="relative p-3 sm:p-3.5 bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E]/60 rounded-xs flex items-center justify-between transition-colors cursor-pointer group">
+              <div className="flex items-center gap-2.5 min-w-0 pointer-events-none">
+                <User className="w-4 h-4 text-[#B8934E] shrink-0" />
+                <div className="min-w-0">
+                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A] leading-tight">
+                    Guests
+                  </div>
+                  <div className="text-xs sm:text-[13px] font-semibold text-[#111827] truncate mt-0.5">
+                    {adults} {adults === 1 ? "Adult" : "Adults"}{kids > 0 ? `, ${kids}K` : ""}
+                  </div>
+                </div>
+              </div>
+              <ChevronDown className="w-3.5 h-3.5 text-gray-400 shrink-0 pointer-events-none" />
+              <select
+                id="widget-adults"
+                value={adults}
+                onChange={(e) => setAdults(parseInt(e.target.value))}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer bg-white text-[#111827]"
+                aria-label="Select Adults"
+              >
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+                  <option key={n} value={n} className="bg-white text-[#111827]">
+                    {n} {n === 1 ? "Adult" : "Adults"}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Action Row: Full width on mobile, side-by-side on desktop */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
             <button
               type="button"
               onClick={() => setIsAvailabilityPopupOpen(true)}
-              className="py-3 px-5 rounded-xs bg-[#0D2E24] hover:bg-[#185241] text-white font-medium text-xs sm:text-[13px] uppercase tracking-[0.15em] flex items-center justify-center gap-2 transition-all duration-300 shadow-xs cursor-pointer group"
+              className="flex-1 py-3.5 px-6 rounded-xs bg-[#0D2E24] hover:bg-[#185241] text-white font-medium text-xs sm:text-sm uppercase tracking-[0.16em] flex items-center justify-center gap-2.5 transition-all duration-300 shadow-xs cursor-pointer group"
             >
-              <Search className="w-3.5 h-3.5 text-[#D4AF67]" />
-              <span>Check Stay Details</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#D4AF67] group-hover:translate-x-1 transition-transform" />
+              <Search className="w-4 h-4 text-[#D4AF67]" />
+              <span className="whitespace-nowrap">CHECK STAY AVAILABILITY & RATES</span>
+              <ArrowRight className="w-4 h-4 text-[#D4AF67] group-hover:translate-x-1 transition-transform" />
             </button>
+
+            <a
+              href="tel:+919279022649"
+              className="py-3.5 px-5 rounded-xs border border-[#B8934E] bg-[#FAF8F5] hover:bg-[#B8934E] text-[#8F6E2E] hover:text-white transition-colors flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap"
+            >
+              <Phone className="w-3.5 h-3.5 animate-phone-ring shrink-0" />
+              <span>Call Concierge</span>
+            </a>
           </div>
 
-          <div className="mt-3 flex items-center justify-between text-[11px] text-[#71717A] pt-2 border-t border-[#E8E2D8]/40">
-            <span>
+          {/* Subtext Footnote */}
+          <div className="mt-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] text-[#71717A] pt-3 border-t border-[#E8E2D8]/60">
+            <span className="font-light">
               Direct Consultation • Instant guidance on villas, seasonal rates & amenities
             </span>
             <a
               href="tel:+919279022649"
-              className="text-[#B8934E] hover:underline font-medium flex items-center gap-1"
+              className="text-[#8F6E2E] hover:underline font-mono font-medium flex items-center gap-1.5"
             >
               <Phone className="w-3 h-3 animate-phone-ring" />
-              Call +91 92790 22649
+              <span>+91 92790 22649</span>
             </a>
           </div>
         </div>
