@@ -33,22 +33,7 @@ export default function TermsConditions() {
         <p>Nothing Like Travel LLP shall not be liable for any direct, indirect, incidental, or consequential damages resulting from the use of information provided on this platform.</p>
 
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">5. Contact</h3>
-        <p>For any queries regarding these terms, please contact us at <a href="mailto:info@udaipurgateways.com" className="text-[#8F6E2E] font-medium hover:underline">info@udaipurgateways.com</a>.</p>
-
-        <div className="pt-6 border-t border-[#E8E2D8] flex flex-wrap gap-4 text-xs font-mono">
-          <a href="/cancellation-policy" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
-            Cancellation Policy →
-          </a>
-          <a href="/refund-policy" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
-            Refund Policy →
-          </a>
-          <a href="/privacy" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
-            Privacy Policy →
-          </a>
-          <a href="/disclaimer" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
-            Disclaimer →
-          </a>
-        </div>
+        <p>For any queries regarding these terms, please contact us at <a href="mailto:info@udaipurgateways.com" className="text-[#C5A059] font-medium hover:underline">info@udaipurgateways.com</a>.</p>
       </div>
     </div>
   );

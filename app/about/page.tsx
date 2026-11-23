@@ -50,29 +50,11 @@ export default function AboutPage() {
           <p>
             Through our platform, you can explore various options, view detailed amenities, and easily submit an enquiry. Our dedicated team will review your travel preferences and share personalized stay recommendations and availability details.
           </p>
-          <div className="bg-white p-6 rounded-xs border border-[#E8E2D8] mt-6 shadow-xs space-y-3">
-            <h3 className="font-bold font-serif text-[#111827] text-lg">How Our Enquiry Process Works</h3>
-            <p className="text-xs sm:text-sm text-[#52525B] leading-relaxed">
-              Udaipur Gateway provides independent travel information, sightseeing guidance, itinerary suggestions and enquiry assistance. Visitors can submit their travel requirements through our website or contact our team directly.
+          <div className="bg-white p-6 rounded-xs border border-[#E8E2D8] mt-8 shadow-xs">
+            <h3 className="font-bold font-serif text-[#111827] text-lg mb-2">Our Commitment</h3>
+            <p className="text-sm text-[#71717A] m-0 leading-relaxed">
+              We strive to provide accurate information and quick responses to all your travel queries. Please note that we are an independent travel discovery platform and not the owner, operator, or official representative of The Ananta Udaipur unless specifically stated.
             </p>
-            <p className="text-xs sm:text-sm text-[#52525B] leading-relaxed">
-              After receiving an enquiry, our team may provide relevant destination information, itinerary suggestions, accommodation details and information about local travel options.
-            </p>
-            <p className="text-xs sm:text-sm text-[#111827] font-medium leading-relaxed">
-              Submitting an enquiry does not confirm a reservation, booking or purchase.
-            </p>
-            <p className="text-xs text-[#71717A] leading-relaxed">
-              Udaipur Gateway does not operate an online booking engine or payment checkout system. Any reservation, service agreement, payment or final confirmation must be completed directly with the respective service provider. Prices, availability, service conditions and cancellation terms are determined by the respective providers.
-            </p>
-          </div>
-
-          <div className="p-5 rounded-xs bg-[#FAF8F5] border border-[#E8E2D8] text-xs text-[#52525B] space-y-1">
-            <p className="font-bold text-[#111827] uppercase font-mono tracking-wider text-[11px] mb-2">Verified Entity Details</p>
-            <p><strong>Business Name:</strong> Nothing Like Travel LLP</p>
-            <p><strong>Brand Name:</strong> Udaipur Gateway</p>
-            <p><strong>GSTIN:</strong> 09AAZFN6228N1Z7</p>
-            <p><strong>Contact Address:</strong> Lake Palace Road, Near City Palace Circle, Old City, Udaipur, Rajasthan 313001, India</p>
-            <p><strong>Email:</strong> info@udaipurgateway.com | <strong>Phone:</strong> +91 92790 22649</p>
           </div>
         </div>
 

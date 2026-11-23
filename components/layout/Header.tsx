@@ -24,8 +24,6 @@ const homeNavLinks = [
 const secondaryNavLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Cancellation Policy", href: "/cancellation-policy" },
-  { label: "Refund Policy", href: "/refund-policy" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms & Conditions", href: "/terms" },
   { label: "Disclaimer", href: "/disclaimer" },
@@ -50,7 +48,7 @@ export function Header() {
             </span>
             <span className="text-[#E8E2D8]/40">•</span>
             <span className="text-[#E8E2D8]/80 text-[11px] normal-case tracking-normal font-light">
-              Independent Travel Information & Enquiry Assistance
+              Independent Luxury Travel & Stay Discovery Guide
             </span>
           </div>
 
@@ -99,7 +97,7 @@ export function Header() {
                 UDAIPUR GATEWAYS
               </span>
               <span className="text-[10px] uppercase text-[#71717A] font-mono tracking-[0.22em]">
-                Travel Information & Enquiry Guide
+                Luxury Travel Discovery
               </span>
             </div>
           </Link>

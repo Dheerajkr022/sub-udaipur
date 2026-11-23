@@ -334,14 +334,14 @@ export function AccommodationSection() {
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-6 h-[1px] bg-[#B8934E]" />
             <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
-              HOTELS & RESORTS INFORMATION
+              EXPLORE & DISCOVER • THE COLLECTION
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-            Accommodation <span className="text-[#B8934E] italic font-serif font-normal">Information</span>
+            Accommodation <span className="text-[#B8934E] italic font-serif font-normal">Options</span>
           </h2>
-          <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-2xl font-light">
-            Explore information about Udaipur&apos;s heritage hotels, palace properties, luxury resorts and hillside accommodation options. Udaipur Gateway independently provides general property information, location details and travel enquiry assistance.
+          <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
+            Explore a range of exquisite stay options at The Ananta Udaipur designed for comfort, privacy and a luxurious hillside retreat.
           </p>
         </div>
 
@@ -401,17 +401,12 @@ export function AccommodationSection() {
         ))}
       </div>
 
-      {/* Important Enquiry Notice & Hotels Disclosure */}
+      {/* Important Enquiry Notice */}
       <div className="mt-8 p-4 sm:p-5 bg-white border border-[#E8E2D8] border-l-2 border-l-[#B8934E] rounded-xs flex items-start gap-3.5 shadow-xs text-xs sm:text-sm text-[#52525B]">
         <Info className="w-4 h-4 text-[#B8934E] shrink-0 mt-0.5" />
-        <div className="leading-relaxed space-y-1.5 font-light">
-          <p className="m-0">
-            <strong className="text-[#111827] font-semibold">Hotels & Resorts Disclosure:</strong> We are not the owner, operator, booking agent or officially appointed representative of the properties featured on this website. Property names and trademarks belong to their respective owners.
-          </p>
-          <p className="m-0 text-[#71717A] text-xs">
-            Submitting an enquiry does not confirm a booking. For room availability, current rates, reservations and property-specific terms, please contact the respective property directly.
-          </p>
-        </div>
+        <p className="leading-relaxed m-0 font-light">
+          <strong className="text-[#111827] font-semibold">Important Notice:</strong> Submitting an enquiry does not confirm a booking. Availability, seasonal rates, stay inclusions, and final reservations must be confirmed directly with the property.
+        </p>
       </div>
     </section>
   );

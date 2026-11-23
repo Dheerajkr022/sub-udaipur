@@ -36,22 +36,7 @@ export default function PrivacyPolicy() {
         <p>We do not sell your personal information. We may share your information with service providers (such as hotels and transport operators) solely for the purpose of fulfilling your travel requests.</p>
 
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">5. Contact Us</h3>
-        <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@udaipurgateways.com" className="text-[#8F6E2E] font-medium hover:underline">info@udaipurgateways.com</a>.</p>
-
-        <div className="pt-6 border-t border-[#E8E2D8] flex flex-wrap gap-4 text-xs font-mono">
-          <a href="/cancellation-policy" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
-            Cancellation Policy →
-          </a>
-          <a href="/refund-policy" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
-            Refund Policy →
-          </a>
-          <a href="/terms" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
-            Terms & Conditions →
-          </a>
-          <a href="/disclaimer" className="text-[#8F6E2E] hover:underline uppercase tracking-wider">
-            Disclaimer →
-          </a>
-        </div>
+        <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@udaipurgateways.com" className="text-[#C5A059] font-medium hover:underline">info@udaipurgateways.com</a>.</p>
       </div>
     </div>
   );

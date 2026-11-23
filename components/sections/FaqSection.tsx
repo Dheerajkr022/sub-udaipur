@@ -28,12 +28,6 @@ const faqs = [
     answer:
       "We strive to keep all resort details, room categories, and amenities updated. However, seasonal rates, operational timings, and venue availability are subject to change at the resort management's discretion.",
   },
-  {
-    icon: HelpCircle,
-    question: "Does submitting an enquiry confirm a booking?",
-    answer:
-      "No. Submitting an enquiry does not confirm a reservation, booking or purchase. Udaipur Gateway does not operate an online booking engine or payment checkout system. Any reservation, service agreement, payment or final confirmation must be completed directly with the respective service provider. Prices, availability, service conditions and cancellation terms are determined by the respective providers.",
-  },
 ];
 
 export function FaqSection() {

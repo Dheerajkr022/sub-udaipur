@@ -543,12 +543,9 @@ function EnquiryFormContent({ sourcePage = "/", className, hideHeader = false }:
           </div>
 
           {/* Footnote */}
-          <div className="flex flex-col items-center justify-center gap-1 pt-1 text-[10px] text-[#71717A] text-center font-light">
-            <div className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#B8934E]" />
-              <span>Submitting an enquiry does not confirm a reservation or booking</span>
-            </div>
-            <span className="text-[9px] text-[#71717A]/80">Independent travel information & enquiry assistance service</span>
+          <div className="flex items-center justify-center gap-1.5 pt-1 text-[10px] text-[#71717A] text-center">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B8934E]" />
+            <span>Independent travel assistance • Inclusions & availability confirmed on enquiry</span>
           </div>
 
           {/* 3 Trust Badges */}
