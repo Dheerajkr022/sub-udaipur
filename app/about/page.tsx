@@ -30,7 +30,7 @@ export default function AboutPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
         <div className="space-y-6 text-[#4B5563] text-lg leading-relaxed">
           <p>
-            Welcome to <strong className="text-[#C5A059]">Udaipur Gateway</strong>, operated by <strong className="text-[#111827]">Nothing Like Travel LLP</strong> (GSTIN: 09AAZFN6228N1Z7). We are an independent travel discovery and enquiry support platform dedicated to showcasing premier hospitality options across Udaipur, Rajasthan.
+            Welcome to <strong className="text-[#C5A059]">Udaipur Gateways</strong>, operated by <strong className="text-[#111827]">Nothing Like Travel LLP</strong> (GSTIN: 09AAZFN6228N1Z7). We are an independent travel discovery and enquiry support platform dedicated to showcasing premier hospitality options across Udaipur, Rajasthan.
           </p>
           <p>
             Our mission is to help independent travellers discover the ideal hillside retreat, contemporary villa, or luxury cottage nestled in the picturesque Aravalli range. We provide transparent information on accommodation categories, property facilities, dining outlets, and scenic Udaipur attractions.

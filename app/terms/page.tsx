@@ -2,8 +2,8 @@ import React from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata = {
-  title: "Terms & Conditions | Udaipur Gateway",
-  description: "Terms and Conditions for Udaipur Gateway.",
+  title: "Terms & Conditions | Udaipur Gateways",
+  description: "Terms and Conditions for Udaipur Gateways.",
 };
 
 export default function TermsConditions() {
@@ -17,7 +17,7 @@ export default function TermsConditions() {
         <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
 
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">2. Services</h3>
-        <p>Udaipur Gateway, operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7), acts as an independent travel discovery and enquiry assistance platform providing information on accommodations, resorts, and activities in Udaipur. We do not own or operate the properties listed on this site.</p>
+        <p>Udaipur Gateways, operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7), acts as an independent travel discovery and enquiry assistance platform providing information on accommodations, resorts, and activities in Udaipur. We do not own or operate the properties listed on this site.</p>
 
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">3. Enquiries and Stay Details</h3>
         <p>All stays and options are subject to property availability. Final rates, cancellation terms, and booking confirmations must be completed directly with the respective property.</p>
@@ -26,7 +26,7 @@ export default function TermsConditions() {
         <p>Nothing Like Travel LLP shall not be liable for any direct, indirect, incidental, or consequential damages resulting from the use of information provided on this platform.</p>
 
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">5. Contact</h3>
-        <p>For any queries regarding these terms, please contact us at <a href="mailto:info@udaipurgateway.com" className="text-[#C5A059] font-medium hover:underline">info@udaipurgateway.com</a>.</p>
+        <p>For any queries regarding these terms, please contact us at <a href="mailto:info@udaipurgateways.com" className="text-[#C5A059] font-medium hover:underline">info@udaipurgateways.com</a>.</p>
       </div>
     </div>
   );

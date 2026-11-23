@@ -12,10 +12,10 @@ export function Footer() {
           {/* Brand */}
           <Link href="/" className="flex items-center gap-3.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A059] rounded-md group">
             <div className="relative w-10 h-10 rounded-md overflow-hidden shrink-0 border border-gray-200 group-hover:border-[#C5A059] transition-colors bg-[#0A3626]">
-              <Image src="/logo.png" alt="Udaipur Gateway Logo" fill className="object-contain" />
+              <Image src="/logo.png" alt="Udaipur Gateways Logo" fill className="object-contain" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-wider font-serif text-[#111827] leading-none mb-1 group-hover:text-[#C5A059] transition-colors">UDAIPUR GATEWAY</span>
+              <span className="text-lg font-bold tracking-wider font-serif text-[#111827] leading-none mb-1 group-hover:text-[#C5A059] transition-colors">UDAIPUR GATEWAYS</span>
               <span className="text-xs text-[#6B7280] font-medium tracking-wide">Independent travel network partners</span>
             </div>
           </Link>
@@ -38,9 +38,9 @@ export function Footer() {
               +91 92790 22649
             </a>
             <span className="hidden md:inline text-gray-300">•</span>
-            <a href="mailto:info@udaipurgateway.com" className="hover:text-[#C5A059] transition-colors flex items-center gap-2">
+            <a href="mailto:info@udaipurgateways.com" className="hover:text-[#C5A059] transition-colors flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#C5A059]"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
-              info@udaipurgateway.com
+              info@udaipurgateways.com
             </a>
           </div>
           <p className="max-w-3xl mx-auto leading-relaxed">

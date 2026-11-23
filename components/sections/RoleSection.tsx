@@ -30,7 +30,7 @@ export function RoleSection() {
         </h2>
         <div className="text-sm md:text-base text-[#4B5563] space-y-3 leading-relaxed">
           <p>
-            Udaipur Gateway is operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7), an independent travel discovery and enquiry service.
+            Udaipur Gateways is operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7), an independent travel discovery and enquiry service.
           </p>
           <p>
             We provide general property information, guidance and enquiry assistance.

@@ -42,11 +42,11 @@ export function Header() {
           {/* Logo Area */}
           <Link href="/" className="flex items-center gap-3.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A059] rounded-md">
             <div className="relative w-10 h-10 rounded-md overflow-hidden shrink-0 border border-gray-200 group-hover:border-[#C5A059] transition-colors bg-[#0A3626]">
-              <Image src="/logo.png" alt="Udaipur Gateway Logo" fill className="object-contain" priority />
+              <Image src="/logo.png" alt="Udaipur Gateways Logo" fill className="object-contain" priority />
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold tracking-wider font-serif text-[#111827] leading-none mb-1 group-hover:text-[#C5A059] transition-colors">
-                UDAIPUR GATEWAY
+                UDAIPUR GATEWAYS
               </span>
               <span className="text-xs text-[#6B7280] font-medium tracking-wide">
                 Independent travel network partners

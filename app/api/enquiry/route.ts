@@ -45,7 +45,7 @@ export async function POST(req: Request) {
       const smtpPort = Number(process.env.SMTP_PORT) || 465;
       const smtpUser = process.env.SMTP_USER || process.env.SMTP_EMAIL || "";
       const smtpPass = process.env.SMTP_PASSWORD || "";
-      const toEmail = process.env.RESERVATION_EMAIL || process.env.SMTP_EMAIL || "info@udaipurgateway.com";
+      const toEmail = process.env.RESERVATION_EMAIL || process.env.SMTP_EMAIL || "info@udaipurgateways.com";
 
       const transporter = nodemailer.createTransport({
         host: smtpHost,
@@ -58,15 +58,15 @@ export async function POST(req: Request) {
       });
 
       const mailOptions = {
-        from: `"Udaipur Gateway" <${smtpUser}>`,
+        from: `"Udaipur Gateways" <${smtpUser}>`,
         to: toEmail,
         replyTo: validatedData.email || smtpUser,
-        subject: `Udaipur Gateway - New Enquiry for ${validatedData.accommodationPreference || "The Ananta Udaipur"} from ${validatedData.fullName}`,
+        subject: `Udaipur Gateways - New Enquiry for ${validatedData.accommodationPreference || "The Ananta Udaipur"} from ${validatedData.fullName}`,
         html: `
           <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
             <div style="background-color: #0f3d2f; color: #ffffff; padding: 20px; text-align: center;">
               <h2 style="margin: 0; font-weight: 600; letter-spacing: 0.5px;">New Stay Enquiry Received</h2>
-              <p style="margin: 5px 0 0 0; font-size: 14px; opacity: 0.9;">Udaipur Gateway • The Ananta Udaipur</p>
+              <p style="margin: 5px 0 0 0; font-size: 14px; opacity: 0.9;">Udaipur Gateways • The Ananta Udaipur</p>
             </div>
             
             <div style="padding: 24px; background-color: #fafafa;">
@@ -119,7 +119,7 @@ export async function POST(req: Request) {
             </div>
             
             <div style="background-color: #f1f5f9; padding: 16px; text-align: center; font-size: 12px; color: #64748b; border-top: 1px solid #e2e8f0;">
-              This email was automatically generated from the Udaipur Gateway website.
+              This email was automatically generated from the Udaipur Gateways website.
             </div>
           </div>
         `,

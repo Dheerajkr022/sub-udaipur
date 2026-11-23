@@ -4,8 +4,8 @@ import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 export const metadata = {
-  title: "Contact Us | Udaipur Gateway",
-  description: "Get in touch with Udaipur Gateway for stay options, travel guidance and enquiries for Udaipur.",
+  title: "Contact Us | Udaipur Gateways",
+  description: "Get in touch with Udaipur Gateways for stay options, travel guidance and enquiries for Udaipur.",
 };
 
 export default function ContactPage() {
@@ -37,7 +37,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h4 className="font-bold font-serif text-[#111827] text-lg">Email</h4>
-                <p className="text-[#4B5563] mt-1">info@udaipurgateway.com</p>
+                <p className="text-[#4B5563] mt-1">info@udaipurgateways.com</p>
               </div>
             </div>
 

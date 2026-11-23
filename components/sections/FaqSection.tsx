@@ -6,9 +6,9 @@ import { Landmark, IndianRupee, Utensils, Calendar, Plus, Minus } from "lucide-r
 const faqs = [
   {
     icon: Landmark,
-    question: "Is Udaipur Gateway the official Ananta Udaipur website?",
+    question: "Is Udaipur Gateways the official Ananta Udaipur website?",
     answer:
-      "No. Udaipur Gateway is an independent travel discovery and enquiry support platform. We assist travellers in finding accommodation options, villas, cottages, dining, and wellness retreats at The Ananta Udaipur and exploring the Udaipur region, but we are not the official website or direct representative of the property.",
+      "No. Udaipur Gateways is an independent travel discovery and enquiry support platform. We assist travellers in finding accommodation options, villas, cottages, dining, and wellness retreats at The Ananta Udaipur and exploring the Udaipur region, but we are not the official website or direct representative of the property.",
   },
   {
     icon: IndianRupee,

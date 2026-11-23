@@ -14,9 +14,9 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title:
-    "Udaipur Gateway | The Ananta Udaipur - Luxury Resort & Travel Discovery",
+    "Udaipur Gateways | The Ananta Udaipur - Luxury Resort & Travel Discovery",
   description:
-    "Discover The Ananta Udaipur, luxury hillside villas, cottages, amenities, and independent travel guidance for Udaipur, Rajasthan with Udaipur Gateway.",
+    "Discover The Ananta Udaipur, luxury hillside villas, cottages, amenities, and independent travel guidance for Udaipur, Rajasthan with Udaipur Gateways.",
   robots: {
     index: true,
     follow: true,

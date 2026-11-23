@@ -2,8 +2,8 @@ import React from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const metadata = {
-  title: "Privacy Policy | Udaipur Gateway",
-  description: "Privacy Policy for Udaipur Gateway.",
+  title: "Privacy Policy | Udaipur Gateways",
+  description: "Privacy Policy for Udaipur Gateways.",
 };
 
 export default function PrivacyPolicy() {
@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
         <p className="italic text-[#6B7280]">Last updated: {new Date().toLocaleDateString()}</p>
         
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">1. Introduction</h3>
-        <p>Welcome to Udaipur Gateway, operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7). We respect your privacy and are committed to protecting your personal data.</p>
+        <p>Welcome to Udaipur Gateways, operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7). We respect your privacy and are committed to protecting your personal data.</p>
         <div className="bg-[#F8F9FA] border-l-4 border-[#C5A059] border-y border-r border-[#E5E7EB] p-4 mt-4 text-[#111827] rounded-r-xl">
           <p className="font-medium m-0 text-sm">Disclaimer: We are an independent travel discovery platform and not the owner, operator, or official representative of The Ananta Udaipur or any other property unless specifically stated.</p>
         </div>
@@ -29,7 +29,7 @@ export default function PrivacyPolicy() {
         <p>We do not sell your personal information. We may share your information with service providers (such as hotels and transport operators) solely for the purpose of fulfilling your travel requests.</p>
         
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">5. Contact Us</h3>
-        <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@udaipurgateway.com" className="text-[#C5A059] font-medium hover:underline">info@udaipurgateway.com</a>.</p>
+        <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@udaipurgateways.com" className="text-[#C5A059] font-medium hover:underline">info@udaipurgateways.com</a>.</p>
       </div>
     </div>
   );
