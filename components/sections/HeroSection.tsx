@@ -117,7 +117,7 @@ export function HeroSection() {
       setErrorMessage("Please select check-in and check-out dates to check stay availability.");
       try {
         (document.getElementById("widget-checkin") as HTMLInputElement)?.showPicker?.();
-      } catch {}
+      } catch { }
       return;
     }
 
@@ -125,7 +125,7 @@ export function HeroSection() {
       setErrorMessage("Please select a check-in date.");
       try {
         (document.getElementById("widget-checkin") as HTMLInputElement)?.showPicker?.();
-      } catch {}
+      } catch { }
       return;
     }
 
@@ -133,7 +133,7 @@ export function HeroSection() {
       setErrorMessage("Please select a check-out date.");
       try {
         (document.getElementById("widget-checkout") as HTMLInputElement)?.showPicker?.();
-      } catch {}
+      } catch { }
       return;
     }
 
@@ -143,7 +143,7 @@ export function HeroSection() {
       setErrorMessage("Check-out date must be after check-in date.");
       try {
         (document.getElementById("widget-checkout") as HTMLInputElement)?.showPicker?.();
-      } catch {}
+      } catch { }
       return;
     }
 
@@ -324,13 +324,12 @@ export function HeroSection() {
               onClick={(e) => {
                 try {
                   (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
-                } catch {}
+                } catch { }
               }}
-              className={`relative p-3 sm:p-3.5 bg-[#FAF8F5] border rounded-xs flex items-center justify-between transition-colors cursor-pointer group ${
-                hasValidated && !checkInDate
-                  ? "border-red-400 ring-2 ring-red-400/20 bg-red-50/20"
-                  : "border-[#E8E2D8] hover:border-[#B8934E]/60"
-              }`}
+              className={`relative p-3 sm:p-3.5 bg-[#FAF8F5] border rounded-xs flex items-center justify-between transition-colors cursor-pointer group ${hasValidated && !checkInDate
+                ? "border-red-400 ring-2 ring-red-400/20 bg-red-50/20"
+                : "border-[#E8E2D8] hover:border-[#B8934E]/60"
+                }`}
             >
               <div className="flex items-center gap-2.5 min-w-0 pointer-events-none">
                 <Calendar className={`w-4 h-4 shrink-0 ${hasValidated && !checkInDate ? "text-red-500" : "text-[#B8934E]"}`} />
@@ -365,13 +364,12 @@ export function HeroSection() {
               onClick={(e) => {
                 try {
                   (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
-                } catch {}
+                } catch { }
               }}
-              className={`relative p-3 sm:p-3.5 bg-[#FAF8F5] border rounded-xs flex items-center justify-between transition-colors cursor-pointer group ${
-                hasValidated && (!checkOutDate || (checkInDate && new Date(checkOutDate) <= new Date(checkInDate)))
-                  ? "border-red-400 ring-2 ring-red-400/20 bg-red-50/20"
-                  : "border-[#E8E2D8] hover:border-[#B8934E]/60"
-              }`}
+              className={`relative p-3 sm:p-3.5 bg-[#FAF8F5] border rounded-xs flex items-center justify-between transition-colors cursor-pointer group ${hasValidated && (!checkOutDate || (checkInDate && new Date(checkOutDate) <= new Date(checkInDate)))
+                ? "border-red-400 ring-2 ring-red-400/20 bg-red-50/20"
+                : "border-[#E8E2D8] hover:border-[#B8934E]/60"
+                }`}
             >
               <div className="flex items-center gap-2.5 min-w-0 pointer-events-none">
                 <Calendar className={`w-4 h-4 shrink-0 ${hasValidated && (!checkOutDate || (checkInDate && new Date(checkOutDate) <= new Date(checkInDate))) ? "text-red-500" : "text-[#B8934E]"}`} />
