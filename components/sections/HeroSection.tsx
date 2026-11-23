@@ -3,8 +3,20 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
-import { Button } from "@/components/ui/Button";
-import { X, ChevronLeft, ChevronRight, ChevronDown, Calendar, BedDouble, User, Baby, Search, ArrowRight, Phone } from "lucide-react";
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  Calendar,
+  BedDouble,
+  User,
+  Baby,
+  Search,
+  ArrowRight,
+  Phone,
+  Sparkles,
+} from "lucide-react";
 import { accommodations } from "@/components/sections/AccommodationSection";
 
 function formatDisplayDate(dateStr: string) {
@@ -30,13 +42,41 @@ const galleryImages = [
 ];
 
 const sliderImages = [
-  "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
-  "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp",
-  "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp",
-  "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg",
-  "/ananta-photos/Udaipur/Luxury Cottage/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp",
-  "/ananta-photos/Udaipur/Ananta Villa/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0315-HDR-Edit_hi2yh2.jpg",
-  "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Fotowalah-36_ucdcjn.webp",
+  {
+    url: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
+    caption: "The Ananta Panoramic Hillside Sanctuary",
+    tag: "Resort Grounds",
+  },
+  {
+    url: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp",
+    caption: "Verdant Aravalli Valleys & Balinese Architecture",
+    tag: "Hillside Vistas",
+  },
+  {
+    url: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp",
+    caption: "Refined Dining & Sunset Terrace",
+    tag: "Dining Terraces",
+  },
+  {
+    url: "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg",
+    caption: "Signature Presidential Villa with Private Pool",
+    tag: "Private Pool Villa",
+  },
+  {
+    url: "/ananta-photos/Udaipur/Luxury Cottage/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp",
+    caption: "Balinese Luxury Cottage with Open-Air Shower",
+    tag: "Luxury Cottage",
+  },
+  {
+    url: "/ananta-photos/Udaipur/Ananta Villa/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0315-HDR-Edit_hi2yh2.jpg",
+    caption: "Ananta Villa Private Residence & Pool Deck",
+    tag: "Estate Villa",
+  },
+  {
+    url: "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Fotowalah-36_ucdcjn.webp",
+    caption: "Chairman Villa Grand Pavilion & Gardens",
+    tag: "Chairman Estate",
+  },
 ];
 
 export function HeroSection() {
@@ -53,7 +93,7 @@ export function HeroSection() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -109,56 +149,122 @@ export function HeroSection() {
 
   return (
     <>
-      <section id="gallery" className="mb-12 scroll-mt-32 md:scroll-mt-40">
-
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-3 h-[400px] md:h-[500px]">
-          <div
-            className="md:col-span-2 bg-gray-100 rounded-2xl md:rounded-l-3xl md:rounded-r-none relative overflow-hidden h-full group border border-gray-200 shadow-md"
-          >
-            <Image src={sliderImages[currentSlide] || sliderImages[0]} alt="The Ananta Udaipur" fill className="object-cover transition-opacity duration-500" sizes="(max-width: 768px) 100vw, 66vw" priority />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
-
-            {/* Slider Controls */}
-            <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white border border-gray-200 p-2 md:p-3 rounded-full text-[#111827] opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 backdrop-blur-sm shadow-md">
-              <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
-            </button>
-            <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white border border-gray-200 p-2 md:p-3 rounded-full text-[#111827] opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 backdrop-blur-sm shadow-md">
-              <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
-            </button>
-
-            {/* Dots */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-              {sliderImages.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={(e) => { e.stopPropagation(); setCurrentSlide(i); }}
-                  className={`h-2 rounded-full transition-all duration-300 ${i === currentSlide ? 'w-6 bg-[#C5A059]' : 'w-2 bg-white/50 hover:bg-white/80'}`}
-                  aria-label={`Go to slide ${i + 1}`}
+      <section id="gallery" className="mb-12 scroll-mt-28 relative">
+        {/* Editorial Photo Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 md:gap-4 h-[380px] sm:h-[460px] md:h-[540px]">
+          {/* Main Cinematic Frame */}
+          <div className="lg:col-span-8 bg-[#0D2E24] rounded-sm relative overflow-hidden h-full group border border-[#E8E2D8] shadow-sm">
+            {sliderImages.map((slide, i) => (
+              <div
+                key={i}
+                className={`absolute inset-0 transition-opacity duration-1000 ${
+                  i === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                }`}
+              >
+                <Image
+                  src={slide.url}
+                  alt={slide.caption}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  priority={i === 0}
                 />
-              ))}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/30 pointer-events-none" />
+
+                {/* Editorial Caption Tag */}
+                <div className="absolute bottom-5 sm:bottom-7 left-5 sm:left-7 right-20 text-white z-20 pointer-events-none">
+                  <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#0D2E24]/80 backdrop-blur-md border border-[#B8934E]/40 text-[#D4AF67] text-[10px] uppercase font-mono tracking-widest rounded-xs mb-2">
+                    <Sparkles className="w-2.5 h-2.5" />
+                    <span>{slide.tag}</span>
+                  </div>
+                  <h3 className="text-base sm:text-xl md:text-2xl font-serif text-white/95 font-medium leading-snug drop-shadow-sm">
+                    {slide.caption}
+                  </h3>
+                </div>
+              </div>
+            ))}
+
+            {/* Slider Navigation Arrows */}
+            <div className="absolute top-5 right-5 z-20 flex items-center gap-2">
+              <button
+                onClick={prevSlide}
+                className="w-9 h-9 rounded-sm bg-black/40 hover:bg-[#0D2E24] border border-white/20 text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="w-9 h-9 rounded-sm bg-black/40 hover:bg-[#0D2E24] border border-white/20 text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-xs"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Slide Index Counter */}
+            <div className="absolute bottom-5 right-5 z-20 font-mono text-xs text-white/80 bg-black/50 px-3 py-1 rounded-sm border border-white/10 backdrop-blur-xs">
+              <span className="text-[#D4AF67] font-bold">
+                {String(currentSlide + 1).padStart(2, "0")}
+              </span>
+              <span className="mx-1 text-white/40">/</span>
+              <span>{String(sliderImages.length).padStart(2, "0")}</span>
             </div>
           </div>
-          <div className="hidden md:grid grid-rows-2 gap-2 md:gap-3 md:col-span-1 h-full">
-            <div
-              className="bg-gray-100 rounded-tr-3xl relative overflow-hidden group border border-gray-200 shadow-sm"
-            >
-              <Image src={galleryImages[1]} alt="Gallery Image" fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 0vw, 33vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+
+          {/* Secondary Editorial Diptych (Desktop) */}
+          <div className="hidden lg:grid grid-rows-2 gap-3 md:gap-4 lg:col-span-4 h-full">
+            <div className="bg-[#FAF8F5] rounded-sm relative overflow-hidden group border border-[#E8E2D8] shadow-xs">
+              <Image
+                src={galleryImages[1]}
+                alt="Premium Wooden Cottage"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-4 text-white z-10">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#D4AF67] block">
+                  Timber Architecture
+                </span>
+                <span className="text-sm font-serif font-medium">Wooden Chalet Cottages</span>
+              </div>
             </div>
-            <div
-              className="bg-gray-100 rounded-br-3xl relative overflow-hidden group border border-gray-200 shadow-sm"
-            >
-              <Image src={galleryImages[2]} alt="View All Photos" fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 0vw, 33vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+
+            <div className="bg-[#FAF8F5] rounded-sm relative overflow-hidden group border border-[#E8E2D8] shadow-xs">
+              <Image
+                src={galleryImages[4]}
+                alt="Presidential Suite Pool"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-3 left-4 text-white z-10">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#D4AF67] block">
+                  Private Oasis
+                </span>
+                <span className="text-sm font-serif font-medium">Presidential Pool Villas</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Booking Widget Overlay */}
-        <div className="relative -mt-8 sm:-mt-12 md:-mt-16 z-20 mx-auto w-full max-w-xl bg-white/95 backdrop-blur-xl rounded-3xl p-3.5 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-[#E5E7EB] space-y-3">
-          {/* Row 1: Check-in & Check-out */}
-          <div className="bg-[#F8F9FA] border border-[#E5E7EB] rounded-2xl grid grid-cols-2 divide-x divide-[#E5E7EB] overflow-hidden">
+        {/* Concierge Dates & Stay Selection Bar */}
+        <div className="mt-4 sm:mt-6 w-full bg-white border border-[#E8E2D8] rounded-sm p-4 sm:p-5 shadow-xs">
+          <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#E8E2D8]/80">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#B8934E]" />
+              <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#18181B]">
+                Stay Enquiry & Rates Consultation
+              </span>
+            </div>
+            <span className="text-[11px] text-[#71717A] hidden sm:inline">
+              Instant assistance via team concierge
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-2">
             {/* Check In */}
             <div
               onClick={(e) => {
@@ -166,18 +272,20 @@ export function HeroSection() {
                   (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
                 } catch {}
               }}
-              className="relative p-3 sm:p-3.5 flex items-center justify-between hover:bg-gray-100/70 transition-colors cursor-pointer group"
+              className="relative p-3 bg-[#FAF8F5] border border-[#E8E2D8] rounded-xs flex items-center justify-between hover:border-[#B8934E]/60 transition-colors cursor-pointer group"
             >
               <div className="flex items-center gap-2.5 min-w-0 pointer-events-none">
-                <Calendar className="w-5 h-5 text-[#C5A059] shrink-0 transition-colors" />
+                <Calendar className="w-4 h-4 text-[#B8934E] shrink-0" />
                 <div className="min-w-0">
-                  <div className="text-[11px] font-medium text-gray-500 leading-tight">Check-in</div>
-                  <div className="text-[13px] sm:text-[14px] font-medium text-[#111827] truncate mt-0.5">
+                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A]">
+                    Check-in Date
+                  </div>
+                  <div className="text-xs sm:text-[13px] font-medium text-[#111827] truncate mt-0.5">
                     {formatDisplayDate(checkInDate)}
                   </div>
                 </div>
               </div>
-              <ChevronDown className="w-4 h-4 text-gray-400 shrink-0 pointer-events-none ml-1" />
+              <ChevronDown className="w-3.5 h-3.5 text-gray-400 shrink-0 pointer-events-none" />
               <input
                 id="widget-checkin"
                 type="date"
@@ -195,18 +303,20 @@ export function HeroSection() {
                   (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
                 } catch {}
               }}
-              className="relative p-3 sm:p-3.5 flex items-center justify-between hover:bg-gray-100/70 transition-colors cursor-pointer group"
+              className="relative p-3 bg-[#FAF8F5] border border-[#E8E2D8] rounded-xs flex items-center justify-between hover:border-[#B8934E]/60 transition-colors cursor-pointer group"
             >
               <div className="flex items-center gap-2.5 min-w-0 pointer-events-none">
-                <Calendar className="w-5 h-5 text-[#C5A059] shrink-0 transition-colors" />
+                <Calendar className="w-4 h-4 text-[#B8934E] shrink-0" />
                 <div className="min-w-0">
-                  <div className="text-[11px] font-medium text-gray-500 leading-tight">Check-out</div>
-                  <div className="text-[13px] sm:text-[14px] font-medium text-[#111827] truncate mt-0.5">
+                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A]">
+                    Check-out Date
+                  </div>
+                  <div className="text-xs sm:text-[13px] font-medium text-[#111827] truncate mt-0.5">
                     {formatDisplayDate(checkOutDate)}
                   </div>
                 </div>
               </div>
-              <ChevronDown className="w-4 h-4 text-gray-400 shrink-0 pointer-events-none ml-1" />
+              <ChevronDown className="w-3.5 h-3.5 text-gray-400 shrink-0 pointer-events-none" />
               <input
                 id="widget-checkout"
                 type="date"
@@ -216,166 +326,178 @@ export function HeroSection() {
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
               />
             </div>
+
+            {/* Guests & Rooms */}
+            <div className="relative p-3 bg-[#FAF8F5] border border-[#E8E2D8] rounded-xs flex items-center justify-between">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <User className="w-4 h-4 text-[#B8934E] shrink-0" />
+                <div className="min-w-0">
+                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#71717A]">
+                    Rooms & Guests
+                  </div>
+                  <div className="text-xs sm:text-[13px] font-medium text-[#111827] truncate mt-0.5">
+                    {rooms} Room, {adults + kids} Guests
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs text-[#71717A]">
+                <select
+                  value={rooms}
+                  onChange={(e) => setRooms(parseInt(e.target.value))}
+                  className="bg-transparent border border-[#E8E2D8] rounded-xs px-1 text-xs text-[#111827] focus:outline-none"
+                  aria-label="Select Rooms"
+                >
+                  {[1, 2, 3, 4, 5, 6].map((n) => (
+                    <option key={n} value={n}>
+                      {n}R
+                    </option>
+                  ))}
+                </select>
+                <select
+                  value={adults}
+                  onChange={(e) => setAdults(parseInt(e.target.value))}
+                  className="bg-transparent border border-[#E8E2D8] rounded-xs px-1 text-xs text-[#111827] focus:outline-none"
+                  aria-label="Select Adults"
+                >
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                    <option key={n} value={n}>
+                      {n}A
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* Submit Action */}
+            <button
+              type="button"
+              onClick={() => setIsAvailabilityPopupOpen(true)}
+              className="py-3 px-5 rounded-xs bg-[#0D2E24] hover:bg-[#185241] text-white font-medium text-xs sm:text-[13px] uppercase tracking-[0.15em] flex items-center justify-center gap-2 transition-all duration-300 shadow-xs cursor-pointer group"
+            >
+              <Search className="w-3.5 h-3.5 text-[#D4AF67]" />
+              <span>Check Stay Details</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#D4AF67] group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
 
-          {/* Row 2: Rooms, Adults, Kids */}
-          <div className="bg-[#F8F9FA] border border-[#E5E7EB] rounded-2xl grid grid-cols-3 divide-x divide-[#E5E7EB] overflow-hidden">
-            {/* Rooms */}
-            <div className="relative p-2.5 sm:p-3 flex items-center justify-between hover:bg-gray-100/70 transition-colors cursor-pointer group">
-              <div className="flex items-center gap-2 min-w-0 pointer-events-none">
-                <BedDouble className="w-4 h-4 sm:w-5 sm:h-5 text-[#C5A059] shrink-0 transition-colors" />
-                <div className="min-w-0">
-                  <div className="text-[11px] font-medium text-gray-500 leading-tight">Rooms</div>
-                  <div className="text-[13px] sm:text-[14px] font-medium text-[#111827] truncate mt-0.5">{rooms}</div>
-                </div>
-              </div>
-              <ChevronDown className="w-3.5 h-3.5 text-gray-400 shrink-0 pointer-events-none" />
-              <select
-                id="widget-rooms"
-                value={rooms}
-                onChange={(e) => setRooms(parseInt(e.target.value))}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer bg-white text-[#111827]"
-              >
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-                  <option key={n} value={n} className="bg-white text-[#111827]">{n}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Adults */}
-            <div className="relative p-2.5 sm:p-3 flex items-center justify-between hover:bg-gray-100/70 transition-colors cursor-pointer group">
-              <div className="flex items-center gap-2 min-w-0 pointer-events-none">
-                <User className="w-4 h-4 sm:w-5 sm:h-5 text-[#C5A059] shrink-0 transition-colors" />
-                <div className="min-w-0">
-                  <div className="text-[11px] font-medium text-gray-500 leading-tight">Adults</div>
-                  <div className="text-[13px] sm:text-[14px] font-medium text-[#111827] truncate mt-0.5">{adults}</div>
-                </div>
-              </div>
-              <ChevronDown className="w-3.5 h-3.5 text-gray-400 shrink-0 pointer-events-none" />
-              <select
-                id="widget-adults"
-                value={adults}
-                onChange={(e) => setAdults(parseInt(e.target.value))}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer bg-white text-[#111827]"
-              >
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-                  <option key={n} value={n} className="bg-white text-[#111827]">{n}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Kids */}
-            <div className="relative p-2.5 sm:p-3 flex items-center justify-between hover:bg-gray-100/70 transition-colors cursor-pointer group">
-              <div className="flex items-center gap-2 min-w-0 pointer-events-none">
-                <Baby className="w-4 h-4 sm:w-5 sm:h-5 text-[#C5A059] shrink-0 transition-colors" />
-                <div className="min-w-0">
-                  <div className="text-[11px] font-medium text-gray-500 leading-tight">Kids</div>
-                  <div className="text-[13px] sm:text-[14px] font-medium text-[#111827] truncate mt-0.5">{kids}</div>
-                </div>
-              </div>
-              <ChevronDown className="w-3.5 h-3.5 text-gray-400 shrink-0 pointer-events-none" />
-              <select
-                id="widget-kids"
-                value={kids}
-                onChange={(e) => setKids(parseInt(e.target.value))}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer bg-white text-[#111827]"
-              >
-                {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
-                  <option key={n} value={n} className="bg-white text-[#111827]">{n}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          {/* Row 3: Action Button */}
-          <button
-            type="button"
-            className="w-full py-3.5 sm:py-4 px-6 rounded-full bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#C5A059] hover:from-[#D4AF37] hover:to-[#B88A3B] text-white font-bold text-[14px] sm:text-[15px] flex items-center justify-center gap-2 shadow-lg shadow-[#C5A059]/25 transition-all cursor-pointer group"
-            onClick={() => setIsAvailabilityPopupOpen(true)}
-          >
-            <Search className="w-4 h-4 text-white" />
-            <span>Check Availability</span>
-            <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
-          </button>
-
-          {/* Row 4: Footnote Disclaimer */}
-          <div className="flex items-center justify-center gap-1.5 text-[11px] sm:text-[12px] text-gray-500 pt-1 text-center">
-            <span className="w-4 h-4 rounded-full bg-[#C5A059] text-white flex items-center justify-center text-[10px] font-bold shrink-0">
-              i
+          <div className="mt-3 flex items-center justify-between text-[11px] text-[#71717A] pt-2 border-t border-[#E8E2D8]/40">
+            <span>
+              Direct Consultation • Instant guidance on villas, seasonal rates & amenities
             </span>
-            <span>Request only. Our team will share availability, pricing and stay details.</span>
+            <a
+              href="tel:+919279022649"
+              className="text-[#B8934E] hover:underline font-medium flex items-center gap-1"
+            >
+              <Phone className="w-3 h-3 animate-phone-ring" />
+              Call +91 92790 22649
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Availability Popup */}
+      {/* Luxury Suite Availability Selection Modal */}
       {isAvailabilityPopupOpen && (
-        <div className="fixed inset-0 z-[110] bg-black/50 flex items-center justify-center backdrop-blur-sm p-4 md:p-8 animate-in fade-in duration-200" onClick={() => setIsAvailabilityPopupOpen(false)}>
+        <div
+          className="fixed inset-0 z-[110] bg-black/60 flex items-center justify-center backdrop-blur-xs p-4 sm:p-6"
+          onClick={() => setIsAvailabilityPopupOpen(false)}
+        >
           <div
-            className="bg-white rounded-2xl shadow-2xl p-0 max-w-2xl w-full relative animate-in zoom-in-95 duration-200 overflow-hidden flex flex-col max-h-[90vh] border border-[#E5E7EB] text-[#1A202C]"
+            className="bg-[#FAF8F5] rounded-sm shadow-2xl p-0 max-w-3xl w-full relative overflow-hidden flex flex-col max-h-[85vh] border border-[#E8E2D8] text-[#18181B]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-6 border-b border-[#E5E7EB] flex items-center justify-between sticky top-0 bg-[#F8F9FA] z-10 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white border border-[#C5A059]/40 rounded-full flex items-center justify-center text-[#C5A059]">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold font-serif text-[#111827]">Great news!</h3>
-                  <p className="text-sm text-gray-500">We found <strong className="text-[#A38038]">{accommodations.length} properties</strong> for your dates.</p>
-                </div>
+            {/* Modal Header */}
+            <div className="p-5 sm:p-6 border-b border-[#E8E2D8] flex items-center justify-between bg-[#0D2E24] text-white">
+              <div>
+                <span className="text-[10px] uppercase font-mono tracking-[0.25em] text-[#D4AF67] block mb-1">
+                  Availability & Stay Options
+                </span>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">
+                  Available Residences at The Ananta Udaipur
+                </h3>
+                <p className="text-xs text-white/70 mt-1">
+                  Found {accommodations.length} luxury accommodation categories for your preferences.
+                </p>
               </div>
               <button
-                className="p-2 text-gray-400 hover:text-[#111827] hover:bg-gray-100 rounded-full transition-colors"
+                className="p-2 text-white/70 hover:text-white rounded-xs transition-colors"
                 onClick={() => setIsAvailabilityPopupOpen(false)}
+                aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="overflow-y-auto p-4 md:p-6 bg-white flex-grow">
-              <div className="grid gap-4">
-                {accommodations.map((acc, idx) => (
-                  <div key={idx} className="bg-[#F8F9FA] rounded-xl p-3 flex gap-4 border border-[#E5E7EB] shadow-sm hover:border-[#C5A059]/50 transition-colors">
-                    <div className="relative w-24 h-24 md:w-32 md:h-28 rounded-lg overflow-hidden shrink-0 border border-gray-200">
-                      <Image src={acc.images[0]} alt={acc.name} fill className="object-cover" sizes="(max-width: 768px) 96px, 128px" />
-                    </div>
-                    <div className="flex flex-col justify-between flex-grow py-1">
-                      <div>
-                        <h4 className="font-bold font-serif text-[#111827] text-sm md:text-base">{acc.name}</h4>
-                        <p className="text-xs text-gray-500 mt-1 line-clamp-2 md:line-clamp-none">{acc.features.split(" • ").slice(0, 3).join(" • ")}</p>
+            {/* Modal List */}
+            <div className="overflow-y-auto p-4 sm:p-6 space-y-4 bg-[#FAF8F5]">
+              {accommodations.map((acc, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-sm p-4 flex flex-col sm:flex-row gap-4 border border-[#E8E2D8] hover:border-[#B8934E]/60 transition-colors shadow-xs"
+                >
+                  <div className="relative w-full sm:w-40 h-32 rounded-xs overflow-hidden shrink-0 border border-[#E8E2D8]">
+                    <Image
+                      src={acc.images[0]}
+                      alt={acc.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 160px"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-between flex-grow">
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#B8934E]">
+                          {acc.badge}
+                        </span>
+                        <span className="text-xs text-[#71717A]">{acc.guests}</span>
                       </div>
-                      <div className="flex items-end justify-end mt-2">
+                      <h4 className="font-serif font-bold text-[#111827] text-base sm:text-lg">
+                        {acc.name}
+                      </h4>
+                      <p className="text-xs text-[#52525B] mt-1 leading-relaxed">
+                        {acc.features}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between gap-3 pt-3 mt-2 border-t border-[#E8E2D8]/60">
+                      <span className="text-xs text-[#71717A] font-medium">{acc.view}</span>
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={(e) => handleEnquiryNavigation(e, acc.name)}
+                          className="px-3.5 py-1.5 rounded-xs bg-[#0D2E24] hover:bg-[#185241] text-white text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+                        >
+                          Enquire Now
+                        </button>
                         <a
                           href="tel:+919279022649"
-                          className="bg-[#C5A059] hover:bg-[#B88A3B] text-white font-bold h-8 px-3 md:px-4 text-xs shadow-sm cursor-pointer rounded-full flex items-center justify-center gap-1.5 transition-colors"
+                          className="px-3 py-1.5 rounded-xs border border-[#B8934E] text-[#8F6E2E] hover:bg-[#B8934E] hover:text-white text-xs font-semibold flex items-center gap-1 transition-colors"
                         >
-                          <Phone className="w-3.5 h-3.5 animate-phone-ring shrink-0" />
-                          <span>Request Stay Details</span>
+                          <Phone className="w-3 h-3 animate-phone-ring" />
+                          <span>Call</span>
                         </a>
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
 
-            <div className="p-4 md:p-6 border-t border-[#E5E7EB] bg-[#F8F9FA] sticky bottom-0 z-10">
+            {/* Modal Sticky Bottom */}
+            <div className="p-4 sm:p-5 border-t border-[#E8E2D8] bg-white flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span className="text-xs text-[#71717A]">
+                Submitting an enquiry connects you with a dedicated travel concierge.
+              </span>
               <a
                 href="tel:+919279022649"
-                className="w-full h-12 text-base font-bold bg-[#C5A059] hover:bg-[#B88A3B] text-white shadow-lg shadow-[#C5A059]/20 tracking-wider flex items-center justify-center gap-2 rounded-full transition-colors cursor-pointer"
+                className="w-full sm:w-auto px-6 py-2.5 bg-[#B8934E] hover:bg-[#917032] text-white text-xs uppercase tracking-widest font-bold rounded-xs flex items-center justify-center gap-2 transition-colors"
               >
-                <Phone className="w-4 h-4 animate-phone-ring shrink-0" />
-                <span>Call to Request Stay Details</span>
+                <Phone className="w-3.5 h-3.5 animate-phone-ring" />
+                <span>Call +91 92790 22649</span>
               </a>
             </div>
           </div>
         </div>
       )}
-
-      {/* Lightbox / Gallery Modal Removed */}
     </>
   );
 }
