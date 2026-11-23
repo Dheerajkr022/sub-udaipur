@@ -31,56 +31,48 @@ const amenitiesList = [
     category: "Aquatics & Leisure",
     image: "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg",
     icon: SwimmerIcon,
-    href: "#enquiry",
   },
   {
     title: "Mudra Spa & Wellness",
     category: "Ayurveda & Healing",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
     icon: Flower2,
-    href: "#enquiry",
   },
   {
     title: "Fine Dining Outlets",
     category: "Gastronomy",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp",
     icon: Utensils,
-    href: "#dining",
   },
   {
     title: "Open-Air Garden Showers",
     category: "Signature Architecture",
     image: "/ananta-photos/Udaipur/Luxury Cottage/Luxury_Villa_Bed_Room_(Photo-2).webp",
     icon: BedDouble,
-    href: "#enquiry",
   },
   {
     title: "Fitness Centre",
     category: "Health & Vitality",
     image: "/images/amenities/fitness-centre.jpg",
     icon: Dumbbell,
-    href: "#enquiry",
   },
   {
     title: "Grand Banquet Lawns",
     category: "Events & Celebrations",
     image: "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp",
     icon: LawnIcon,
-    href: "#enquiry",
   },
   {
     title: "Walking & Nature Trails",
     category: "Hillside Exploration",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp",
     icon: Mountain,
-    href: "#enquiry",
   },
   {
     title: "Kids Activity Zone",
     category: "Family Recreation",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp",
     icon: Smile,
-    href: "#enquiry",
   },
 ];
 
@@ -118,10 +110,9 @@ export function AmenitiesSection() {
         {amenitiesList.map((amenity, idx) => {
           const Icon = amenity.icon;
           return (
-            <a
+            <div
               key={idx}
-              href={amenity.href}
-              className="group relative bg-white border border-[#E8E2D8] hover:border-[#B8934E]/70 rounded-xs overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
+              className="group relative bg-white border border-[#E8E2D8] rounded-xs overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
             >
               {/* Photo Frame */}
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#FAF8F5]">
@@ -149,14 +140,11 @@ export function AmenitiesSection() {
 
               {/* Title & Micro Information */}
               <div className="p-4 flex items-center justify-between">
-                <h3 className="font-serif font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#B8934E] transition-colors leading-snug">
+                <h3 className="font-serif font-bold text-sm sm:text-base text-[#111827] leading-snug">
                   {amenity.title}
                 </h3>
-                <span className="text-xs text-[#71717A] group-hover:text-[#B8934E] group-hover:translate-x-0.5 transition-all">
-                  →
-                </span>
               </div>
-            </a>
+            </div>
           );
         })}
       </div>
