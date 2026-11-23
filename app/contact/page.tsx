@@ -27,7 +27,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h4 className="font-bold font-serif text-[#111827] text-lg">Phone</h4>
-                <a href="tel:+917042754628" className="text-[#C5A059] hover:text-[#B38F48] transition-colors block mt-1 font-semibold">+91 70427 54628</a>
+                <a href="tel:+919279022649" className="text-[#C5A059] hover:text-[#B38F48] transition-colors block mt-1 font-semibold">+91 92790 22649</a>
               </div>
             </div>
 
@@ -46,8 +46,10 @@ export default function ContactPage() {
                 <MapPin className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-bold font-serif text-[#111827] text-lg">Office Address</h4>
+                <h4 className="font-bold font-serif text-[#111827] text-lg">Company Details</h4>
                 <p className="text-[#4B5563] mt-1 leading-relaxed">
+                  Nothing Like Travel LLP<br />
+                  <span className="font-medium text-[#111827]">GSTIN:</span> 09AAZFN6228N1Z7<br />
                   Village Bujhda, Tehsil Girwa,<br />
                   Kodiyat Road, Udaipur,<br />
                   Rajasthan 313031

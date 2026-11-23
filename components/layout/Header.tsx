@@ -7,8 +7,8 @@ import Image from "next/image";
 import { Phone, MessageCircle, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
-const WHATSAPP_NUMBER = "917042754628";
-const PHONE_NUMBER = "+91 70427 54628";
+const WHATSAPP_NUMBER = "919279022649";
+const PHONE_NUMBER = "+91 92790 22649";
 
 const homeNavLinks = [
   { label: "About hotel", href: "/#about" },

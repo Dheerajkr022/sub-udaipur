@@ -258,7 +258,7 @@ function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
         {/* Action Button */}
         <div className="pt-1">
           <a
-            href="tel:+917042754628"
+            href="tel:+919279022649"
             className="w-full py-2.5 sm:py-3 px-3 sm:px-4 rounded-full border border-[#C5A059] bg-[#FAF8F5] hover:bg-[#C5A059] text-[#A38038] hover:text-white font-semibold text-[12px] sm:text-[13px] flex items-center justify-center gap-2 transition-all duration-300 shadow-sm group/btn cursor-pointer active:scale-[0.98]"
           >
             <Phone className="w-3.5 h-3.5 text-[#C5A059] group-hover/btn:text-white animate-phone-ring shrink-0" />

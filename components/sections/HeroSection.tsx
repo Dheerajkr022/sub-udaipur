@@ -349,7 +349,7 @@ export function HeroSection() {
                       </div>
                       <div className="flex items-end justify-end mt-2">
                         <a
-                          href="tel:+917042754628"
+                          href="tel:+919279022649"
                           className="bg-[#C5A059] hover:bg-[#B88A3B] text-white font-bold h-8 px-3 md:px-4 text-xs shadow-sm cursor-pointer rounded-full flex items-center justify-center gap-1.5 transition-colors"
                         >
                           <Phone className="w-3.5 h-3.5 animate-phone-ring shrink-0" />
@@ -364,7 +364,7 @@ export function HeroSection() {
 
             <div className="p-4 md:p-6 border-t border-[#E5E7EB] bg-[#F8F9FA] sticky bottom-0 z-10">
               <a
-                href="tel:+917042754628"
+                href="tel:+919279022649"
                 className="w-full h-12 text-base font-bold bg-[#C5A059] hover:bg-[#B88A3B] text-white shadow-lg shadow-[#C5A059]/20 tracking-wider flex items-center justify-center gap-2 rounded-full transition-colors cursor-pointer"
               >
                 <Phone className="w-4 h-4 animate-phone-ring shrink-0" />

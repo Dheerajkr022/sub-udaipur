@@ -37,7 +37,7 @@ export function CtaBanner() {
 
             {/* Call for Assistance Button */}
             <a
-              href="tel:+917042754628"
+              href="tel:+919279022649"
               className="px-7 py-3.5 sm:py-4 rounded-full bg-white hover:bg-gray-50 border border-gray-300 hover:border-[#C5A059] text-[#111827] font-semibold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-sm transition-all hover:scale-[1.02] cursor-pointer group"
             >
               <Phone className="w-4 h-4 text-[#C5A059] animate-phone-ring" />

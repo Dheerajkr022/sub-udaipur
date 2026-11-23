@@ -35,7 +35,7 @@ export function NearbyAttractions() {
       </div>
       <div className="flex justify-center md:justify-start">
         <Button size="lg" className="bg-[#C5A059] hover:bg-[#B88A3B] text-white font-bold shadow-md shadow-[#C5A059]/20 tracking-wider" asChild>
-          <a href="tel:+917042754628">EXPLORE UDAIPUR SIGHTSEEING</a>
+          <a href="tel:+919279022649">EXPLORE UDAIPUR SIGHTSEEING</a>
         </Button>
       </div>
     </section>

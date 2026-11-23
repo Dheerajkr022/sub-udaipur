@@ -33,9 +33,9 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col gap-4 text-xs text-[#6B7280] text-center">
           <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-6 text-sm font-medium text-[#111827] mb-2">
-            <a href="tel:+917042754628" className="hover:text-[#C5A059] transition-colors flex items-center gap-2">
+            <a href="tel:+919279022649" className="hover:text-[#C5A059] transition-colors flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#C5A059]"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-              +91 70427 54628
+              +91 92790 22649
             </a>
             <span className="hidden md:inline text-gray-300">•</span>
             <a href="mailto:info@udaipurgateway.com" className="hover:text-[#C5A059] transition-colors flex items-center gap-2">
@@ -47,7 +47,7 @@ export function Footer() {
             Village Bujhda, Tehsil Girwa, Kodiyat Road, Udaipur, Rajasthan 313031
           </p>
           <div className="flex flex-col md:flex-row justify-between items-center gap-3 w-full border-t border-gray-200 pt-4 text-[10px] md:text-xs">
-            <p>© {currentYear} Udaipur Gateway. All Rights Reserved.</p>
+            <p>© {currentYear} Nothing Like Travel LLP. All Rights Reserved. (GSTIN: 09AAZFN6228N1Z7)</p>
             <p className="text-[#6B7280]">This website is for travel information and enquiry discovery assistance only.</p>
           </div>
         </div>
