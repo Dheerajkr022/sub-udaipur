@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0A3626;
+  --color-primary-dark: #041B12;
+  --color-primary-light: #165B40;
+  --color-brand-light: #FAF8F5;
+  --color-border: #E5E7EB;
+  --color-text-main: #1A202C;
+  --color-text-muted: #64748B;
+  --color-background: #F8F9FA;
+  --color-gold: #C5A059;
+  --color-gold-light: #DFBA73;
+  --color-gold-dark: #A38038;
+  --color-gold-muted: rgba(197, 160, 89, 0.15);
+  --color-success: #16805A;
+  --color-error: #C83A3A;
+  
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+  
+  body {
+    background-color: #F8F9FA;
+    color: #1A202C;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: #111827;
+    letter-spacing: -0.01em;
+  }
+}
+
+@keyframes phone-ring {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  10%, 30%, 50% { transform: rotate(-14deg) scale(1.15); }
+  20%, 40%, 60% { transform: rotate(14deg) scale(1.15); }
+  70% { transform: rotate(0deg) scale(1); }
+}
+
+.animate-phone-ring {
+  animation: phone-ring 1.6s ease-in-out infinite;
+}
+
