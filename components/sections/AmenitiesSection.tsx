@@ -148,6 +148,13 @@ export function AmenitiesSection() {
           );
         })}
       </div>
+
+      {/* Amenities Disclaimer */}
+      <div className="mt-6 pt-4 border-t border-[#E8E2D8]/60">
+        <p className="text-xs text-[#71717A] font-light italic m-0">
+          * Amenities shown are for reference only. Availability, access, timings and inclusions may vary.
+        </p>
+      </div>
     </section>
   );
 }
