@@ -31,7 +31,7 @@ export function Footer() {
                     UDAIPUR GATEWAYS
                   </span>
                   <span className="text-[10px] text-[#D4AF67] font-mono uppercase tracking-[0.2em]">
-                    Independent travel network partners
+                    Independent Travel Discovery
                   </span>
                 </div>
               </Link>

@@ -48,7 +48,7 @@ export function Header() {
             </span>
             <span className="text-[#E8E2D8]/40">•</span>
             <span className="text-[#E8E2D8]/80 text-[11px] normal-case tracking-normal font-light">
-              Independent Luxury Travel & Stay Discovery Guide
+              Independent Travel Agency
             </span>
           </div>
 
@@ -97,7 +97,7 @@ export function Header() {
                 UDAIPUR GATEWAYS
               </span>
               <span className="text-[10px] uppercase text-[#71717A] font-mono tracking-[0.22em]">
-                Luxury Travel Discovery
+                Independent Travel Agency
               </span>
             </div>
           </Link>
