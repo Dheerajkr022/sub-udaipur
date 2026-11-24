@@ -57,9 +57,9 @@ export default function ContactPage() {
                 <p className="text-[#52525B] mt-1 leading-relaxed text-sm font-light">
                   Nothing Like Travel LLP<br />
                   <span className="font-mono text-[#8F6E2E] font-medium">GSTIN: 09AAZFN6228N1Z7</span><br />
-                  Village Bujhda, Tehsil Girwa,<br />
-                  Kodiyat Road, Udaipur,<br />
-                  Rajasthan 313031
+                  331 CATANIA, Sector 78, Mahagun Moderne,<br />
+                  Noida, Gautambuddha Nagar,<br />
+                  Uttar Pradesh, 201301
                 </p>
               </div>
             </div>

@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 export const metadata: Metadata = {
   title: "Disclaimer | Udaipur Gateways",
   description:
-    "Review the legal disclaimer for Udaipur Gateways, an independent travel discovery platform operated by Nothing Like Travel LLP.",
+    "Review the legal disclaimer for Udaipur Gateways, an independent travel agency operated by Nothing Like Travel LLP.",
   openGraph: {
     title: "Disclaimer | Udaipur Gateways",
     description:

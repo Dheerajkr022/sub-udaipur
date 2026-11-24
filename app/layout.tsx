@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://udaipurgateways.com"),
   title: {
-    default: "Udaipur Gateways | The Ananta Udaipur - Luxury Resort & Travel Discovery",
+    default: "Udaipur Gateways | The Ananta Udaipur - Luxury Resort & Travel Agency",
     template: "%s | Udaipur Gateways",
   },
   description:
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   creator: "Nothing Like Travel LLP",
   publisher: "Nothing Like Travel LLP",
   openGraph: {
-    title: "Udaipur Gateways | The Ananta Udaipur - Luxury Resort & Travel Discovery",
+    title: "Udaipur Gateways | The Ananta Udaipur - Luxury Resort & Travel Agency",
     description:
       "Discover The Ananta Udaipur, luxury hillside villas, cottages, amenities, and independent travel guidance for Udaipur, Rajasthan with Udaipur Gateways.",
     url: "https://udaipurgateways.com",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Udaipur Gateways | The Ananta Udaipur - Luxury Resort & Travel Discovery",
+    title: "Udaipur Gateways | The Ananta Udaipur - Luxury Resort & Travel Agency",
     description:
       "Discover The Ananta Udaipur, luxury hillside villas, cottages, amenities, and independent travel guidance for Udaipur, Rajasthan with Udaipur Gateways.",
   },

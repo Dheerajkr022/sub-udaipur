@@ -31,13 +31,13 @@ export function Footer() {
                     UDAIPUR GATEWAYS
                   </span>
                   <span className="text-[10px] text-[#D4AF67] font-mono uppercase tracking-[0.2em]">
-                    Independent Travel Discovery
+                    Independent Travel Agency
                   </span>
                 </div>
               </Link>
 
               <p className="text-xs text-[#E8E2D8]/70 leading-relaxed mt-4 max-w-sm font-light">
-                An independent travel discovery platform offering curated insights, accommodation options, and local guides for The Ananta Udaipur and Rajasthan’s lake city.
+                An independent travel agency offering curated insights, accommodation options, and local guides for The Ananta Udaipur and Rajasthan’s lake city.
               </p>
             </div>
 
@@ -120,7 +120,7 @@ export function Footer() {
                   <MapPin className="w-3.5 h-3.5" />
                 </div>
                 <span className="leading-relaxed">
-                  Village Bujhda, Tehsil Girwa, Kodiyat Road, Udaipur, Rajasthan 313031
+                  331 CATANIA, Sector 78, Mahagun Moderne, Noida, Gautambuddha Nagar, Uttar Pradesh 201301
                 </span>
               </div>
             </div>

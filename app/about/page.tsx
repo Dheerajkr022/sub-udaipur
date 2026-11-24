@@ -5,9 +5,9 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 
 export const metadata: Metadata = {
-  title: "About Us | Udaipur Gateways - Independent Udaipur Travel Discovery",
+  title: "About Us | Udaipur Gateways - Independent Udaipur Travel Agency",
   description:
-    "Learn about Udaipur Gateways, operated by Nothing Like Travel LLP. We are an independent travel discovery platform providing comprehensive insights on The Ananta Udaipur and local travel in Rajasthan.",
+    "Learn about Udaipur Gateways, operated by Nothing Like Travel LLP. We are an independent travel agency providing comprehensive insights on The Ananta Udaipur and local travel in Rajasthan.",
   openGraph: {
     title: "About Us | Udaipur Gateways",
     description:
@@ -42,7 +42,7 @@ export default function AboutPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
         <div className="space-y-6 text-[#52525B] text-base leading-relaxed font-light">
           <p>
-            Welcome to <strong className="text-[#B8934E]">Udaipur Gateways</strong>, operated by <strong className="text-[#111827]">Nothing Like Travel LLP</strong> (GSTIN: 09AAZFN6228N1Z7). We are an independent travel discovery and enquiry support platform dedicated to showcasing premier hospitality options across Udaipur, Rajasthan.
+            Welcome to <strong className="text-[#B8934E]">Udaipur Gateways</strong>, operated by <strong className="text-[#111827]">Nothing Like Travel LLP</strong> (GSTIN: 09AAZFN6228N1Z7). We are an independent travel agency and enquiry support platform dedicated to showcasing premier hospitality options across Udaipur, Rajasthan.
           </p>
           <p>
             Our mission is to help independent travellers discover the ideal hillside retreat, contemporary villa, or luxury cottage nestled in the picturesque Aravalli range. We provide transparent information on accommodation categories, property facilities, dining outlets, and scenic Udaipur attractions.
@@ -53,7 +53,7 @@ export default function AboutPage() {
           <div className="bg-white p-6 rounded-xs border border-[#E8E2D8] mt-8 shadow-xs">
             <h3 className="font-bold font-serif text-[#111827] text-lg mb-2">Our Commitment</h3>
             <p className="text-sm text-[#71717A] m-0 leading-relaxed">
-              We strive to provide accurate information and quick responses to all your travel queries. Please note that we are an independent travel discovery platform and not the owner, operator, or official representative of The Ananta Udaipur unless specifically stated.
+              We strive to provide accurate information and quick responses to all your travel queries. Please note that we are an independent travel agency and not the owner, operator, or official representative of The Ananta Udaipur unless specifically stated.
             </p>
           </div>
         </div>

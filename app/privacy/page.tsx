@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">1. Introduction</h3>
         <p>Welcome to Udaipur Gateways, operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7). We respect your privacy and are committed to protecting your personal data.</p>
         <div className="bg-[#FAF8F5] border-l-2 border-[#B8934E] border-y border-r border-[#E8E2D8] p-4 mt-4 text-[#111827] rounded-xs">
-          <p className="font-medium m-0 text-xs sm:text-sm">Disclaimer: We are an independent travel discovery platform and not the owner, operator, or official representative of The Ananta Udaipur or any other property unless specifically stated.</p>
+          <p className="font-medium m-0 text-xs sm:text-sm">Disclaimer: We are an independent travel agency and not the owner, operator, or official representative of The Ananta Udaipur or any other property unless specifically stated.</p>
         </div>
 
         <h3 className="text-xl font-bold font-serif text-[#111827] mt-8 mb-3">2. Information We Collect</h3>
