@@ -192,10 +192,10 @@ function EnquiryFormContent({ sourcePage = "/", className, hideHeader = false }:
             </span>
           </div>
           <h2 className="text-lg sm:text-xl font-serif font-bold text-white">
-            Plan Your Stay & Inclusions
+            Get Stay <span className="text-[#D4AF67] italic font-serif font-normal">Details</span>
           </h2>
           <p className="text-xs text-white/70 mt-1 font-light leading-relaxed">
-            Submit your preferences for personalised villa options, seasonal rates and amenities guidance.
+            Share your travel dates and preferences. Our team will assist you with the best options and enquiry support.
           </p>
         </div>
 

@@ -10,7 +10,7 @@ export function HeroText() {
       <div className="flex items-center gap-3 mb-3.5">
         <span className="w-6 sm:w-10 h-[1px] bg-[#B8934E]" />
         <span className="text-[11px] sm:text-xs font-semibold tracking-[0.25em] text-[#B8934E] uppercase">
-          THE ANANTA UDAIPUR • HILLSIDE SANCTUARY • ARAVALLI HILLS
+          HILLSIDE SANCTUARY • ARAVALLI HILLS
         </span>
       </div>
 
