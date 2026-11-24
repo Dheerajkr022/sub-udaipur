@@ -126,6 +126,19 @@ export function HeroText() {
           </div>
         </a>
       </div>
+
+      {/* Trust & Independence Badge (Laptop & Mobile) */}
+      <div className="mt-5 flex items-center justify-start">
+        <div className="inline-flex flex-wrap items-center justify-center sm:justify-start gap-x-2 sm:gap-x-2.5 gap-y-1 text-xs sm:text-[13px] font-medium text-[#8F6E2E] py-2 px-4 sm:px-5 rounded-full bg-[#FAF8F5] border border-[#B8934E]/30 shadow-2xs">
+          <span>Enquiry Based</span>
+          <span className="text-[#B8934E]/40 select-none">|</span>
+          <span>No Booking</span>
+          <span className="text-[#B8934E]/40 select-none">|</span>
+          <span>No Payment</span>
+          <span className="text-[#B8934E]/40 select-none">|</span>
+          <span>Independent Service</span>
+        </div>
+      </div>
     </div>
   );
 }

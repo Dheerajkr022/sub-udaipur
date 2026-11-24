@@ -309,7 +309,7 @@ export function HeroSection() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#B8934E]" />
               <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[#18181B] font-mono">
-                STAY ENQUIRY & RATES CONSULTATION
+                STAY ENQUIRY
               </span>
             </div>
             <span className="text-xs text-[#71717A] hidden sm:inline font-light">
@@ -471,7 +471,7 @@ export function HeroSection() {
               className="flex-1 py-3.5 px-6 rounded-xs bg-[#0D2E24] hover:bg-[#185241] text-white font-medium text-xs sm:text-sm uppercase tracking-[0.16em] flex items-center justify-center gap-2.5 transition-all duration-300 shadow-xs cursor-pointer group"
             >
               <Search className="w-4 h-4 text-[#D4AF67]" />
-              <span className="whitespace-nowrap">CHECK STAY AVAILABILITY & RATES</span>
+              <span className="whitespace-nowrap">Request STAY DETAILS</span>
               <ArrowRight className="w-4 h-4 text-[#D4AF67] group-hover:translate-x-1 transition-transform" />
             </button>
 
@@ -480,14 +480,14 @@ export function HeroSection() {
               className="py-3.5 px-5 rounded-xs border border-[#B8934E] bg-[#FAF8F5] hover:bg-[#B8934E] text-[#8F6E2E] hover:text-white transition-colors flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider whitespace-nowrap"
             >
               <Phone className="w-3.5 h-3.5 animate-phone-ring shrink-0" />
-              <span>Call Concierge</span>
+              <span>Need Assistance</span>
             </a>
           </div>
 
           {/* Subtext Footnote */}
           <div className="mt-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] text-[#71717A] pt-3 border-t border-[#E8E2D8]/60">
             <span className="font-light">
-              Direct Consultation • Instant guidance on villas, seasonal rates & amenities
+              Request Only. Our team will share available options with you.
             </span>
             <a
               href="tel:+919279022649"

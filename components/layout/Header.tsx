@@ -47,8 +47,8 @@ export function Header() {
               The Ananta Udaipur
             </span>
             <span className="text-[#E8E2D8]/40">•</span>
-            <span className="text-[#E8E2D8]/80 text-[11px] normal-case tracking-normal font-light">
-              Independent Travel Agency
+            <span className="text-[#D4AF67] text-[11px] font-medium tracking-normal normal-case">
+              Enquiry Based &nbsp;|&nbsp; No Booking &nbsp;|&nbsp; No Payment &nbsp;|&nbsp; Independent Service
             </span>
           </div>
 
@@ -73,6 +73,13 @@ export function Header() {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* Mobile Independence Notice Bar */}
+      <div className="md:hidden bg-[#FAF8F5] border-b border-[#E8E2D8] py-1.5 px-3 flex justify-center text-center">
+        <span className="text-[10px] sm:text-[11px] font-medium text-[#8F6E2E] tracking-tight">
+          Enquiry Based &nbsp;|&nbsp; No Booking &nbsp;|&nbsp; No Payment &nbsp;|&nbsp; Independent Service
+        </span>
       </div>
 
       {/* Main Brand & Contact Bar */}
@@ -152,10 +159,13 @@ export function Header() {
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 top-[65px] z-50 bg-[#FAF8F5] overflow-y-auto border-t border-[#E8E2D8] flex flex-col justify-between p-6">
           <div className="space-y-6">
-            <div className="pb-3 border-b border-[#E8E2D8]">
+            <div className="pb-3 border-b border-[#E8E2D8] flex flex-col gap-2">
               <span className="text-[10px] font-mono font-bold tracking-[0.25em] text-[#B8934E] uppercase">
                 Explore The Ananta Udaipur
               </span>
+              <div className="inline-flex items-center text-[10px] font-medium text-[#8F6E2E] py-1.5 px-3 rounded-full bg-white border border-[#B8934E]/30 w-full justify-center text-center">
+                Enquiry Based &nbsp;|&nbsp; No Booking &nbsp;|&nbsp; No Payment &nbsp;|&nbsp; Independent Service
+              </div>
             </div>
             <nav className="flex flex-col space-y-2">
               {mobileNavLinks.map((link) => (
@@ -178,7 +188,7 @@ export function Header() {
               className="flex items-center justify-center gap-2.5 w-full py-3 px-4 bg-white border border-[#E8E2D8] rounded-xs text-sm font-semibold text-[#111827] shadow-xs"
             >
               <Phone className="w-4 h-4 text-[#B8934E] animate-phone-ring" />
-              <span>Call Concierge: {PHONE_NUMBER}</span>
+              <span>Need Assistance: {PHONE_NUMBER}</span>
             </a>
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi!%20I%E2%80%99d%20like%20to%20explore%20stay%20options%20at%20The%20Ananta%20Udaipur.`}
