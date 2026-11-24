@@ -137,6 +137,13 @@ export function DiningSection() {
           </div>
         ))}
       </div>
+
+      {/* Dining Disclaimer */}
+      <div className="mt-6 pt-4 border-t border-[#E8E2D8]/60">
+        <p className="text-xs text-[#71717A] font-light italic m-0">
+          * Dining information is for reference only. Timings, availability and charges may vary.
+        </p>
+      </div>
     </section>
   );
 }

@@ -81,7 +81,7 @@ export function ExperiencesSection() {
             Curated <span className="text-[#B8934E] italic font-serif font-normal">Activities</span>
           </h2>
           <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
-            Immerse yourself in wellness, leisure and curated activities at the resort and across scenic Udaipur.
+            Create unforgettable memories with a wide range of activities and top attractions for all age groups.
           </p>
         </div>
 
