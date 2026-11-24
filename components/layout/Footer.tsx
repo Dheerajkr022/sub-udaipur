@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, ExternalLink, HelpCircle } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,32 +21,41 @@ export function Footer() {
                 <div className="relative w-11 h-11 rounded-xs overflow-hidden shrink-0 border border-[#B8934E]/40 group-hover:border-[#B8934E] transition-colors bg-[#0D2E24]">
                   <Image
                     src="/logo.png"
-                    alt="Udaipur Gateways Logo"
+                    alt="Udaipur Gateway Logo"
                     fill
                     className="object-contain p-1"
                   />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xl font-bold tracking-[0.12em] font-serif text-white leading-none mb-1 group-hover:text-[#D4AF67] transition-colors">
-                    UDAIPUR GATEWAYS
+                    UDAIPUR GATEWAY
                   </span>
                   <span className="text-[10px] text-[#D4AF67] font-mono uppercase tracking-[0.2em]">
-                    Independent Travel Agency
+                    Independent Travel Information & Enquiry Service
                   </span>
                 </div>
               </Link>
 
               <p className="text-xs text-[#E8E2D8]/70 leading-relaxed mt-4 max-w-sm font-light">
-                An independent travel agency offering curated insights, accommodation options, and local guides for The Ananta Udaipur and Rajasthan’s lake city.
+                An independent travel information and enquiry service offering general property information, accommodation overviews, facilities guidance and local attractions for The Ananta Udaipur and Rajasthan’s lake city.
               </p>
+
+              <div className="mt-4">
+                <a
+                  href="#enquiry"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#B8934E] hover:bg-[#A38038] text-white text-[11px] font-mono uppercase tracking-wider rounded-xs transition-colors font-medium"
+                >
+                  <HelpCircle className="w-3.5 h-3.5 text-white" />
+                  <span>ASK UDAIPUR GATEWAY A GENERAL QUESTION</span>
+                </a>
+              </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-[#185241]/40 text-xs text-[#E8E2D8]/60">
+            <div className="mt-6 pt-4 border-t border-[#185241]/40 text-xs text-[#E8E2D8]/60 space-y-1">
               <p>
                 Operated by <strong className="text-white">Nothing Like Travel LLP</strong>
-                <br />
-                <span className="font-mono text-[#D4AF67]">GSTIN: 09AAZFN6228N1Z7</span>
               </p>
+              <p className="font-mono text-[#D4AF67]">GSTIN: 09AAZFN6228N1Z7</p>
             </div>
           </div>
 
@@ -58,7 +67,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-xs text-[#E8E2D8]/80">
               <li>
                 <Link href="/" className="hover:text-[#D4AF67] transition-colors">
-                  Home / Residences
+                  Home / Overview
                 </Link>
               </li>
               <li>
@@ -86,13 +95,24 @@ export function Footer() {
                   Contact Us
                 </Link>
               </li>
+              <li className="pt-2">
+                <a
+                  href="https://www.anantahotels.com/ananta-hotels-udaipur/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#D4AF67] hover:underline flex items-center gap-1.5"
+                >
+                  <span>Visit The Ananta Udaipur official website</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Contact Details */}
           <div className="md:col-span-4">
             <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#D4AF67] block mb-4">
-              Concierge Contact
+              Contact Udaipur Gateway
             </span>
             <div className="space-y-3.5 text-xs text-[#E8E2D8]/80">
               <a
@@ -106,22 +126,27 @@ export function Footer() {
               </a>
 
               <a
-                href="mailto:info@udaipurgateways.com"
+                href="mailto:info@udaipurgateway.com"
                 className="flex items-center gap-2.5 hover:text-[#D4AF67] transition-colors"
               >
                 <div className="w-7 h-7 rounded-xs bg-[#0D2E24] border border-[#185241] flex items-center justify-center text-[#D4AF67] shrink-0">
                   <Mail className="w-3.5 h-3.5" />
                 </div>
-                <span>info@udaipurgateways.com</span>
+                <span>info@udaipurgateway.com</span>
               </a>
 
               <div className="flex items-start gap-2.5 text-[#E8E2D8]/70 pt-1">
                 <div className="w-7 h-7 rounded-xs bg-[#0D2E24] border border-[#185241] flex items-center justify-center text-[#D4AF67] shrink-0 mt-0.5">
                   <MapPin className="w-3.5 h-3.5" />
                 </div>
-                <span className="leading-relaxed">
+                <div className="leading-relaxed">
+                  <strong className="text-white block font-normal">Registered Office:</strong>
                   331 CATANIA, Sector 78, Mahagun Moderne, Noida, Gautambuddha Nagar, Uttar Pradesh 201301
-                </span>
+                </div>
+              </div>
+
+              <div className="text-[11px] text-[#E8E2D8]/60 pl-9">
+                Service area: Udaipur, Rajasthan
               </div>
             </div>
           </div>
@@ -131,7 +156,7 @@ export function Footer() {
         <div className="pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-[11px] text-[#E8E2D8]/60">
           <p>© {currentYear} Nothing Like Travel LLP. All Rights Reserved.</p>
           <p className="text-center md:text-right">
-            Independent informational travel and stay discovery platform. Not the official property website.
+            Independent property information website. We are not the owner, operator or official representative of The Ananta Udaipur.
           </p>
         </div>
       </div>

@@ -2,14 +2,14 @@
 
 import React from "react";
 import Image from "next/image";
-import { BedDouble, Utensils, Flower2, Dumbbell, Mountain, Sparkles, Smile } from "lucide-react";
+import { BedDouble, Utensils, Flower2, Dumbbell, Mountain, Smile, Info } from "lucide-react";
 
 function SwimmerIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="8" cy="6" r="2" />
-      <path d="M4 14.5c1.5-.7 3-.7 4.5 0s3 .7 4.5 0 3-.7 4.5 0 3 .7 4.5 0" />
-      <path d="M4 18.5c1.5-.7 3-.7 4.5 0s3 .7 4.5 0 3-.7 4.5 0 3 .7 4.5 0" />
+      <path d="M4 14.5c1.5-.7 3-.7 4.5 0s3 .7 4.5 0 3-.7 4.5 0" />
+      <path d="M4 18.5c1.5-.7 3-.7 4.5 0s3 .7 4.5 0 3-.7 4.5 0" />
       <path d="M9 8.5l3 2 4-2" />
     </svg>
   );
@@ -85,14 +85,14 @@ export function AmenitiesSection() {
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-6 h-[1px] bg-[#B8934E]" />
             <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
-              RESORT AMENITIES & LEISURE
+              PROPERTY FACILITIES
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-            World-Class <span className="text-[#B8934E] italic font-serif font-normal">Facilities</span>
+            Property <span className="text-[#B8934E] italic font-serif font-normal">Facilities</span>
           </h2>
           <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
-            Experience an array of premium amenities designed for relaxation, recreation and wellness amidst the Aravalli hills.
+            Overview of recreational and wellness facilities available across the resort estate.
           </p>
         </div>
 
@@ -100,60 +100,61 @@ export function AmenitiesSection() {
           href="#enquiry"
           className="text-xs font-mono uppercase tracking-widest text-[#B8934E] hover:text-[#0D2E24] font-semibold flex items-center gap-1.5 self-start md:self-end"
         >
-          <span>Enquire for Facilities</span>
+          <span>Ask About Facilities</span>
           <span>→</span>
         </a>
       </div>
 
-      {/* Editorial Facilities Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-        {amenitiesList.map((amenity, idx) => {
-          const Icon = amenity.icon;
+      {/* Facilities Information Notice Box */}
+      <div className="bg-[#FAF8F5] border border-[#E8E2D8] rounded-xs p-4 sm:p-5 mb-8 text-xs sm:text-sm text-[#4B5563] leading-relaxed flex items-start gap-3">
+        <Info className="w-4 h-4 text-[#B8934E] shrink-0 mt-0.5" />
+        <p className="m-0">
+          The facilities shown are based on publicly available property information and are provided for general reference. Access, operating hours, availability, eligibility and additional charges may change. Please confirm current details directly with The Ananta Udaipur.
+        </p>
+      </div>
+
+      {/* Grid of 8 Amenity Dossier Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        {amenitiesList.map((item, idx) => {
+          const Icon = item.icon;
           return (
             <div
               key={idx}
-              className="group relative bg-white border border-[#E8E2D8] rounded-xs overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
+              className="bg-white border border-[#E8E2D8] hover:border-[#B8934E]/70 rounded-xs overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between group"
             >
-              {/* Photo Frame */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#FAF8F5]">
+              {/* Photo Header */}
+              <div className="relative aspect-[16/11] w-full overflow-hidden bg-[#FAF8F5]">
                 <Image
-                  src={amenity.image}
-                  alt={amenity.title}
+                  src={item.image}
+                  alt={item.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
-                {/* Corner Category Tag */}
-                <div className="absolute top-2.5 left-2.5">
-                  <span className="px-2 py-0.5 rounded-xs bg-[#0D2E24]/85 text-[#D4AF67] text-[9px] font-mono uppercase tracking-wider backdrop-blur-xs">
-                    {amenity.category}
+                <div className="absolute bottom-2.5 left-3 text-white z-10 flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-xs bg-[#0D2E24]/80 backdrop-blur-xs text-[#D4AF67] flex items-center justify-center border border-[#B8934E]/40">
+                    <Icon className="w-3.5 h-3.5" />
+                  </div>
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-white/90">
+                    {item.category}
                   </span>
-                </div>
-
-                {/* Floating Icon */}
-                <div className="absolute bottom-2.5 right-2.5 w-8 h-8 rounded-xs bg-white/90 backdrop-blur-xs text-[#0D2E24] flex items-center justify-center shadow-xs">
-                  <Icon className="w-4 h-4 text-[#B8934E]" />
                 </div>
               </div>
 
-              {/* Title & Micro Information */}
+              {/* Title & Info */}
               <div className="p-4 flex items-center justify-between">
-                <h3 className="font-serif font-bold text-sm sm:text-base text-[#111827] leading-snug">
-                  {amenity.title}
+                <h3 className="font-serif font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#B8934E] transition-colors">
+                  {item.title}
                 </h3>
+                <span className="text-[10px] font-mono text-[#71717A] uppercase">
+                  Facility
+                </span>
               </div>
             </div>
           );
         })}
-      </div>
-
-      {/* Amenities Disclaimer */}
-      <div className="mt-6 pt-4 border-t border-[#E8E2D8]/60">
-        <p className="text-xs text-[#71717A] font-light italic m-0">
-          * Amenities shown are for reference only. Availability, access, timings and inclusions may vary.
-        </p>
       </div>
     </section>
   );

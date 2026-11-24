@@ -2,44 +2,43 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Utensils, Sparkles, Clock, Wine } from "lucide-react";
+import { ChevronLeft, ChevronRight, Utensils, Sparkles, Clock, Wine, Info, ExternalLink } from "lucide-react";
 
 const allOutlets = [
   {
-    name: "Oasis Restaurant",
-    tag: "Multi-Cuisine & Regional Rajasthani",
-    timing: "All Day Dining • 7:00 AM - 11:00 PM",
+    name: "Oasis",
+    tag: "Multi-Cuisine & Regional Indian",
+    timing: "Breakfast, Lunch & Dinner (Timings subject to change)",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp",
+    description: "Main dining venue offering a range of Indian and international cuisines with indoor and outdoor seating.",
   },
   {
     name: "Float Poolside Bar",
-    tag: "Cocktails & Sunken Lounge",
-    timing: "Poolside Vistas • 11:00 AM - 11:00 PM",
+    tag: "Beverages & Sunken Lounge",
+    timing: "Poolside refreshments (Timings subject to change)",
     image: "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg",
+    description: "Casual poolside outlet serving refreshing beverages, cocktails and light bites overlooking the Aravalli hills.",
   },
   {
-    name: "Ananta Tara Rooftop",
-    tag: "Starlit Dining & Hillside Panorama",
-    timing: "Evening Starlight • 7:00 PM - Midnight",
+    name: "Zenith",
+    tag: "Scenic Dining Outlet",
+    timing: "Evening dining (Timings subject to change)",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0189-HDR-Edit_kbubnr.webp",
+    description: "Speciality venue offering elevated perspectives and curated culinary selections.",
   },
   {
-    name: "In-Villa Private Dining",
-    tag: "Bespoke Chef Consultation",
-    timing: "24-Hour In-Residence Service",
-    image: "/ananta-photos/Udaipur/Executive Suites/Executive_Suite_Bedroom_(Photo-2).jpg",
-  },
-  {
-    name: "Alfresco Garden Dining",
-    tag: "Open-Air Terraces & Aravalli Breeze",
-    timing: "Breakfast & Sunset Hours",
+    name: "Jharna",
+    tag: "Waterfront Ambience Dining",
+    timing: "Speciality hours (Timings subject to change)",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
+    description: "Dining experience set amidst picturesque waterfall-inspired landscaping and resort scenery.",
   },
   {
-    name: "Chalet Tea & Coffee Deck",
-    tag: "Artisanal Brews & Pastries",
-    timing: "Morning to Twilight • 8:00 AM - 8:00 PM",
+    name: "Baker's Delight",
+    tag: "Bakery & Confectionery",
+    timing: "Daytime bakery service (Timings subject to change)",
     image: "/ananta-photos/Udaipur/Luxury Cottage/Ananta_Udaipur_Fotowalah-25_ulgb9q.webp",
+    description: "Freshly baked breads, pastries, coffee, tea and light bakery delicacies.",
   },
 ];
 
@@ -61,14 +60,14 @@ export function DiningSection() {
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-6 h-[1px] bg-[#B8934E]" />
             <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
-              GASTRONOMY & RESTAURANTS
+              DINING INFORMATION
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-            A Culinary <span className="text-[#B8934E] italic font-serif font-normal">Journey</span>
+            Dining <span className="text-[#B8934E] italic font-serif font-normal">Information</span>
           </h2>
           <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
-            Indulge in authentic Rajasthani delicacies and multi-cuisine favorites at The Ananta Udaipur, accompanied by panoramic hill views.
+            Overview of confirmed restaurants, dining venues and bars at The Ananta Udaipur.
           </p>
         </div>
 
@@ -96,12 +95,20 @@ export function DiningSection() {
         </div>
       </div>
 
+      {/* Dining Notice Box */}
+      <div className="bg-[#FAF8F5] border border-[#E8E2D8] rounded-xs p-4 sm:p-5 mb-8 text-xs sm:text-sm text-[#4B5563] leading-relaxed flex items-start gap-3">
+        <Info className="w-4 h-4 text-[#B8934E] shrink-0 mt-0.5" />
+        <p className="m-0">
+          The property&apos;s dining outlets and food and beverage services may change. Names, operating hours, menus, access and charges should be confirmed directly with The Ananta Udaipur before visiting.
+        </p>
+      </div>
+
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {displayedOutlets.map((outlet, idx) => (
           <div
             key={idx}
-            className="group relative bg-white border border-[#E8E2D8] hover:border-[#B8934E]/70 rounded-xs overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
+            className="bg-white border border-[#E8E2D8] hover:border-[#B8934E]/70 rounded-xs overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between group"
           >
             {/* Image */}
             <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#FAF8F5]">
@@ -110,39 +117,40 @@ export function DiningSection() {
                 alt={outlet.name}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, 33vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
-              <div className="absolute top-3 left-3">
-                <span className="px-2.5 py-1 rounded-xs bg-[#0D2E24]/85 text-[#D4AF67] text-[10px] font-mono uppercase tracking-wider backdrop-blur-xs">
+              <div className="absolute bottom-2.5 left-3 text-white z-10 flex items-center gap-2">
+                <div className="w-6 h-6 rounded-xs bg-[#0D2E24]/80 backdrop-blur-xs text-[#D4AF67] flex items-center justify-center border border-[#B8934E]/40">
+                  <Utensils className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-white/90">
                   {outlet.tag}
                 </span>
               </div>
             </div>
 
-            {/* Bottom Bar */}
-            <div className="p-4 sm:p-5 flex flex-col justify-between">
-              <div className="flex items-start justify-between gap-3 mb-2">
-                <h3 className="text-base sm:text-lg font-serif font-bold text-[#111827] group-hover:text-[#B8934E] transition-colors leading-snug">
+            {/* Info */}
+            <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between">
+              <div>
+                <h3 className="font-serif font-bold text-base sm:text-lg text-[#111827] group-hover:text-[#B8934E] transition-colors">
                   {outlet.name}
                 </h3>
-                <Wine className="w-4 h-4 text-[#B8934E] shrink-0" />
+                <p className="text-xs text-[#52525B] mt-1.5 leading-relaxed font-light">
+                  {outlet.description}
+                </p>
               </div>
-              <div className="flex items-center gap-1.5 text-xs text-[#71717A] pt-2 border-t border-[#E8E2D8]/60">
-                <Clock className="w-3.5 h-3.5 text-[#B8934E]" />
-                <span>{outlet.timing}</span>
+
+              <div className="pt-3 mt-3 border-t border-[#E8E2D8]/80 flex items-center justify-between text-[11px] text-[#71717A]">
+                <div className="flex items-center gap-1.5">
+                  <Clock className="w-3 h-3 text-[#B8934E]" />
+                  <span>{outlet.timing}</span>
+                </div>
               </div>
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Dining Disclaimer */}
-      <div className="mt-6 pt-4 border-t border-[#E8E2D8]/60">
-        <p className="text-xs text-[#71717A] font-light italic m-0">
-          * Dining information is for reference only. Timings, availability and charges may vary.
-        </p>
       </div>
     </section>
   );

@@ -3,22 +3,23 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
+import { ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us | Udaipur Gateways - Independent Udaipur Travel Agency",
+  title: "About Us | Udaipur Gateway",
   description:
-    "Learn about Udaipur Gateways, operated by Nothing Like Travel LLP. We are an independent travel agency providing comprehensive insights on The Ananta Udaipur and local travel in Rajasthan.",
+    "Learn about Udaipur Gateway, an independent travel information and enquiry service operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7).",
   openGraph: {
-    title: "About Us | Udaipur Gateways",
+    title: "About Us | Udaipur Gateway",
     description:
-      "Learn about Udaipur Gateways, operated by Nothing Like Travel LLP. Discover luxury hillside retreats and independent travel guidance in Udaipur.",
+      "Learn about Udaipur Gateway, operated by Nothing Like Travel LLP. Independent information and enquiry assistance for The Ananta Udaipur.",
   },
 };
 
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 lg:px-8 py-12 max-w-6xl min-h-[60vh]">
-      <SectionHeading title="About Us" />
+      <SectionHeading title="About Udaipur Gateway" />
 
       {/* Image Gallery */}
       <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-3 mb-16 h-[500px] md:h-[600px] mt-8">
@@ -31,7 +32,7 @@ export default function AboutPage() {
         <div className="hidden md:block relative rounded-xs overflow-hidden border border-[#E8E2D8]">
           <Image src="/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp" alt="Resort Dining and Ambience" fill className="object-cover hover:scale-105 transition-transform duration-700" sizes="25vw" />
         </div>
-        <div className="hidden md:block relative overflow-hidden rounded-xs border border-[#E8E2D8]">
+        <div className="hidden md:block relative rounded-xs overflow-hidden border border-[#E8E2D8]">
           <Image src="/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_pool_at_ananta_udaipur_suites_in_Udaipur_i2ocjh_dvi4lj.jpg" alt="Infinity Pool" fill className="object-cover hover:scale-105 transition-transform duration-700" sizes="25vw" />
         </div>
         <div className="hidden md:block relative rounded-xs overflow-hidden border border-[#E8E2D8]">
@@ -41,25 +42,41 @@ export default function AboutPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
         <div className="space-y-6 text-[#52525B] text-base leading-relaxed font-light">
-          <p>
-            Welcome to <strong className="text-[#B8934E]">Udaipur Gateways</strong>, operated by <strong className="text-[#111827]">Nothing Like Travel LLP</strong> (GSTIN: 09AAZFN6228N1Z7). We are an independent travel agency and enquiry support platform dedicated to showcasing premier hospitality options across Udaipur, Rajasthan.
-          </p>
-          <p>
-            Our mission is to help independent travellers discover the ideal hillside retreat, contemporary villa, or luxury cottage nestled in the picturesque Aravalli range. We provide transparent information on accommodation categories, property facilities, dining outlets, and scenic Udaipur attractions.
-          </p>
-          <p>
-            Through our platform, you can explore various options, view detailed amenities, and easily submit an enquiry. Our dedicated team will review your travel preferences and share personalized stay recommendations and availability details.
-          </p>
-          <div className="bg-white p-6 rounded-xs border border-[#E8E2D8] mt-8 shadow-xs">
-            <h3 className="font-bold font-serif text-[#111827] text-lg mb-2">Our Commitment</h3>
-            <p className="text-sm text-[#71717A] m-0 leading-relaxed">
-              We strive to provide accurate information and quick responses to all your travel queries. Please note that we are an independent travel agency and not the owner, operator, or official representative of The Ananta Udaipur unless specifically stated.
+          <div className="bg-[#FAF8F5] p-6 rounded-xs border border-[#E8E2D8] shadow-xs space-y-4">
+            <h3 className="font-bold font-serif text-[#111827] text-xl mb-2">
+              ABOUT UDAIPUR GATEWAY
+            </h3>
+            <p>
+              Udaipur Gateway is an independent travel information and enquiry service operated by Nothing Like Travel LLP (GSTIN: 09AAZFN6228N1Z7).
             </p>
+            <p>
+              This page provides general information about The Ananta Udaipur, including publicly available accommodation categories, property facilities, dining information and nearby attractions. Visitors may contact Udaipur Gateway with general questions about the information displayed on this page.
+            </p>
+            <p>
+              Udaipur Gateway is not owned, operated, sponsored, authorised or endorsed by The Ananta Udaipur or its owner/operator. We do not act as the property’s agent or representative.
+            </p>
+            <p>
+              We do not check live room availability, obtain live rates, take bookings, confirm reservations, collect accommodation payments or process cancellations. For current property information and all reservations or payments, visitors should contact The Ananta Udaipur directly through its official website or official contact channels.
+            </p>
+          </div>
+
+          <div className="pt-2">
+            <a
+              href="https://www.anantahotels.com/ananta-hotels-udaipur/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#8F6E2E] hover:underline inline-flex items-center gap-1.5 font-medium text-sm"
+            >
+              <span>Visit The Ananta Udaipur official website</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
 
         <div>
-          <h3 className="text-xl font-bold font-serif text-[#111827] mb-6 text-center">Plan Your Trip With Us</h3>
+          <h3 className="text-xl font-bold font-serif text-[#111827] mb-6 text-center">
+            Ask Udaipur Gateway a General Question
+          </h3>
           <EnquiryForm sourcePage="/about" />
         </div>
       </div>

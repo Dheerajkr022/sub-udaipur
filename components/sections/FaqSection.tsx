@@ -1,32 +1,38 @@
 "use client";
 
 import React, { useState } from "react";
-import { Landmark, IndianRupee, Utensils, Calendar, Plus, Minus, HelpCircle } from "lucide-react";
+import { Landmark, HelpCircle, FileText, ExternalLink, Calendar, ChevronDown } from "lucide-react";
 
 const faqs = [
   {
     icon: Landmark,
-    question: "Is Udaipur Gateways the official Ananta Udaipur website?",
+    question: "Is this the official website of The Ananta Udaipur?",
     answer:
-      "No. Udaipur Gateways is an independent travel agency and enquiry support platform. We assist travellers in finding accommodation options, villas, cottages, dining, and wellness retreats at The Ananta Udaipur and exploring the Udaipur region, but we are not the official website or direct representative of the property.",
+      "No. This is an independent information page operated by Udaipur Gateway / Nothing Like Travel LLP. It is not owned, operated, sponsored or endorsed by The Ananta Udaipur.",
   },
   {
-    icon: IndianRupee,
-    question: "How will I receive availability and rates?",
+    icon: HelpCircle,
+    question: "Can Udaipur Gateway check current room availability or rates?",
     answer:
-      "Once you share your dates and preferences through our enquiry form or call us, our dedicated team will check current availability and share customized stay details, room categories, and applicable inclusions via WhatsApp or email.",
+      "No. We do not access live room inventory or provide live property quotes. Please contact The Ananta Udaipur directly for current information.",
   },
   {
-    icon: Utensils,
-    question: "Can you help with dining, spa, and Udaipur sightseeing information?",
+    icon: FileText,
+    question: "Does submitting this form reserve a room?",
     answer:
-      "Yes! We provide helpful guidance on fine dining outlets (Oasis, Float, Ananta Tara), Mudra Spa wellness therapies, and iconic Udaipur sightseeing including Lake Pichola, City Palace, Fateh Sagar Lake, and Sajjangarh Monsoon Palace.",
+      "No. The form only sends a general information question to Udaipur Gateway. It does not create or confirm a booking.",
+  },
+  {
+    icon: ExternalLink,
+    question: "How can I make a reservation?",
+    answer:
+      "Contact The Ananta Udaipur through its official website or official contact channels.",
   },
   {
     icon: Calendar,
-    question: "Is the information on this website always up to date?",
+    question: "Are property facilities, restaurant timings and inclusions guaranteed?",
     answer:
-      "We strive to keep all resort details, room categories, and amenities updated. However, seasonal rates, operational timings, and venue availability are subject to change at the resort management's discretion.",
+      "No. Information may change. Please confirm current facilities, access, timings, charges and inclusions directly with the property.",
   },
 ];
 
@@ -45,22 +51,22 @@ export function FaqSection() {
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-6 h-[1px] bg-[#B8934E]" />
             <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
-              QUESTIONS & INFORMATION
+              FREQUENTLY ASKED QUESTIONS
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
             Frequently Asked <span className="text-[#B8934E] italic font-serif font-normal">Questions</span>
           </h2>
           <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
-            Find answers to common questions about The Ananta Udaipur and our enquiry assistance service.
+            Answers to common questions regarding this independent information page and our enquiry service.
           </p>
         </div>
 
         <a
-          href="tel:+919279022649"
+          href="#enquiry"
           className="text-xs font-mono uppercase tracking-widest text-[#B8934E] hover:text-[#0D2E24] font-semibold flex items-center gap-1.5 self-start md:self-end"
         >
-          <span>Ask Concierge Directly</span>
+          <span>Contact Udaipur Gateway</span>
           <span>→</span>
         </a>
       </div>
@@ -88,14 +94,18 @@ export function FaqSection() {
                   </span>
                 </div>
 
-                <div className="w-7 h-7 rounded-xs bg-[#FAF8F5] border border-[#E8E2D8] group-hover:bg-[#0D2E24] group-hover:text-white flex items-center justify-center text-[#111827] shrink-0 transition-all">
-                  {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+                <div className="w-6 h-6 rounded-xs bg-[#FAF8F5] flex items-center justify-center text-[#71717A] group-hover:text-[#111827] shrink-0 transition-transform">
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      isOpen ? "rotate-180 text-[#B8934E]" : ""
+                    }`}
+                  />
                 </div>
               </button>
 
               {isOpen && (
-                <div className="px-5 sm:px-6 pb-6 pt-1 text-sm text-[#52525B] leading-relaxed border-t border-[#E8E2D8]/60 ml-12 sm:ml-14 font-light">
-                  {faq.answer}
+                <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 text-xs sm:text-sm text-[#52525B] leading-relaxed font-light border-t border-[#E8E2D8]/40 bg-[#FAF8F5]/50">
+                  <p className="mt-3">{faq.answer}</p>
                 </div>
               )}
             </div>

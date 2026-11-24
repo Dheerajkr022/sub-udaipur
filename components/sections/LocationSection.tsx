@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { MapPin, ArrowRight, Compass, Phone } from "lucide-react";
+import { MapPin, ArrowRight, Compass, Phone, HelpCircle } from "lucide-react";
 
 const nearbyDestinations = [
   {
@@ -26,7 +26,7 @@ const nearbyDestinations = [
   {
     name: "Sajjangarh Palace",
     distance: "9 km from resort",
-    description: "Monsoon palace perched atop Bansdara peak providing breathtaking 360-degree sunset panoramas.",
+    description: "Monsoon palace perched atop Bansdara peak providing panoramic sunset vistas.",
     image: "/destinations/sajjangarh.jpg",
   },
   {
@@ -52,23 +52,23 @@ export function LocationSection() {
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-6 h-[1px] bg-[#B8934E]" />
             <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
-              LOCATION & NEARBY ATTRACTIONS
+              LOCATION & NEARBY DESTINATIONS
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-            Explore <span className="text-[#B8934E] italic font-serif font-normal">Nearby Destinations</span>
+            Location & <span className="text-[#B8934E] italic font-serif font-normal">Surroundings</span>
           </h2>
           <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
-            Discover iconic heritage palaces, tranquil lakes and cultural landmarks across Udaipur.
+            Geographic setting of the property and notable landmarks across the Udaipur region.
           </p>
         </div>
 
         <a
-          href="tel:+919279022649"
+          href="#enquiry"
           className="px-4 py-2 rounded-xs border border-[#B8934E] text-[#8F6E2E] hover:bg-[#0D2E24] hover:text-white hover:border-[#0D2E24] text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-all self-start md:self-end"
         >
-          <Phone className="w-3.5 h-3.5 animate-phone-ring" />
-          <span>Sightseeing Guidance</span>
+          <HelpCircle className="w-3.5 h-3.5" />
+          <span>Ask Location Questions</span>
         </a>
       </div>
 
@@ -97,10 +97,10 @@ export function LocationSection() {
               </div>
               <div>
                 <h4 className="font-serif font-bold text-sm sm:text-base text-[#111827]">
-                  The Ananta, Bujhda, Udaipur
+                  The Ananta Udaipur
                 </h4>
                 <p className="text-xs text-[#52525B] mt-1 leading-relaxed">
-                  Village Bujhda, Tehsil Girwa, Kodiyat Road, Udaipur, Rajasthan 313031
+                  Kodiyat Road, Bujhda, Udaipur, Rajasthan, India
                 </p>
                 <div className="mt-3 pt-3 border-t border-[#E8E2D8]/60 flex items-center justify-between text-[11px] text-[#71717A]">
                   <span>Approx. 30 km from Maharana Pratap Airport</span>
@@ -108,10 +108,9 @@ export function LocationSection() {
                     href="https://maps.google.com/?q=The+Ananta+Udaipur"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#B8934E] font-medium hover:underline flex items-center gap-1"
+                    className="text-[#8F6E2E] hover:underline font-semibold"
                   >
-                    <span>View Full Map</span>
-                    <ArrowRight className="w-3 h-3" />
+                    Open in Maps →
                   </a>
                 </div>
               </div>
@@ -120,11 +119,11 @@ export function LocationSection() {
         </div>
 
         {/* Right Column: 6 Nearby Destinations */}
-        <div id="nearby" className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {nearbyDestinations.map((dest, idx) => (
             <div
               key={idx}
-              className="group bg-white border border-[#E8E2D8] hover:border-[#B8934E]/70 rounded-xs overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
+              className="bg-white border border-[#E8E2D8] hover:border-[#B8934E]/70 rounded-xs overflow-hidden transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between group"
             >
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#FAF8F5]">
                 <Image
@@ -134,25 +133,24 @@ export function LocationSection() {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-
-                <div className="absolute bottom-2.5 left-3 right-3 text-white">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#D4AF67] block">
-                    {dest.distance}
-                  </span>
-                  <h4 className="font-serif font-bold text-sm sm:text-base leading-snug">
-                    {dest.name}
-                  </h4>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-2 left-3 text-white z-10 flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider">
+                  <Compass className="w-3 h-3 text-[#D4AF67]" />
+                  <span>{dest.distance}</span>
                 </div>
               </div>
 
-              <div className="p-3.5 flex flex-col justify-between flex-grow">
-                <p className="text-xs text-[#52525B] leading-relaxed line-clamp-2">
-                  {dest.description}
-                </p>
-                <div className="mt-2 pt-2 border-t border-[#E8E2D8]/60 flex items-center justify-between text-[11px] text-[#8F6E2E] font-medium">
-                  <span>Explore Heritage</span>
-                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              <div className="p-4 flex flex-col flex-1 justify-between">
+                <div>
+                  <h4 className="font-serif font-bold text-sm sm:text-base text-[#111827] group-hover:text-[#B8934E] transition-colors">
+                    {dest.name}
+                  </h4>
+                  <p className="text-xs text-[#52525B] mt-1.5 leading-relaxed font-light">
+                    {dest.description}
+                  </p>
+                </div>
+                <div className="pt-2 text-[10px] text-[#71717A] italic">
+                  Independent regional landmark
                 </div>
               </div>
             </div>

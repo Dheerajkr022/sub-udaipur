@@ -2,32 +2,29 @@
 
 import React from "react";
 import Image from "next/image";
-import { FileEdit, Search, Info, ArrowRight } from "lucide-react";
+import { Compass, HelpCircle, ExternalLink, ArrowRight } from "lucide-react";
 
 const processSteps = [
   {
     number: "01",
-    icon: FileEdit,
-    title: "Send Enquiry",
-    description: "Fill in your travel details, guest count and accommodation preferences.",
+    icon: Compass,
+    title: "Explore Property Information",
+    description: "Review general information about accommodation categories, facilities, dining and the Udaipur area.",
     image: "/ananta-photos/Udaipur/Premium Wooden Cottage with Bathtub/Room1_9_51c23ea1.webp",
-    href: "#enquiry",
   },
   {
     number: "02",
-    icon: Search,
-    title: "We Review Your Request",
-    description: "Our dedicated concierge team checks current property availability, villa options and seasonal rates.",
+    icon: HelpCircle,
+    title: "Ask Udaipur Gateway a General Question",
+    description: "Send a question about the information shown on this website. Your enquiry is received by Udaipur Gateway only.",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0165-HDR_w5re8z.webp",
-    href: "#enquiry",
   },
   {
     number: "03",
-    icon: Info,
-    title: "Get Information & Next Steps",
-    description: "Receive tailored stay proposals, inclusions, wellness details and itinerary support to plan your visit.",
+    icon: ExternalLink,
+    title: "Contact the Property Directly for Current Details",
+    description: "For live availability, rates, reservations, payment, cancellation terms and property services, use The Ananta Udaipur's official website or official contact details.",
     image: "/ananta-photos-2/Udaipur/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0249-HDR_rudspd.webp",
-    href: "#enquiry",
   },
 ];
 
@@ -40,15 +37,14 @@ export function EnquiryProcess() {
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-6 h-[1px] bg-[#B8934E]" />
             <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
-              HOW OUR ENQUIRY PROCESS WORKS
+              USER GUIDANCE
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-            Get Your Stay Information{" "}
-            <span className="text-[#B8934E] italic font-serif font-normal">in Simple Steps</span>
+            HOW TO USE THIS <span className="text-[#B8934E] italic font-serif font-normal">INFORMATION PAGE</span>
           </h2>
           <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
-            We make it easy for you to get the information you need for your stay at The Ananta Udaipur.
+            Follow these simple steps to explore property details, send general questions, or contact the property directly.
           </p>
         </div>
 
@@ -56,12 +52,12 @@ export function EnquiryProcess() {
           href="#enquiry"
           className="text-xs font-mono uppercase tracking-widest text-[#B8934E] hover:text-[#0D2E24] font-semibold flex items-center gap-1.5 self-start md:self-end"
         >
-          <span>Begin Enquiry</span>
+          <span>Ask a Question</span>
           <span>→</span>
         </a>
       </div>
 
-      {/* 3 Step Editorial Timeline Cards */}
+      {/* 3 Step Timeline Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {processSteps.map((step, idx) => {
           const Icon = step.icon;
@@ -81,29 +77,27 @@ export function EnquiryProcess() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
-                {/* Step Monogram */}
-                <div className="absolute top-3 left-3 w-9 h-9 rounded-xs bg-[#0D2E24] text-[#D4AF67] font-mono font-bold text-xs flex items-center justify-center border border-[#B8934E]/40 shadow-xs">
+                {/* Step Number Tag */}
+                <div className="absolute top-3 left-3 px-2.5 py-1 rounded-xs bg-[#0D2E24]/90 backdrop-blur-xs text-[#D4AF67] text-xs font-mono font-bold border border-[#B8934E]/40">
                   {step.number}
-                </div>
-
-                <div className="absolute bottom-3 right-3 w-8 h-8 rounded-xs bg-white/90 text-[#0D2E24] flex items-center justify-center shadow-xs">
-                  <Icon className="w-4 h-4 text-[#B8934E]" />
                 </div>
               </div>
 
-              {/* Step Copy */}
-              <div className="p-5 flex flex-col justify-between flex-grow">
+              {/* Text Body */}
+              <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between">
                 <div>
-                  <h3 className="font-serif font-bold text-lg text-[#111827] group-hover:text-[#B8934E] transition-colors leading-snug">
+                  <div className="flex items-center gap-2 mb-2 text-[#B8934E]">
+                    <Icon className="w-4 h-4" />
+                    <span className="text-[11px] font-mono uppercase tracking-wider font-semibold">
+                      Step {step.number}
+                    </span>
+                  </div>
+                  <h3 className="font-serif font-bold text-lg sm:text-xl text-[#111827] group-hover:text-[#B8934E] transition-colors leading-snug">
                     {step.title}
                   </h3>
-                  <p className="text-xs text-[#52525B] leading-relaxed mt-2">
+                  <p className="text-xs sm:text-sm text-[#52525B] leading-relaxed mt-2.5 font-light">
                     {step.description}
                   </p>
-                </div>
-                <div className="pt-4 mt-4 border-t border-[#E8E2D8]/60 flex items-center justify-between text-xs text-[#8F6E2E] font-medium">
-                  <span>Step {idx + 1} of 3</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </div>

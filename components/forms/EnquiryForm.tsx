@@ -1,33 +1,24 @@
 "use client";
 
 import React, { useState, useEffect, Suspense } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { enquiryFormSchema } from "@/lib/validations/enquiry";
+import { enquiryFormSchema, questionTopics } from "@/lib/validations/enquiry";
 import {
   Loader2,
   CheckCircle2,
   AlertCircle,
-  Calendar,
-  BedDouble,
-  User,
-  Smile,
-  Send,
-  Clock,
-  Headset,
-  ShieldCheck,
-  ChevronDown,
-  Plus,
-  Minus,
-  Building2,
+  HelpCircle,
   Mail,
+  User,
   Phone,
-  ArrowRight,
-  Sparkles,
+  Send,
+  Info,
+  ShieldCheck,
 } from "lucide-react";
-import { accommodations } from "@/components/sections/AccommodationSection";
 
 type EnquiryFormInput = z.input<typeof enquiryFormSchema>;
 
@@ -37,94 +28,36 @@ interface EnquiryFormProps {
   hideHeader?: boolean;
 }
 
-function formatDisplayDate(dateStr: string) {
-  if (!dateStr) return "Select date";
-  try {
-    const d = new Date(dateStr);
-    if (isNaN(d.getTime())) return dateStr;
-    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-  } catch {
-    return dateStr;
-  }
-}
-
 function EnquiryFormContent({ sourcePage = "/", className, hideHeader = false }: EnquiryFormProps) {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [showNotes, setShowNotes] = useState(false);
   const searchParams = useSearchParams();
 
   const {
     register,
     handleSubmit,
     reset,
-    watch,
     setValue,
+    watch,
     formState: { errors },
   } = useForm<EnquiryFormInput>({
     resolver: zodResolver(enquiryFormSchema),
     defaultValues: {
       sourcePage,
-      adults: 2,
-      children: 0,
-      rooms: 1,
-      requirement: "",
-      checkInDate: "",
-      checkOutDate: "",
-      accommodationPreference: "",
       fullName: "",
-      mobile: "",
       email: "",
+      phone: "",
+      questionTopic: "General property question",
+      message: "",
+      privacyAcknowledgement: false,
     },
   });
 
-  const checkInDate = watch("checkInDate") || "";
-  const checkOutDate = watch("checkOutDate") || "";
-  const accommodationPreference = watch("accommodationPreference") || "";
-  const adults = watch("adults") || 2;
-  const children = watch("children") || 0;
-  const rooms = watch("rooms") || 1;
-
   useEffect(() => {
-    const roomParam = searchParams.get("room") || searchParams.get("accommodation");
-    if (roomParam) {
-      const match = accommodations.find(
-        (a) => a.name.toLowerCase() === roomParam.toLowerCase()
-      );
-      if (match) {
-        setValue("accommodationPreference", match.name);
-      }
+    const topicParam = searchParams.get("topic");
+    if (topicParam && (questionTopics as readonly string[]).includes(topicParam)) {
+      setValue("questionTopic", topicParam as any);
     }
-
-    const inDate = searchParams.get("checkInDate");
-    if (inDate) setValue("checkInDate", inDate);
-
-    const outDate = searchParams.get("checkOutDate");
-    if (outDate) setValue("checkOutDate", outDate);
-
-    const aParam = searchParams.get("adults");
-    if (aParam) setValue("adults", parseInt(aParam) || 2);
-
-    const cParam = searchParams.get("children");
-    if (cParam) setValue("children", parseInt(cParam) || 0);
-
-    const rParam = searchParams.get("rooms");
-    if (rParam) setValue("rooms", parseInt(rParam) || 1);
-
-    const handleStaySelection = (e: Event) => {
-      const customEvent = e as CustomEvent;
-      if (customEvent.detail?.room) {
-        setValue("accommodationPreference", customEvent.detail.room);
-      }
-      if (customEvent.detail?.checkInDate) setValue("checkInDate", customEvent.detail.checkInDate);
-      if (customEvent.detail?.checkOutDate) setValue("checkOutDate", customEvent.detail.checkOutDate);
-      if (customEvent.detail?.adults) setValue("adults", customEvent.detail.adults);
-      if (customEvent.detail?.children !== undefined) setValue("children", customEvent.detail.children);
-      if (customEvent.detail?.rooms) setValue("rooms", customEvent.detail.rooms);
-    };
-
-    window.addEventListener("select-stay", handleStaySelection);
-    return () => window.removeEventListener("select-stay", handleStaySelection);
   }, [searchParams, setValue]);
 
   const onSubmit = async (data: EnquiryFormInput) => {
@@ -140,439 +73,235 @@ function EnquiryFormContent({ sourcePage = "/", className, hideHeader = false }:
 
       const result = await response.json();
 
-      if (response.ok && result.success) {
-        setSubmitStatus("success");
-        reset();
-      } else {
-        setSubmitStatus("error");
-        setErrorMessage(result.message || "Unable to submit enquiry.");
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Failed to submit enquiry");
       }
-    } catch {
+
+      setSubmitStatus("success");
+      reset();
+    } catch (err: any) {
       setSubmitStatus("error");
-      setErrorMessage("Please check your internet connection and try again.");
+      setErrorMessage(err.message || "Something went wrong. Please try again or contact us directly.");
     }
   };
 
-  if (submitStatus === "success") {
-    return (
-      <div className={`bg-white border border-[#E8E2D8] rounded-xs p-6 sm:p-8 text-center max-w-xl mx-auto text-[#18181B] shadow-sm ${className}`}>
-        <div className="w-12 h-12 rounded-full bg-[#0D2E24] text-[#D4AF67] flex items-center justify-center mx-auto mb-4 border border-[#B8934E]/30">
-          <CheckCircle2 className="h-6 w-6 text-[#D4AF67]" />
-        </div>
-        <h3 className="text-2xl font-serif font-bold text-[#111827] mb-2">Enquiry Received</h3>
-        <p className="text-xs sm:text-sm text-[#52525B] leading-relaxed mb-6 font-light">
-          Your stay details request has been received.<br />
-          Our concierge team will get in touch with you shortly with available options and rates.
-        </p>
-        <button
-          onClick={() => setSubmitStatus("idle")}
-          className="px-6 py-2.5 rounded-xs bg-[#0D2E24] hover:bg-[#185241] text-white text-xs font-mono uppercase tracking-widest transition-colors cursor-pointer"
-        >
-          Submit Another Request
-        </button>
-      </div>
-    );
-  }
-
-  const today = new Date().toISOString().split("T")[0];
-
   return (
-    <div className={`w-full max-w-xl mx-auto ${className}`}>
-      {/* Outer Luxury Card */}
-      <div className="bg-white border border-[#E8E2D8] rounded-xs shadow-sm overflow-hidden">
-        {/* Card Luxury Header */}
-        <div className="bg-[#0D2E24] p-4 sm:p-5 text-white border-b border-[#185241]">
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#D4AF67] flex items-center gap-1.5">
-              <Sparkles className="w-2.5 h-2.5" />
-              CONCIERGE DESK
+    <div className={`bg-white border border-[#E8E2D8] rounded-xs shadow-sm overflow-hidden ${className || ""}`}>
+      {/* Form Header */}
+      {!hideHeader && (
+        <div className="bg-[#0D2E24] text-white p-5 sm:p-6 border-b border-[#185241]">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.2em] uppercase text-[#D4AF67] flex items-center gap-1.5 font-semibold">
+              <HelpCircle className="w-3.5 h-3.5 text-[#D4AF67]" />
+              UDAIPUR GATEWAY ENQUIRY DESK
             </span>
-            <span className="text-[10px] font-mono text-white/60">
-              The Ananta Udaipur
+            <span className="text-[10px] text-[#E8E2D8]/60 font-mono hidden sm:inline">
+              General Information
             </span>
           </div>
-          <h2 className="text-lg sm:text-xl font-serif font-bold text-white">
-            Get Stay <span className="text-[#D4AF67] italic font-serif font-normal">Details</span>
-          </h2>
-          <p className="text-xs text-white/70 mt-1 font-light leading-relaxed">
-            Share your travel dates and preferences. Our team will assist you with the best options and enquiry support.
+          <h3 className="text-xl sm:text-2xl font-serif font-bold text-white tracking-tight">
+            Ask a <span className="text-[#D4AF67] italic font-serif font-normal">Question</span>
+          </h3>
+          <p className="text-xs sm:text-[13px] text-[#E8E2D8]/80 mt-1 leading-relaxed font-light">
+            Send a question about the information shown on this website. Our team is happy to help with general property guidance.
           </p>
         </div>
+      )}
 
-        {/* Main Form Fields */}
-        <form onSubmit={handleSubmit(onSubmit)} className="p-4 sm:p-5 space-y-3 bg-[#FAF8F5]">
-          {submitStatus === "error" && (
-            <div className="p-2.5 bg-red-50 border border-red-200 rounded-xs flex items-start gap-2">
-              <AlertCircle className="h-4 w-4 text-red-600 shrink-0 mt-0.5" />
-              <p className="text-xs text-red-700 font-medium">{errorMessage}</p>
+      {/* Form Body */}
+      <div className="p-5 sm:p-6">
+        {submitStatus === "success" ? (
+          <div className="py-8 text-center space-y-4">
+            <div className="w-12 h-12 bg-[#0D2E24] text-[#D4AF67] rounded-full flex items-center justify-center mx-auto border border-[#B8934E]/40">
+              <CheckCircle2 className="w-6 h-6" />
             </div>
-          )}
-
-          {/* 1. Stay Dates (Check-in & Check-out) */}
-          <div className="grid grid-cols-2 gap-2">
-            {/* Check-in */}
-            <div className="relative">
-              <div
-                onClick={(e) => {
-                  try {
-                    (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
-                  } catch {}
-                }}
-                className={`relative bg-white border ${
-                  errors.checkInDate ? "border-red-400" : "border-[#E8E2D8] hover:border-[#B8934E]/60"
-                } rounded-xs p-2.5 flex items-center justify-between transition-colors cursor-pointer group`}
-              >
-                <div className="flex items-center gap-2 min-w-0 pointer-events-none">
-                  <Calendar className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
-                  <div className="min-w-0">
-                    <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
-                      Check-in <span className="text-red-500">*</span>
-                    </div>
-                    <div className="text-xs font-semibold text-[#111827] truncate mt-0.5">
-                      {formatDisplayDate(checkInDate)}
-                    </div>
-                  </div>
-                </div>
-                <ChevronDown className="w-3 h-3 text-gray-400 shrink-0 pointer-events-none ml-1" />
-                <input
-                  type="date"
-                  min={today}
-                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                  {...register("checkInDate")}
-                />
-              </div>
-              {errors.checkInDate && (
-                <p className="text-[10px] text-red-600 mt-0.5 pl-1">{errors.checkInDate.message}</p>
-              )}
+            <h4 className="font-serif font-bold text-xl text-[#111827]">Enquiry Received</h4>
+            <div className="bg-[#FAF8F5] border border-[#E8E2D8] p-4 rounded-xs text-xs sm:text-sm text-[#4B5563] leading-relaxed text-left max-w-md mx-auto">
+              <p className="font-medium text-[#111827] mb-2">Thank you!</p>
+              <p>
+                Your enquiry has been received by Udaipur Gateway. Our team will respond to your general information question. For current availability, rates or reservations, please contact The Ananta Udaipur directly.
+              </p>
             </div>
-
-            {/* Check-out */}
-            <div className="relative">
-              <div
-                onClick={(e) => {
-                  try {
-                    (e.currentTarget.querySelector('input[type="date"]') as HTMLInputElement)?.showPicker?.();
-                  } catch {}
-                }}
-                className={`relative bg-white border ${
-                  errors.checkOutDate ? "border-red-400" : "border-[#E8E2D8] hover:border-[#B8934E]/60"
-                } rounded-xs p-2.5 flex items-center justify-between transition-colors cursor-pointer group`}
-              >
-                <div className="flex items-center gap-2 min-w-0 pointer-events-none">
-                  <Calendar className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
-                  <div className="min-w-0">
-                    <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
-                      Check-out <span className="text-red-500">*</span>
-                    </div>
-                    <div className="text-xs font-semibold text-[#111827] truncate mt-0.5">
-                      {formatDisplayDate(checkOutDate)}
-                    </div>
-                  </div>
-                </div>
-                <ChevronDown className="w-3 h-3 text-gray-400 shrink-0 pointer-events-none ml-1" />
-                <input
-                  type="date"
-                  min={checkInDate || today}
-                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                  {...register("checkOutDate")}
-                />
-              </div>
-              {errors.checkOutDate && (
-                <p className="text-[10px] text-red-600 mt-0.5 pl-1">{errors.checkOutDate.message}</p>
-              )}
-            </div>
-          </div>
-
-          {/* 2. Room Preference */}
-          <div className="relative">
-            <div
-              className={`relative bg-white border ${
-                errors.accommodationPreference
-                  ? "border-red-400"
-                  : "border-[#E8E2D8] hover:border-[#B8934E]/60"
-              } rounded-xs p-2.5 flex items-center justify-between transition-colors cursor-pointer group`}
+            <button
+              type="button"
+              onClick={() => setSubmitStatus("idle")}
+              className="mt-4 px-6 py-2.5 bg-[#0D2E24] text-white text-xs font-semibold uppercase tracking-wider rounded-xs hover:bg-[#185241] transition-colors"
             >
-              <div className="flex items-center gap-2 min-w-0 pointer-events-none">
-                <Building2 className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
-                <div className="min-w-0">
-                  <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
-                    Residence Preference <span className="text-red-500">*</span>
-                  </div>
-                  <div className="text-xs font-semibold text-[#111827] truncate mt-0.5">
-                    {accommodationPreference || "Select Villa or Cottage"}
-                  </div>
-                </div>
+              Ask Another Question
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-left">
+            {submitStatus === "error" && (
+              <div className="p-3 bg-red-50 border border-red-200 rounded-xs flex items-start gap-2.5 text-xs text-red-700">
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                <p>{errorMessage}</p>
               </div>
-              <ChevronDown className="w-3 h-3 text-gray-400 shrink-0 pointer-events-none ml-1" />
+            )}
+
+            {/* Full Name */}
+            <div>
+              <label htmlFor="fullName" className="block text-xs font-semibold uppercase font-mono tracking-wider text-[#374151] mb-1">
+                Full Name <span className="text-red-500">*</span>
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                  <User className="w-4 h-4" />
+                </div>
+                <input
+                  id="fullName"
+                  type="text"
+                  placeholder="Your full name"
+                  {...register("fullName")}
+                  className={`w-full pl-9 pr-3 py-2.5 bg-[#FAF8F5] border text-xs sm:text-sm text-[#111827] rounded-xs focus:bg-white focus:outline-none transition-colors ${
+                    errors.fullName ? "border-red-400 focus:border-red-500" : "border-[#E8E2D8] focus:border-[#B8934E]"
+                  }`}
+                />
+              </div>
+              {errors.fullName && (
+                <p className="mt-1 text-[11px] text-red-500">{errors.fullName.message}</p>
+              )}
+            </div>
+
+            {/* Email Address */}
+            <div>
+              <label htmlFor="email" className="block text-xs font-semibold uppercase font-mono tracking-wider text-[#374151] mb-1">
+                Email Address <span className="text-red-500">*</span>
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="name@example.com"
+                  {...register("email")}
+                  className={`w-full pl-9 pr-3 py-2.5 bg-[#FAF8F5] border text-xs sm:text-sm text-[#111827] rounded-xs focus:bg-white focus:outline-none transition-colors ${
+                    errors.email ? "border-red-400 focus:border-red-500" : "border-[#E8E2D8] focus:border-[#B8934E]"
+                  }`}
+                />
+              </div>
+              {errors.email && (
+                <p className="mt-1 text-[11px] text-red-500">{errors.email.message}</p>
+              )}
+            </div>
+
+            {/* Phone Number */}
+            <div>
+              <label htmlFor="phone" className="block text-xs font-semibold uppercase font-mono tracking-wider text-[#374151] mb-1">
+                Phone Number <span className="text-[10px] text-gray-400 font-normal lowercase">(optional)</span>
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <input
+                  id="phone"
+                  type="tel"
+                  placeholder="+91 98765 43210"
+                  {...register("phone")}
+                  className={`w-full pl-9 pr-3 py-2.5 bg-[#FAF8F5] border text-xs sm:text-sm text-[#111827] rounded-xs focus:bg-white focus:outline-none transition-colors ${
+                    errors.phone ? "border-red-400 focus:border-red-500" : "border-[#E8E2D8] focus:border-[#B8934E]"
+                  }`}
+                />
+              </div>
+              {errors.phone && (
+                <p className="mt-1 text-[11px] text-red-500">{errors.phone.message}</p>
+              )}
+            </div>
+
+            {/* Question Topic Dropdown */}
+            <div>
+              <label htmlFor="questionTopic" className="block text-xs font-semibold uppercase font-mono tracking-wider text-[#374151] mb-1">
+                Question Topic <span className="text-red-500">*</span>
+              </label>
               <select
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer bg-white text-[#111827]"
-                {...register("accommodationPreference")}
+                id="questionTopic"
+                {...register("questionTopic")}
+                className={`w-full px-3 py-2.5 bg-[#FAF8F5] border text-xs sm:text-sm text-[#111827] rounded-xs focus:bg-white focus:outline-none transition-colors ${
+                  errors.questionTopic ? "border-red-400 focus:border-red-500" : "border-[#E8E2D8] focus:border-[#B8934E]"
+                }`}
               >
-                <option value="" disabled>
-                  Select Villa or Cottage
-                </option>
-                {accommodations.map((a) => (
-                  <option key={a.name} value={a.name} className="bg-white text-[#111827]">
-                    {a.name} ({a.badge})
+                {questionTopics.map((topic) => (
+                  <option key={topic} value={topic}>
+                    {topic}
                   </option>
                 ))}
               </select>
-            </div>
-            {errors.accommodationPreference && (
-              <p className="text-[10px] text-red-600 mt-0.5 pl-1">
-                {errors.accommodationPreference.message}
-              </p>
-            )}
-          </div>
-
-          {/* 3. Guests & Rooms */}
-          <div className="bg-white border border-[#E8E2D8] rounded-xs grid grid-cols-3 divide-x divide-[#E8E2D8] p-1.5">
-            {/* Adults */}
-            <div className="flex flex-col items-center justify-center p-1">
-              <div className="flex items-center gap-1 mb-1">
-                <User className="w-3 h-3 text-[#B8934E]" />
-                <span className="text-[10px] font-mono uppercase text-[#71717A]">
-                  Adults <span className="text-red-500">*</span>
-                </span>
-              </div>
-              <div className="flex items-center justify-center gap-2 w-full">
-                <button
-                  type="button"
-                  onClick={() => setValue("adults", Math.max(1, adults - 1))}
-                  className="w-5 h-5 rounded-xs bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E] text-[#111827] flex items-center justify-center cursor-pointer text-xs"
-                  aria-label="Decrease adults"
-                >
-                  <Minus className="w-2.5 h-2.5" />
-                </button>
-                <span className="w-4 text-center font-bold text-xs text-[#111827]">
-                  {adults}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setValue("adults", Math.min(50, adults + 1))}
-                  className="w-5 h-5 rounded-xs bg-[#0D2E24] text-white flex items-center justify-center cursor-pointer text-xs"
-                  aria-label="Increase adults"
-                >
-                  <Plus className="w-2.5 h-2.5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Children */}
-            <div className="flex flex-col items-center justify-center p-1">
-              <div className="flex items-center gap-1 mb-1">
-                <Smile className="w-3 h-3 text-[#B8934E]" />
-                <span className="text-[10px] font-mono uppercase text-[#71717A]">Children</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 w-full">
-                <button
-                  type="button"
-                  onClick={() => setValue("children", Math.max(0, children - 1))}
-                  className="w-5 h-5 rounded-xs bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E] text-[#111827] flex items-center justify-center cursor-pointer text-xs"
-                  aria-label="Decrease children"
-                >
-                  <Minus className="w-2.5 h-2.5" />
-                </button>
-                <span className="w-4 text-center font-bold text-xs text-[#111827]">
-                  {children}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setValue("children", Math.min(50, children + 1))}
-                  className="w-5 h-5 rounded-xs bg-[#0D2E24] text-white flex items-center justify-center cursor-pointer text-xs"
-                  aria-label="Increase children"
-                >
-                  <Plus className="w-2.5 h-2.5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Rooms */}
-            <div className="flex flex-col items-center justify-center p-1">
-              <div className="flex items-center gap-1 mb-1">
-                <BedDouble className="w-3 h-3 text-[#B8934E]" />
-                <span className="text-[10px] font-mono uppercase text-[#71717A]">
-                  Rooms <span className="text-red-500">*</span>
-                </span>
-              </div>
-              <div className="flex items-center justify-center gap-2 w-full">
-                <button
-                  type="button"
-                  onClick={() => setValue("rooms", Math.max(1, rooms - 1))}
-                  className="w-5 h-5 rounded-xs bg-[#FAF8F5] border border-[#E8E2D8] hover:border-[#B8934E] text-[#111827] flex items-center justify-center cursor-pointer text-xs"
-                  aria-label="Decrease rooms"
-                >
-                  <Minus className="w-2.5 h-2.5" />
-                </button>
-                <span className="w-4 text-center font-bold text-xs text-[#111827]">
-                  {rooms}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setValue("rooms", Math.min(50, rooms + 1))}
-                  className="w-5 h-5 rounded-xs bg-[#0D2E24] text-white flex items-center justify-center cursor-pointer text-xs"
-                  aria-label="Increase rooms"
-                >
-                  <Plus className="w-2.5 h-2.5" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* 4. Full Name & Mobile Number */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            <div>
-              <div
-                className={`relative bg-white border ${
-                  errors.fullName ? "border-red-400" : "border-[#E8E2D8] focus-within:border-[#B8934E]"
-                } rounded-xs p-2 flex items-center gap-2`}
-              >
-                <User className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
-                    Full Name <span className="text-red-500">*</span>
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Guest name"
-                    className="w-full bg-transparent border-none text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none mt-0.5"
-                    {...register("fullName")}
-                  />
-                </div>
-              </div>
-              {errors.fullName && (
-                <p className="text-[10px] text-red-600 mt-0.5 pl-1">{errors.fullName.message}</p>
+              {errors.questionTopic && (
+                <p className="mt-1 text-[11px] text-red-500">{errors.questionTopic.message}</p>
               )}
             </div>
 
+            {/* Message / Free-text Question */}
             <div>
-              <div
-                className={`relative bg-white border ${
-                  errors.mobile ? "border-red-400" : "border-[#E8E2D8] focus-within:border-[#B8934E]"
-                } rounded-xs p-2 flex items-center gap-2`}
-              >
-                <Phone className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
-                    Mobile Number <span className="text-red-500">*</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 mt-0.5">
-                    <span className="text-[10px] font-mono font-bold text-[#B8934E] border-r border-gray-200 pr-1.5">
-                      +91
-                    </span>
-                    <input
-                      type="tel"
-                      placeholder="10-digit mobile"
-                      className="w-full bg-transparent border-none text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none"
-                      {...register("mobile")}
-                    />
-                  </div>
-                </div>
-              </div>
-              {errors.mobile && (
-                <p className="text-[10px] text-red-600 mt-0.5 pl-1">{errors.mobile.message}</p>
+              <label htmlFor="message" className="block text-xs font-semibold uppercase font-mono tracking-wider text-[#374151] mb-1">
+                Your Question / Message <span className="text-red-500">*</span>
+              </label>
+              <textarea
+                id="message"
+                rows={4}
+                placeholder="Write your question about property facilities, room categories, location, or general information..."
+                {...register("message")}
+                className={`w-full p-3 bg-[#FAF8F5] border text-xs sm:text-sm text-[#111827] rounded-xs focus:bg-white focus:outline-none transition-colors resize-none ${
+                  errors.message ? "border-red-400 focus:border-red-500" : "border-[#E8E2D8] focus:border-[#B8934E]"
+                }`}
+              />
+              {errors.message && (
+                <p className="mt-1 text-[11px] text-red-500">{errors.message.message}</p>
               )}
             </div>
-          </div>
 
-          {/* 5. Email Address */}
-          <div>
-            <div
-              className={`relative bg-white border ${
-                errors.email ? "border-red-400" : "border-[#E8E2D8] focus-within:border-[#B8934E]"
-              } rounded-xs p-2 flex items-center gap-2`}
-            >
-              <Mail className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
-              <div className="flex-1 min-w-0">
-                <div className="text-[9px] font-mono uppercase tracking-wider text-[#71717A] leading-tight">
-                  Email Address <span className="text-red-500">*</span>
-                </div>
+            {/* Privacy Acknowledgement Checkbox */}
+            <div className="pt-1">
+              <label className="flex items-start gap-2.5 cursor-pointer">
                 <input
-                  type="email"
-                  placeholder="contact@example.com"
-                  className="w-full bg-transparent border-none text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none mt-0.5"
-                  {...register("email")}
+                  type="checkbox"
+                  {...register("privacyAcknowledgement")}
+                  className="mt-0.5 h-4 w-4 rounded border-gray-300 text-[#0D2E24] focus:ring-[#B8934E]"
                 />
-              </div>
+                <span className="text-xs text-[#52525B] leading-snug">
+                  I acknowledge that Udaipur Gateway is an independent information service and I agree to the{" "}
+                  <Link href="/privacy" className="text-[#8F6E2E] hover:underline font-medium" target="_blank">
+                    Privacy Policy
+                  </Link>
+                  . <span className="text-red-500">*</span>
+                </span>
+              </label>
+              {errors.privacyAcknowledgement && (
+                <p className="mt-1 text-[11px] text-red-500">{errors.privacyAcknowledgement.message}</p>
+              )}
             </div>
-            {errors.email && (
-              <p className="text-[10px] text-red-600 mt-0.5 pl-1">{errors.email.message}</p>
-            )}
-          </div>
 
-          {/* 6. Special Request */}
-          <div>
-            {!showNotes ? (
-              <button
-                type="button"
-                onClick={() => setShowNotes(true)}
-                className="text-xs text-[#B8934E] hover:underline flex items-center gap-1 cursor-pointer py-1 font-mono tracking-wider uppercase"
-              >
-                <Plus className="w-3 h-3" /> Add special request or meal plan (optional)
-              </button>
-            ) : (
-              <div className="bg-white border border-[#E8E2D8] focus-within:border-[#B8934E] rounded-xs p-2">
-                <textarea
-                  rows={2}
-                  maxLength={300}
-                  placeholder="Special requests, anniversary celebrations, meal plans..."
-                  className="w-full bg-transparent border-none text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none resize-none leading-relaxed"
-                  {...register("requirement")}
-                />
-              </div>
-            )}
-          </div>
+            {/* Form Notice Box */}
+            <div className="p-3 bg-[#FAF8F5] border border-[#E8E2D8] rounded-xs text-[11px] text-[#64748B] leading-relaxed flex items-start gap-2">
+              <Info className="w-3.5 h-3.5 text-[#B8934E] shrink-0 mt-0.5" />
+              <p className="m-0">
+                <strong>Form Notice:</strong> This form sends your question to Udaipur Gateway. It does not contact The Ananta Udaipur, check live room availability, obtain a quote, make a reservation or process payment. For current rates, availability and bookings, contact the property directly.
+              </p>
+            </div>
 
-          {/* 7. Action CTA Button */}
-          <div className="pt-2">
+            {/* Submit Button */}
             <button
               type="submit"
               disabled={submitStatus === "submitting"}
-              className="w-full py-3.5 px-5 rounded-xs bg-[#0D2E24] hover:bg-[#185241] disabled:opacity-50 text-white font-medium text-xs sm:text-[13px] uppercase tracking-[0.2em] flex items-center justify-center gap-2 transition-all duration-300 shadow-xs cursor-pointer group"
+              className="w-full py-3.5 px-4 bg-[#0D2E24] hover:bg-[#185241] text-white text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] rounded-xs transition-colors flex items-center justify-center gap-2 shadow-sm disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
             >
               {submitStatus === "submitting" ? (
-                <Loader2 className="h-4 w-4 animate-spin text-[#D4AF67]" />
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin text-[#D4AF67]" />
+                  <span>Submitting Enquiry...</span>
+                </>
               ) : (
-                <Send className="w-3.5 h-3.5 text-[#D4AF67] group-hover:translate-x-0.5 transition-transform" />
-              )}
-              <span>{submitStatus === "submitting" ? "TRANSMITTING ENQUIRY..." : "REQUEST STAY DETAILS"}</span>
-              {submitStatus !== "submitting" && (
-                <ArrowRight className="w-3.5 h-3.5 text-[#D4AF67] group-hover:translate-x-1 transition-transform" />
+                <>
+                  <Send className="w-4 h-4 text-[#D4AF67]" />
+                  <span>SUBMIT GENERAL ENQUIRY</span>
+                </>
               )}
             </button>
-          </div>
-
-          {/* Footnote */}
-          <div className="flex items-center justify-center gap-1.5 pt-1 text-[10px] text-[#71717A] text-center">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B8934E]" />
-            <span>Independent travel assistance • Inclusions & availability confirmed on enquiry</span>
-          </div>
-
-          {/* 3 Trust Badges */}
-          <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#E8E2D8]">
-            <div className="flex items-center gap-2">
-              <Clock className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
-              <div className="text-left min-w-0">
-                <div className="text-[10px] font-bold text-[#111827] truncate">Quick Response</div>
-                <div className="text-[9px] text-[#71717A] truncate">Within 24 Hours</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <Headset className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
-              <div className="text-left min-w-0">
-                <div className="text-[10px] font-bold text-[#111827] truncate">Concierge Care</div>
-                <div className="text-[9px] text-[#71717A] truncate">Dedicated Support</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
-              <div className="text-left min-w-0">
-                <div className="text-[10px] font-bold text-[#111827] truncate">Secure & Private</div>
-                <div className="text-[9px] text-[#71717A] truncate">Your data is safe</div>
-              </div>
-            </div>
-          </div>
-        </form>
+          </form>
+        )}
       </div>
     </div>
   );
@@ -582,12 +311,9 @@ export function EnquiryForm(props: EnquiryFormProps) {
   return (
     <Suspense
       fallback={
-        <div
-          className={`bg-white border border-[#E8E2D8] rounded-xs p-8 max-w-xl mx-auto w-full min-h-[400px] flex items-center justify-center shadow-xs ${
-            props.className || ""
-          }`}
-        >
-          <Loader2 className="w-8 h-8 animate-spin text-[#B8934E]" />
+        <div className="p-8 text-center bg-white border border-[#E8E2D8] rounded-xs">
+          <Loader2 className="w-6 h-6 animate-spin mx-auto text-[#B8934E]" />
+          <p className="text-xs text-gray-400 mt-2">Loading enquiry form...</p>
         </div>
       }
     >

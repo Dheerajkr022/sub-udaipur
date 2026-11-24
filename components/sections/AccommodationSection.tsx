@@ -14,11 +14,12 @@ import {
   Phone,
   Sparkles,
   Info,
+  ExternalLink,
 } from "lucide-react";
 
 export const accommodations = [
   {
-    name: "Luxury Cottage",
+    name: "Luxury Cottages",
     badge: "Balinese Style",
     category: "cottages",
     images: [
@@ -29,11 +30,11 @@ export const accommodations = [
     features: "650 sq.ft • Signature open-to-sky shower • Private balcony",
     view: "Mountain view",
     viewIcon: "mountain",
-    guests: "2-3 Guests",
+    guests: "Verified: 650 sq.ft",
     floor: "Hillside Cottage",
   },
   {
-    name: "Premium Wooden Cottage with Bathtub",
+    name: "Premium Wooden Cottages with Bathtub",
     badge: "Wooden Chalet",
     category: "cottages",
     images: [
@@ -41,14 +42,28 @@ export const accommodations = [
       "/ananta-photos/Udaipur/Premium Wooden Cottage with Bathtub/Room_9_1cb899d2.webp",
       "/ananta-photos/Udaipur/Premium Wooden Cottage with Bathtub/Washroom_with_bathtub_9_2de0a58b.webp",
     ],
-    features: "520 sq.ft • Deep soaking bathtub • Vaulted timber architecture",
+    features: "520 sq.ft • 12 Cottages • Deep soaking bathtub • Vaulted timber architecture",
     view: "Hillside greenery",
     viewIcon: "leaf",
-    guests: "Up to 3 Guests",
+    guests: "Verified: 520 sq.ft",
     floor: "Wooden Chalet",
   },
   {
-    name: "Executive Suite",
+    name: "Jungle Wooden Cottages",
+    badge: "Rustic Timber",
+    category: "cottages",
+    images: [
+      "/ananta-photos/Udaipur/Premium Wooden Cottage with Bathtub/Room_9_1cb899d2.webp",
+      "/ananta-photos/Udaipur/Premium Wooden Cottage with Bathtub/Room1_9_51c23ea1.webp",
+    ],
+    features: "455 sq.ft • Nature-facing cottage with timber interiors and private sit-out",
+    view: "Forest foliage",
+    viewIcon: "leaf",
+    guests: "Verified: 455 sq.ft",
+    floor: "Jungle Chalet",
+  },
+  {
+    name: "Executive Suites",
     badge: "Luxury Suite",
     category: "suites",
     images: [
@@ -59,7 +74,7 @@ export const accommodations = [
     features: "1,080 sq.ft • Independent living salon • Open-air cubicle shower",
     view: "Aravalli Hills",
     viewIcon: "mountain",
-    guests: "Up to 4 Guests",
+    guests: "Verified: 1,080 sq.ft",
     floor: "Private Balcony",
   },
   {
@@ -74,11 +89,11 @@ export const accommodations = [
     features: "1,500 sq.ft • 2 Separate bedrooms • Expansive central living room",
     view: "Valley & grounds",
     viewIcon: "mountain",
-    guests: "Up to 5 Guests",
+    guests: "Verified: 1,500 sq.ft",
     floor: "Dual Balconies",
   },
   {
-    name: "Presidential Villa",
+    name: "Presidential Villas",
     badge: "Private Pool",
     category: "villas",
     images: [
@@ -86,10 +101,10 @@ export const accommodations = [
       "/ananta-photos/Udaipur/Presidential Villa/Presidential_suite_bedroom_at_ananta_udaipur_suites_in_Udaipur_1_rclkoa_nkzn4b.jpg",
       "/ananta-photos/Udaipur/Presidential Villa/DSC00327-Enhanced-NR_doced6.jpg",
     ],
-    features: "4,500 sq.ft • Private outdoor pool • 3 Master bedrooms & sun deck",
+    features: "4,500 sq.ft • Private swimming pool • 3 Bedrooms & sun deck",
     view: "360° Mountain",
     viewIcon: "waves",
-    guests: "Up to 8 Guests",
+    guests: "Verified: 4,500 sq.ft",
     floor: "Private Villa",
   },
   {
@@ -101,10 +116,10 @@ export const accommodations = [
       "/ananta-photos/Udaipur/Ananta Villa/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0345-HDR_dngzyn.jpg",
       "/ananta-photos/Udaipur/Ananta Villa/C589_2022_304F_naeeed.jpg",
     ],
-    features: "4,500 sq.ft • Private pool • Internal courtyard & 3 bedrooms",
+    features: "4,500 sq.ft • Private swimming pool • 3 Bedrooms & landscaped grounds",
     view: "Aravalli Ridge",
     viewIcon: "waves",
-    guests: "Up to 8 Guests",
+    guests: "Verified: 4,500 sq.ft",
     floor: "Private Estate",
   },
   {
@@ -116,10 +131,10 @@ export const accommodations = [
       "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Sep22_Day_03_Golf_Suite_0315-HDR-Edit_hi2yh2.jpg",
       "/ananta-photos/Udaipur/Chairman Villa/Ananta_Udaipur_Fotowalah-36_ucdcjn.webp",
     ],
-    features: "4,500 sq.ft • Premier private pool • 3 Palatial suites & bar",
+    features: "4,500 sq.ft • Up to 10 guests • Private swimming pool • Luxury suites",
     view: "Valley Horizon",
     viewIcon: "mountain",
-    guests: "Up to 8 Guests",
+    guests: "Up to 10 Guests",
     floor: "Private Estate",
   },
 ];
@@ -147,30 +162,18 @@ function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
     setCurrentImg((prev) => (prev === acc.images.length - 1 ? 0 : prev + 1));
   };
 
-  const handleSelectRoom = (e: React.MouseEvent) => {
+  const handleAskQuestion = (e: React.MouseEvent) => {
     e.preventDefault();
     const params = new URLSearchParams(window.location.search);
-    params.set("room", acc.name);
+    params.set("topic", "Room categories");
     window.history.replaceState(null, "", `${window.location.pathname}?${params.toString()}#enquiry`);
 
-    if (typeof window !== "undefined") {
-      window.dispatchEvent(
-        new CustomEvent("select-stay", {
-          detail: {
-            room: acc.name,
-          },
-        })
-      );
+    const isDesktop = window.innerWidth >= 1024;
+    const targetId = isDesktop ? "enquiry-desktop" : "enquiry";
+    const target = document.getElementById(targetId) || document.getElementById("enquiry");
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-
-    setTimeout(() => {
-      const isDesktop = window.innerWidth >= 1024;
-      const targetId = isDesktop ? "enquiry-desktop" : "enquiry";
-      const target = document.getElementById(targetId) || document.getElementById("enquiry");
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 100);
   };
 
   return (
@@ -221,8 +224,9 @@ function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
                   className="p-1 cursor-pointer"
                 >
                   <span
-                    className={`block transition-all duration-300 rounded-full ${i === currentImg ? "w-3 h-1 bg-[#D4AF67]" : "w-1 h-1 bg-white/60 hover:bg-white"
-                      }`}
+                    className={`block transition-all duration-300 rounded-full ${
+                      i === currentImg ? "w-3 h-1 bg-[#D4AF67]" : "w-1 h-1 bg-white/60 hover:bg-white"
+                    }`}
                   />
                 </button>
               ))}
@@ -268,10 +272,10 @@ function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
               <span className="truncate font-medium">{acc.view}</span>
             </div>
 
-            {/* Occupancy */}
+            {/* Category / Detail */}
             <div className="flex items-center gap-1.5 min-w-0">
               <User className="w-3.5 h-3.5 text-[#B8934E] shrink-0" />
-              <span className="truncate font-medium">{acc.guests}</span>
+              <span className="truncate font-medium">{acc.badge}</span>
             </div>
 
             {/* Floor / Category */}
@@ -286,16 +290,16 @@ function PropertyCard({ acc }: { acc: (typeof accommodations)[number] }) {
         <div className="pt-2 flex items-center gap-2">
           <button
             type="button"
-            onClick={handleSelectRoom}
+            onClick={handleAskQuestion}
             className="flex-1 py-2.5 px-3 rounded-xs bg-[#0D2E24] hover:bg-[#185241] text-white text-xs font-semibold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs group/btn"
           >
-            <span>Enquire Now</span>
+            <span>Ask a Question</span>
             <ArrowRight className="w-3 h-3 text-[#D4AF67] group-hover/btn:translate-x-0.5 transition-transform" />
           </button>
           <a
             href="tel:+919279022649"
             className="py-2.5 px-3 rounded-xs border border-[#B8934E] bg-[#FAF8F5] hover:bg-[#B8934E] text-[#8F6E2E] hover:text-white transition-colors flex items-center justify-center text-xs font-semibold"
-            aria-label={`Call to enquire about ${acc.name}`}
+            aria-label={`Call regarding ${acc.name}`}
           >
             <Phone className="w-3.5 h-3.5 animate-phone-ring" />
           </a>
@@ -326,75 +330,66 @@ export function AccommodationSection() {
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-6 h-[1px] bg-[#B8934E]" />
             <span className="text-[11px] font-mono font-semibold tracking-[0.2em] text-[#B8934E] uppercase">
-              EXPLORE & DISCOVER • THE COLLECTION
+              ACCOMMODATION OVERVIEW
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#111827] tracking-tight">
-            Accommodation <span className="text-[#B8934E] italic font-serif font-normal">Options</span>
+            Residences, <span className="text-[#B8934E] italic font-serif font-normal">Cottages & Villas</span>
           </h2>
-          <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-xl font-light">
-            Explore a range of exquisite stay options at The Ananta Udaipur designed for comfort, privacy and a luxurious hillside retreat.
+          <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-2.5 max-w-2xl font-light">
+            Explore verified room categories at The Ananta Udaipur, from hillside timber chalets to expansive private pool estates.
           </p>
         </div>
 
         {/* Tab Filters */}
-        <div className="flex items-center gap-1.5 p-1 bg-white border border-[#E8E2D8] rounded-xs self-start md:self-end">
-          <button
-            type="button"
-            onClick={() => setActiveTab("all")}
-            className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-xs transition-colors cursor-pointer ${activeTab === "all"
-              ? "bg-[#0D2E24] text-white"
-              : "text-[#71717A] hover:text-[#111827]"
+        <div className="flex items-center gap-1.5 bg-white p-1 rounded-xs border border-[#E8E2D8] self-start md:self-end">
+          {(
+            [
+              { id: "all", label: "All Categories" },
+              { id: "cottages", label: "Cottages" },
+              { id: "suites", label: "Suites" },
+              { id: "villas", label: "Villas" },
+            ] as const
+          ).map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-xs transition-all cursor-pointer ${
+                activeTab === tab.id
+                  ? "bg-[#0D2E24] text-white font-semibold"
+                  : "text-[#71717A] hover:text-[#111827] hover:bg-[#FAF8F5]"
               }`}
-          >
-            All ({accommodations.length})
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("cottages")}
-            className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-xs transition-colors cursor-pointer ${activeTab === "cottages"
-              ? "bg-[#0D2E24] text-white"
-              : "text-[#71717A] hover:text-[#111827]"
-              }`}
-          >
-            Cottages
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("suites")}
-            className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-xs transition-colors cursor-pointer ${activeTab === "suites"
-              ? "bg-[#0D2E24] text-white"
-              : "text-[#71717A] hover:text-[#111827]"
-              }`}
-          >
-            Suites
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("villas")}
-            className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-xs transition-colors cursor-pointer ${activeTab === "villas"
-              ? "bg-[#0D2E24] text-white"
-              : "text-[#71717A] hover:text-[#111827]"
-              }`}
-          >
-            Villas & Estates
-          </button>
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Property Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-        {filteredAccommodations.map((acc, index) => (
-          <PropertyCard key={index} acc={acc} />
-        ))}
+      {/* Information Notice Bar */}
+      <div className="bg-[#FAF8F5] border border-[#E8E2D8] rounded-xs p-3.5 sm:p-4 mb-8 text-xs text-[#52525B] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="flex items-start sm:items-center gap-2">
+          <Info className="w-4 h-4 text-[#B8934E] shrink-0 mt-0.5 sm:mt-0" />
+          <span>
+            Room categories, dimensions and features are based on publicly available information and are for reference only. Current availability, rates and inclusions must be confirmed directly with The Ananta Udaipur. (Last reviewed: November 2026).
+          </span>
+        </div>
+        <a
+          href="https://www.anantahotels.com/ananta-hotels-udaipur/rooms.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#8F6E2E] hover:underline font-semibold shrink-0 inline-flex items-center gap-1 text-[11px]"
+        >
+          <span>Official Room Page</span>
+          <ExternalLink className="w-3 h-3" />
+        </a>
       </div>
 
-      {/* Important Enquiry Notice */}
-      <div className="mt-8 p-4 sm:p-5 bg-white border border-[#E8E2D8] border-l-2 border-l-[#B8934E] rounded-xs flex items-start gap-3.5 shadow-xs text-xs sm:text-sm text-[#52525B]">
-        <Info className="w-4 h-4 text-[#B8934E] shrink-0 mt-0.5" />
-        <p className="leading-relaxed m-0 font-light">
-          <strong className="text-[#111827] font-semibold">Important Notice:</strong> Submitting an enquiry does not confirm a booking. Availability, pricing, accommodation options and inclusions are subject to confirmation
-        </p>
+      {/* Grid of Accommodation Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {filteredAccommodations.map((acc, idx) => (
+          <PropertyCard key={idx} acc={acc} />
+        ))}
       </div>
     </section>
   );

@@ -23,7 +23,7 @@ export function AboutSection() {
             </h3>
 
             <p>
-              Udaipur Gateways is operated by Nothing Like Travel LLP, an independent travel agency. We provide general property information, travel guidance and enquiry assistance. We are not the owner, operator or official representative of The Ananta Udaipur unless specifically stated.
+              Udaipur Gateway is operated by Nothing Like Travel LLP, an independent travel information and enquiry service. We provide general property information, travel guidance and enquiry assistance. We are not the owner, operator or official representative of The Ananta Udaipur unless specifically stated.
             </p>
           </div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Mail, Phone, ArrowRight, Sparkles } from "lucide-react";
+import { Mail, Phone, ArrowRight, HelpCircle } from "lucide-react";
 
 export function CtaBanner() {
   return (
@@ -16,35 +16,35 @@ export function CtaBanner() {
           {/* Eyebrow */}
           <div className="flex items-center gap-2 mb-3">
             <span className="w-6 h-[1px] bg-[#D4AF67]" />
-            <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-[#D4AF67] flex items-center gap-1.5">
-              <Sparkles className="w-2.5 h-2.5" />
-              BESPOKE TRAVEL ASSISTANCE
+            <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-[#D4AF67] flex items-center gap-1.5 font-semibold">
+              <HelpCircle className="w-3 h-3 text-[#D4AF67]" />
+              INDEPENDENT INFORMATION SERVICE
             </span>
           </div>
 
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white tracking-tight leading-[1.15]">
-            Plan Your <span className="text-[#D4AF67] italic font-serif font-normal">Udaipur Getaway?</span>
+            Have a Question About <span className="text-[#D4AF67] italic font-serif font-normal">The Ananta Udaipur?</span>
           </h2>
 
           {/* Subtitle */}
           <p className="text-sm sm:text-base text-white/80 leading-relaxed mt-4 max-w-xl font-light">
-            Get personalised information on stay options, dining, experiences and more. Our team is here to assist you.
+            Send a general question about room categories, resort amenities, dining options or nearby attractions. Udaipur Gateway is here to assist you with independent property guidance.
           </p>
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mt-8 pt-2">
-            {/* Send Enquiry Button */}
+            {/* Ask a Question Button */}
             <a
               href="#enquiry"
               className="px-7 py-3.5 sm:py-4 rounded-xs bg-[#B8934E] hover:bg-[#917032] text-white font-medium text-xs sm:text-sm uppercase tracking-[0.15em] flex items-center justify-center gap-2.5 shadow-sm transition-all cursor-pointer group"
             >
               <Mail className="w-4 h-4 text-white" />
-              <span>Send Enquiry</span>
+              <span>Ask a Question</span>
               <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
             </a>
 
-            {/* Call for Assistance Button */}
+            {/* Call Button */}
             <a
               href="tel:+919279022649"
               className="px-7 py-3.5 sm:py-4 rounded-xs bg-white/10 hover:bg-white hover:text-[#0D2E24] border border-white/20 text-white font-medium text-xs sm:text-sm uppercase tracking-[0.15em] flex items-center justify-center gap-2.5 transition-all cursor-pointer group backdrop-blur-xs"
