@@ -24,7 +24,7 @@ export function QuickFacts() {
           </span>
         </div>
         <span className="text-xs text-[#71717A] hidden sm:inline font-mono">
-          The Ananta, Udaipur
+
         </span>
       </div>
 
